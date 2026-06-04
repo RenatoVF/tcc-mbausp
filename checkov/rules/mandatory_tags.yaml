@@ -1,0 +1,27 @@
+metadata:
+  name: "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)"
+  id: "CKV_FINOPS_01"
+  category: "CONVENTION"
+definition:
+  and:
+    - cond_type: "attribute"
+      resource_types: 
+        - "aws_instance"
+        - "aws_db_instance"
+        - "aws_s3_bucket"
+      attribute: "tags.Projeto"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types: 
+        - "aws_instance"
+        - "aws_db_instance"
+        - "aws_s3_bucket"
+      attribute: "tags.Time Responsável"
+      operator: "exists"
+    - cond_type: "attribute"
+      resource_types: 
+        - "aws_instance"
+        - "aws_db_instance"
+        - "aws_s3_bucket"
+      attribute: "tags.Ambiente"
+      operator: "exists"

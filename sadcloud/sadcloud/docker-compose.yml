@@ -1,0 +1,11 @@
+services:
+  terraform:
+    image: hashicorp/terraform:latest
+    env_file:
+      - .env
+    volumes:
+      - .:/infra # Mounts current directory to the container
+      - ../modules:/modules
+      - ../tfvars:/tfvars
+    working_dir: /infra
+    entrypoint: ["/bin/terraform"]
