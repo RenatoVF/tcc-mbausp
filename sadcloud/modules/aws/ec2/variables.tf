@@ -120,12 +120,6 @@ variable "ec2_overlapping_security_group" {
   default     = false
 }
 
-variable "environment" {
-  description = "Deployment environment (PRD or HML)"
-  type        = string
-  default     = "PRD"
-}
-
 variable "required_tags" {
   description = "Map of required tags to apply to resources"
   type        = map(string)

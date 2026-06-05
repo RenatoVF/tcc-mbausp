@@ -59,7 +59,6 @@ module "ec2" {
 
    main_subnet_id = module.network.main_subnet_id
    vpc_id = module.network.vpc_id
-   environment = var.environment
    required_tags = var.required_tags
    enable_ec2 = var.enable_ec2
    instance_type = var.instance_type
@@ -173,7 +172,6 @@ module "rds" {
 
   main_subnet_id = module.network.main_subnet_id
   secondary_subnet_id = module.network.secondary_subnet_id
-  environment = var.environment
   required_tags = var.required_tags
   enable_rds = var.enable_rds
   rds_instance_class = var.rds_instance_class

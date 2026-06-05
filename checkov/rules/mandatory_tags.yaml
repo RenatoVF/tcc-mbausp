@@ -1,27 +1,35 @@
 metadata:
-  name: "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)"
+  name: "Garantir a presenca e o preenchimento (nao vazio) das tags obrigatorias de FinOps"
   id: "CKV_FINOPS_01"
   category: "CONVENTION"
 definition:
   and:
+    # 1. Verifica se a tag Projeto EXISTE e NÃO ESTÁ VAZIA
     - cond_type: "attribute"
-      resource_types: 
-        - "aws_instance"
-        - "aws_db_instance"
-        - "aws_s3_bucket"
+      resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
       attribute: "tags.Projeto"
       operator: "exists"
     - cond_type: "attribute"
-      resource_types: 
-        - "aws_instance"
-        - "aws_db_instance"
-        - "aws_s3_bucket"
-      attribute: "tags.Time Responsável"
+      resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
+      attribute: "tags.Projeto"
+      operator: "is_not_empty"
+      
+    # 2. Verifica se a tag Time Responsavel EXISTE e NÃO ESTÁ VAZIA
+    - cond_type: "attribute"
+      resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
+      attribute: "tags.Time Responsavel"
       operator: "exists"
     - cond_type: "attribute"
-      resource_types: 
-        - "aws_instance"
-        - "aws_db_instance"
-        - "aws_s3_bucket"
+      resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
+      attribute: "tags.Time Responsavel"
+      operator: "is_not_empty"
+      
+    # 3. Verifica se a tag Ambiente EXISTE e NÃO ESTÁ VAZIA
+    - cond_type: "attribute"
+      resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
       attribute: "tags.Ambiente"
       operator: "exists"
+    - cond_type: "attribute"
+      resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
+      attribute: "tags.Ambiente"
+      operator: "is_not_empty"

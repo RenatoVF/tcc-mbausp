@@ -5679,565 +5679,6 @@
                 "definition_context_file_path": null
             },
             {
-                "check_id": "CKV_AWS_19",
-                "bc_check_id": "BC_AWS_S3_14",
-                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadelb"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_AWS_19",
-                "bc_check_id": "BC_AWS_S3_14",
-                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "getonly": {
-                                "bucket_prefix": [
-                                    "sadcloudhetonlys3"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.getonly[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.getonly[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.getonly[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_AWS_19",
-                "bc_check_id": "BC_AWS_S3_14",
-                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "main": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadcloud"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "versioning": [
-                                    {
-                                        "enabled": [
-                                            false
-                                        ],
-                                        "mfa_delete": [
-                                            false
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.main",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.main",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.main",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_AWS_19",
-                "bc_check_id": "BC_AWS_S3_14",
-                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "public": {
-                                "bucket_prefix": [
-                                    "sadcloudhetonlys3"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.public[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.public[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.public[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
                 "check_id": "CKV2_AWS_56",
                 "bc_check_id": "BC_AWS_IAM_75",
                 "check_name": "Ensure AWS Managed IAMFullAccess IAM policy is not used.",
@@ -6306,11 +5747,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6410,11 +5851,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6513,11 +5954,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6593,11 +6034,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6673,11 +6114,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6779,11 +6220,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6880,11 +6321,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "managed_policy_arn",
                         "arn",
-                        "name",
+                        "managed_policy_arns/*",
+                        "managed_policy_arn",
                         "policy_arn",
-                        "managed_policy_arns/*"
+                        "name"
                     ]
                 },
                 "code_block": null,
@@ -6911,176 +6352,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-56",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_76",
-                "bc_check_id": null,
-                "check_name": "Ensure AWS ALB attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_lb": {
-                            "main": {
-                                "access_logs": [
-                                    {
-                                        "bucket": [
-                                            ""
-                                        ],
-                                        "enabled": [
-                                            false
-                                        ],
-                                        "prefix": [
-                                            null
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ],
-                                        "references_": [
-                                            [
-                                                "aws_s3_bucket.access_logging[0].bucket_prefix",
-                                                "aws_s3_bucket.access_logging[0]",
-                                                "aws_s3_bucket.access_logging"
-                                            ]
-                                        ]
-                                    }
-                                ],
-                                "client_keep_alive": [
-                                    3600
-                                ],
-                                "connection_logs": [
-                                    []
-                                ],
-                                "customer_owned_ipv4_pool": [
-                                    null
-                                ],
-                                "desync_mitigation_mode": [
-                                    "defensive"
-                                ],
-                                "dns_record_client_routing_policy": [
-                                    null
-                                ],
-                                "drop_invalid_header_fields": [
-                                    false
-                                ],
-                                "enable_cross_zone_load_balancing": [
-                                    null
-                                ],
-                                "enable_deletion_protection": [
-                                    false
-                                ],
-                                "enable_http2": [
-                                    true
-                                ],
-                                "enable_tls_version_and_cipher_suite_headers": [
-                                    false
-                                ],
-                                "enable_waf_fail_open": [
-                                    false
-                                ],
-                                "enable_xff_client_port": [
-                                    false
-                                ],
-                                "enable_zonal_shift": [
-                                    false
-                                ],
-                                "health_check_logs": [
-                                    []
-                                ],
-                                "idle_timeout": [
-                                    60
-                                ],
-                                "ipam_pools": [
-                                    []
-                                ],
-                                "load_balancer_type": [
-                                    "application"
-                                ],
-                                "minimum_load_balancer_capacity": [
-                                    []
-                                ],
-                                "preserve_host_header": [
-                                    false
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "xff_header_processing_mode": [
-                                    "append"
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_lb.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "internal",
-                        "resource_type",
-                        "rule/*/statement/managed_rule_group_statement/name"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_lb.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_lb.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/compliant-simple-03.json"
@@ -7145,8 +6416,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -7235,8 +6506,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -7328,8 +6599,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -7416,8 +6687,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -7609,8 +6880,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -7777,8 +7048,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -7945,8 +7216,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -8110,8 +7381,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -8283,8 +7554,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
                         "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
@@ -8312,6 +7583,565 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_AWS_19",
+                "bc_check_id": "BC_AWS_S3_14",
+                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadelb"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_AWS_19",
+                "bc_check_id": "BC_AWS_S3_14",
+                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "getonly": {
+                                "bucket_prefix": [
+                                    "sadcloudhetonlys3"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.getonly[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.getonly[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.getonly[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_AWS_19",
+                "bc_check_id": "BC_AWS_S3_14",
+                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "main": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadcloud"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "versioning": [
+                                    {
+                                        "enabled": [
+                                            false
+                                        ],
+                                        "mfa_delete": [
+                                            false
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.main",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.main",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.main",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_AWS_19",
+                "bc_check_id": "BC_AWS_S3_14",
+                "check_name": "Ensure all data stored in the S3 bucket is securely encrypted at rest",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "public": {
+                                "bucket_prefix": [
+                                    "sadcloudhetonlys3"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.public[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.public[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.public[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-14-data-encrypted-at-rest",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/compliant-simple-03.json"
@@ -8412,6 +8242,176 @@
                 "definition_context_file_path": "/data/compliant-simple-03.json"
             },
             {
+                "check_id": "CKV2_AWS_76",
+                "bc_check_id": null,
+                "check_name": "Ensure AWS ALB attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_lb": {
+                            "main": {
+                                "access_logs": [
+                                    {
+                                        "bucket": [
+                                            ""
+                                        ],
+                                        "enabled": [
+                                            false
+                                        ],
+                                        "prefix": [
+                                            null
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ],
+                                        "references_": [
+                                            [
+                                                "aws_s3_bucket.access_logging[0].bucket_prefix",
+                                                "aws_s3_bucket.access_logging[0]",
+                                                "aws_s3_bucket.access_logging"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                "client_keep_alive": [
+                                    3600
+                                ],
+                                "connection_logs": [
+                                    []
+                                ],
+                                "customer_owned_ipv4_pool": [
+                                    null
+                                ],
+                                "desync_mitigation_mode": [
+                                    "defensive"
+                                ],
+                                "dns_record_client_routing_policy": [
+                                    null
+                                ],
+                                "drop_invalid_header_fields": [
+                                    false
+                                ],
+                                "enable_cross_zone_load_balancing": [
+                                    null
+                                ],
+                                "enable_deletion_protection": [
+                                    false
+                                ],
+                                "enable_http2": [
+                                    true
+                                ],
+                                "enable_tls_version_and_cipher_suite_headers": [
+                                    false
+                                ],
+                                "enable_waf_fail_open": [
+                                    false
+                                ],
+                                "enable_xff_client_port": [
+                                    false
+                                ],
+                                "enable_zonal_shift": [
+                                    false
+                                ],
+                                "health_check_logs": [
+                                    []
+                                ],
+                                "idle_timeout": [
+                                    60
+                                ],
+                                "ipam_pools": [
+                                    []
+                                ],
+                                "load_balancer_type": [
+                                    "application"
+                                ],
+                                "minimum_load_balancer_capacity": [
+                                    []
+                                ],
+                                "preserve_host_header": [
+                                    false
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "xff_header_processing_mode": [
+                                    "append"
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_lb.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "rule/*/statement/managed_rule_group_statement/name",
+                        "resource_type",
+                        "internal"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_lb.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_lb.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
                 "check_id": "CKV2_AWS_64",
                 "bc_check_id": "BC_AWS_IAM_76",
                 "check_name": "Ensure KMS key Policy is defined",
@@ -8497,8 +8497,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "policy"
+                        "policy",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -8592,8 +8592,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "encrypted"
+                        "encrypted",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -8833,11 +8833,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/vpc_peering_connection_id",
-                        "vpc_peering_connection_id",
-                        "route/*/ipv6_cidr_block",
-                        "destination_ipv6_cidr_block",
                         "route/*/cidr_block",
+                        "destination_ipv6_cidr_block",
+                        "vpc_peering_connection_id",
+                        "route/*/vpc_peering_connection_id",
+                        "route/*/ipv6_cidr_block",
                         "destination_cidr_block"
                     ]
                 },
@@ -8972,9 +8972,9 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy/grant/*/permission",
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -9135,9 +9135,9 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy/grant/*/permission",
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -9270,9 +9270,9 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy/grant/*/permission",
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -9405,9 +9405,9 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy/grant/*/permission",
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -9562,9 +9562,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "subject_alternative_names",
                         "domain_name",
-                        "subject_alternative_names/*",
-                        "subject_alternative_names"
+                        "subject_alternative_names/*"
                     ]
                 },
                 "code_block": null,
@@ -9812,11 +9812,11 @@
                     },
                     "evaluated_keys": [
                         "default_action/redirect/*/protocol",
-                        "resource_type",
                         "default_action/type",
+                        "resource_type",
+                        "port",
                         "protocol",
-                        "default_action/redirect/*/port",
-                        "port"
+                        "default_action/redirect/*/port"
                     ]
                 },
                 "code_block": null,
@@ -9939,9 +9939,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -10101,9 +10101,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -10235,9 +10235,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -10369,9 +10369,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "acl",
                         "resource_type",
                         "access_control_policy/grant",
-                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy"
                     ]
@@ -10723,10 +10723,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/cidr_block",
                         "instance_id",
-                        "destination_cidr_block",
-                        "route/*/instance_id"
+                        "route/*/cidr_block",
+                        "route/*/instance_id",
+                        "destination_cidr_block"
                     ]
                 },
                 "code_block": null,
@@ -10892,8 +10892,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Ambiente",
-                        "instance_type"
+                        "instance_type",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -10922,733 +10922,6 @@
                 "caller_file_path": null,
                 "caller_file_line_range": null,
                 "resource_address": "module.ec2.aws_instance.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_01",
-                "bc_check_id": null,
-                "check_name": "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_instance": {
-                            "main": {
-                                "ami": [
-                                    "ami-0fb0b230890ccd1e6"
-                                ],
-                                "associate_public_ip_address": [
-                                    true
-                                ],
-                                "credit_specification": [
-                                    []
-                                ],
-                                "force_destroy": [
-                                    false
-                                ],
-                                "get_password_data": [
-                                    false
-                                ],
-                                "hibernation": [
-                                    null
-                                ],
-                                "instance_type": [
-                                    "t2.micro"
-                                ],
-                                "launch_template": [
-                                    []
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "source_dest_check": [
-                                    true
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud-ec2",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud-ec2"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "user_data": [
-                                    "password,AKIAIOSFODNN7EXAMPLE"
-                                ],
-                                "user_data_replace_on_change": [
-                                    false
-                                ],
-                                "volume_tags": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "references_": [
-                                    [
-                                        "data.aws_ami.ubuntu.id",
-                                        "data.aws_ami.ubuntu"
-                                    ]
-                                ],
-                                "__address__": "module.ec2.aws_instance.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.ec2.aws_instance.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud-ec2",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.ec2.aws_instance.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_01",
-                "bc_check_id": null,
-                "check_name": "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadelb"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_01",
-                "bc_check_id": null,
-                "check_name": "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "getonly": {
-                                "bucket_prefix": [
-                                    "sadcloudhetonlys3"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.getonly[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.getonly[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.getonly[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_01",
-                "bc_check_id": null,
-                "check_name": "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "main": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadcloud"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "versioning": [
-                                    {
-                                        "enabled": [
-                                            false
-                                        ],
-                                        "mfa_delete": [
-                                            false
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.main",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.main",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.main",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_01",
-                "bc_check_id": null,
-                "check_name": "Garantir a presenca das tags obrigatorias de FinOps (Projeto, Time Responsavel, Ambiente)",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "public": {
-                                "bucket_prefix": [
-                                    "sadcloudhetonlys3"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time C",
-                                        "__file__": "/data/compliant-simple-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time C"
-                                        ],
-                                        "__file__": [
-                                            "/data/compliant-simple-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.public[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.public[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time C",
-                    "__file__": "/data/compliant-simple-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.public[0]",
                 "severity": null,
                 "bc_category": null,
                 "benchmarks": {},
@@ -23176,8 +22449,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -23401,8 +22674,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -23626,8 +22899,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24265,8 +23538,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24536,8 +23809,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24761,8 +24034,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24986,8 +24259,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25163,8 +24436,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25294,8 +24567,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25425,8 +24698,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25650,8 +24923,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25875,8 +25148,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -26100,8 +25373,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -26325,8 +25598,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -26710,15 +25983,15 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "egress/protocol",
-                        "ingress/to_port",
+                        "resource_type",
                         "ingress/from_port",
-                        "ingress/protocol",
-                        "ingress/self",
                         "egress/from_port",
                         "egress/cidr_blocks",
-                        "egress/to_port"
+                        "egress/to_port",
+                        "ingress/to_port",
+                        "ingress/protocol",
+                        "ingress/self"
                     ]
                 },
                 "code_block": null,
@@ -26755,192 +26028,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_40",
-                "bc_check_id": "BC_AWS_IAM_73",
-                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_iam_policy": {
-                            "admin_not_indicated_policy": {
-                                "delay_after_policy_creation_in_ms": [
-                                    null
-                                ],
-                                "description": [
-                                    null
-                                ],
-                                "name": [
-                                    "sadcloud_superuser_policy"
-                                ],
-                                "path": [
-                                    "/"
-                                ],
-                                "policy": [
-                                    {
-                                        "Statement": [
-                                            {
-                                                "Action": "*",
-                                                "Effect": "Allow",
-                                                "Resource": "*"
-                                            }
-                                        ],
-                                        "Version": "2012-10-17"
-                                    }
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/compliant-simple-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_40",
-                "bc_check_id": "BC_AWS_IAM_73",
-                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_iam_policy": {
-                            "policy": {
-                                "delay_after_policy_creation_in_ms": [
-                                    null
-                                ],
-                                "description": [
-                                    null
-                                ],
-                                "name_prefix": [
-                                    "wildcard_IAM_policy"
-                                ],
-                                "path": [
-                                    "/"
-                                ],
-                                "policy": [
-                                    {
-                                        "Statement": [
-                                            {
-                                                "Action": "*",
-                                                "Effect": "Allow",
-                                                "Resource": "*"
-                                            }
-                                        ],
-                                        "Version": "2012-10-17"
-                                    }
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/compliant-simple-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.iam.aws_iam_policy.policy[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "statement[?(@/effect == Allow)]/actions[*]",
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/compliant-simple-03.json",
-                "file_abs_path": "/data/compliant-simple-03.json",
-                "repo_file_path": "/compliant-simple-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.iam.aws_iam_policy.policy[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.iam.aws_iam_policy.policy[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/compliant-simple-03.json"
@@ -27177,48 +26264,39 @@
                 "definition_context_file_path": "/data/compliant-simple-03.json"
             },
             {
-                "check_id": "CKV2_AWS_64",
-                "bc_check_id": "BC_AWS_IAM_76",
-                "check_name": "Ensure KMS key Policy is defined",
+                "check_id": "CKV2_AWS_40",
+                "bc_check_id": "BC_AWS_IAM_73",
+                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
                 "check_result": {
                     "result": "FAILED",
                     "entity": {
-                        "aws_kms_key": {
-                            "main": {
-                                "bypass_policy_lockout_safety_check": [
-                                    false
-                                ],
-                                "custom_key_store_id": [
-                                    null
-                                ],
-                                "customer_master_key_spec": [
-                                    "SYMMETRIC_DEFAULT"
-                                ],
-                                "deletion_window_in_days": [
+                        "aws_iam_policy": {
+                            "admin_not_indicated_policy": {
+                                "delay_after_policy_creation_in_ms": [
                                     null
                                 ],
                                 "description": [
-                                    "sadcloud key"
+                                    null
                                 ],
-                                "enable_key_rotation": [
-                                    false
+                                "name": [
+                                    "sadcloud_superuser_policy"
                                 ],
-                                "is_enabled": [
-                                    true
+                                "path": [
+                                    "/"
                                 ],
-                                "key_usage": [
-                                    "ENCRYPT_DECRYPT"
-                                ],
-                                "region": [
-                                    "us-east-1"
+                                "policy": [
+                                    {
+                                        "Statement": [
+                                            {
+                                                "Action": "*",
+                                                "Effect": "Allow",
+                                                "Resource": "*"
+                                            }
+                                        ],
+                                        "Version": "2012-10-17"
+                                    }
                                 ],
                                 "tags": [
-                                    null
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "xks_key_id": [
                                     null
                                 ],
                                 "__file__": [
@@ -27236,7 +26314,7 @@
                                 "end_line": [
                                     0
                                 ],
-                                "__address__": "module.kms.aws_kms_key.main[0]",
+                                "__address__": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
                                 "__change_actions__": [
                                     "create"
                                 ],
@@ -27245,8 +26323,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "policy"
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
+                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
                     ]
                 },
                 "code_block": null,
@@ -27257,14 +26336,14 @@
                     0,
                     0
                 ],
-                "resource": "module.kms.aws_kms_key.main[0]",
+                "resource": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
                 "evaluations": null,
                 "check_class": "checkov.common.graph.checks_infra.base_check",
                 "fixed_definition": null,
                 "entity_tags": null,
                 "caller_file_path": null,
                 "caller_file_line_range": null,
-                "resource_address": "module.kms.aws_kms_key.main[0]",
+                "resource_address": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
                 "severity": null,
                 "bc_category": null,
                 "benchmarks": null,
@@ -27272,7 +26351,100 @@
                 "short_description": null,
                 "vulnerability_details": null,
                 "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-64",
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_40",
+                "bc_check_id": "BC_AWS_IAM_73",
+                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_iam_policy": {
+                            "policy": {
+                                "delay_after_policy_creation_in_ms": [
+                                    null
+                                ],
+                                "description": [
+                                    null
+                                ],
+                                "name_prefix": [
+                                    "wildcard_IAM_policy"
+                                ],
+                                "path": [
+                                    "/"
+                                ],
+                                "policy": [
+                                    {
+                                        "Statement": [
+                                            {
+                                                "Action": "*",
+                                                "Effect": "Allow",
+                                                "Resource": "*"
+                                            }
+                                        ],
+                                        "Version": "2012-10-17"
+                                    }
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.iam.aws_iam_policy.policy[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
+                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.iam.aws_iam_policy.policy[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.iam.aws_iam_policy.policy[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/compliant-simple-03.json"
@@ -27399,12 +26571,12 @@
                         }
                     },
                     "evaluated_keys": [
+                        "ssl_policy",
                         "load_balancer_type",
-                        "resource_type",
                         "default_action/type",
+                        "resource_type",
                         "protocol",
-                        "default_action/redirect/protocol",
-                        "ssl_policy"
+                        "default_action/redirect/protocol"
                     ]
                 },
                 "code_block": null,
@@ -27431,6 +26603,107 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-43",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_64",
+                "bc_check_id": "BC_AWS_IAM_76",
+                "check_name": "Ensure KMS key Policy is defined",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_kms_key": {
+                            "main": {
+                                "bypass_policy_lockout_safety_check": [
+                                    false
+                                ],
+                                "custom_key_store_id": [
+                                    null
+                                ],
+                                "customer_master_key_spec": [
+                                    "SYMMETRIC_DEFAULT"
+                                ],
+                                "deletion_window_in_days": [
+                                    null
+                                ],
+                                "description": [
+                                    "sadcloud key"
+                                ],
+                                "enable_key_rotation": [
+                                    false
+                                ],
+                                "is_enabled": [
+                                    true
+                                ],
+                                "key_usage": [
+                                    "ENCRYPT_DECRYPT"
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "xks_key_id": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.kms.aws_kms_key.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "policy",
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.kms.aws_kms_key.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.kms.aws_kms_key.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-64",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/compliant-simple-03.json"
@@ -27527,9 +26800,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -27659,9 +26932,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -27819,9 +27092,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -27951,9 +27224,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -28086,9 +27359,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "rule/*/status",
                         "resource_type",
-                        "replication_configuration/rules/*/status"
+                        "replication_configuration/rules/*/status",
+                        "rule/*/status"
                     ]
                 },
                 "code_block": null,
@@ -28218,9 +27491,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "rule/*/status",
                         "resource_type",
-                        "replication_configuration/rules/*/status"
+                        "replication_configuration/rules/*/status",
+                        "rule/*/status"
                     ]
                 },
                 "code_block": null,
@@ -28378,9 +27651,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "rule/*/status",
                         "resource_type",
-                        "replication_configuration/rules/*/status"
+                        "replication_configuration/rules/*/status",
+                        "rule/*/status"
                     ]
                 },
                 "code_block": null,
@@ -28510,9 +27783,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "rule/*/status",
                         "resource_type",
-                        "replication_configuration/rules/*/status"
+                        "replication_configuration/rules/*/status",
+                        "rule/*/status"
                     ]
                 },
                 "code_block": null,
@@ -29366,9 +28639,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "block_public_acls",
                         "resource_type",
-                        "block_public_policy",
-                        "block_public_acls"
+                        "block_public_policy"
                     ]
                 },
                 "code_block": null,
@@ -29498,9 +28771,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "block_public_acls",
                         "resource_type",
-                        "block_public_policy",
-                        "block_public_acls"
+                        "block_public_policy"
                     ]
                 },
                 "code_block": null,
@@ -29658,9 +28931,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "block_public_acls",
                         "resource_type",
-                        "block_public_policy",
-                        "block_public_acls"
+                        "block_public_policy"
                     ]
                 },
                 "code_block": null,
@@ -29790,9 +29063,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "block_public_acls",
                         "resource_type",
-                        "block_public_policy",
-                        "block_public_acls"
+                        "block_public_policy"
                     ]
                 },
                 "code_block": null,
@@ -29925,8 +29198,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -30056,8 +29329,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -30215,8 +29488,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -30346,8 +29619,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -30495,8 +29768,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -30629,8 +29902,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "lifecycle_rule"
+                        "lifecycle_rule",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -30760,8 +30033,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "lifecycle_rule"
+                        "lifecycle_rule",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -30919,8 +30192,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "lifecycle_rule"
+                        "lifecycle_rule",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -31050,8 +30323,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "lifecycle_rule"
+                        "lifecycle_rule",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -31650,14 +30923,741 @@
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_01",
+                "bc_check_id": null,
+                "check_name": "Garantir a presenca e o preenchimento (nao vazio) das tags obrigatorias de FinOps",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_instance": {
+                            "main": {
+                                "ami": [
+                                    "ami-0fb0b230890ccd1e6"
+                                ],
+                                "associate_public_ip_address": [
+                                    true
+                                ],
+                                "credit_specification": [
+                                    []
+                                ],
+                                "force_destroy": [
+                                    false
+                                ],
+                                "get_password_data": [
+                                    false
+                                ],
+                                "hibernation": [
+                                    null
+                                ],
+                                "instance_type": [
+                                    "t2.micro"
+                                ],
+                                "launch_template": [
+                                    []
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "source_dest_check": [
+                                    true
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud-ec2",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud-ec2"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "user_data": [
+                                    "password,AKIAIOSFODNN7EXAMPLE"
+                                ],
+                                "user_data_replace_on_change": [
+                                    false
+                                ],
+                                "volume_tags": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "references_": [
+                                    [
+                                        "data.aws_ami.ubuntu.id",
+                                        "data.aws_ami.ubuntu"
+                                    ]
+                                ],
+                                "__address__": "module.ec2.aws_instance.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "tags/Projeto",
+                        "tags/Time Responsavel",
+                        "tags/Ambiente"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.ec2.aws_instance.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud-ec2",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.ec2.aws_instance.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_01",
+                "bc_check_id": null,
+                "check_name": "Garantir a presenca e o preenchimento (nao vazio) das tags obrigatorias de FinOps",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadelb"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "tags/Projeto",
+                        "tags/Time Responsavel",
+                        "tags/Ambiente"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_01",
+                "bc_check_id": null,
+                "check_name": "Garantir a presenca e o preenchimento (nao vazio) das tags obrigatorias de FinOps",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "getonly": {
+                                "bucket_prefix": [
+                                    "sadcloudhetonlys3"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.getonly[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "tags/Projeto",
+                        "tags/Time Responsavel",
+                        "tags/Ambiente"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.getonly[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.getonly[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_01",
+                "bc_check_id": null,
+                "check_name": "Garantir a presenca e o preenchimento (nao vazio) das tags obrigatorias de FinOps",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "main": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadcloud"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "versioning": [
+                                    {
+                                        "enabled": [
+                                            false
+                                        ],
+                                        "mfa_delete": [
+                                            false
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.main",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "tags/Projeto",
+                        "tags/Time Responsavel",
+                        "tags/Ambiente"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.main",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.main",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_01",
+                "bc_check_id": null,
+                "check_name": "Garantir a presenca e o preenchimento (nao vazio) das tags obrigatorias de FinOps",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "public": {
+                                "bucket_prefix": [
+                                    "sadcloudhetonlys3"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time C",
+                                        "__file__": "/data/compliant-simple-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time C"
+                                        ],
+                                        "__file__": [
+                                            "/data/compliant-simple-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/compliant-simple-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.public[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "tags/Projeto",
+                        "tags/Time Responsavel",
+                        "tags/Ambiente"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/compliant-simple-03.json",
+                "file_abs_path": "/data/compliant-simple-03.json",
+                "repo_file_path": "/compliant-simple-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.public[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time C",
+                    "__file__": "/data/compliant-simple-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.public[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/compliant-simple-03.json"
             }
         ],
         "skipped_checks": [],
         "parsing_errors": []
     },
     "summary": {
-        "passed": 236,
-        "failed": 170,
+        "passed": 231,
+        "failed": 175,
         "skipped": 0,
         "parsing_errors": 0,
         "resource_count": 80,

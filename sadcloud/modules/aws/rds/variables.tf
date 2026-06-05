@@ -48,12 +48,6 @@ variable "rds_publicly_accessible" {
   default     = false
 }
 
-variable "environment" {
-  description = "Deployment environment (PRD or HML)"
-  type        = string
-  default     = "PRD"
-}
-
 variable "required_tags" {
   description = "Map of required tags to apply to resources"
   type        = map(string)
