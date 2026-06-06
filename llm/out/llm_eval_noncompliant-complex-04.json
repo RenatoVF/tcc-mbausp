@@ -1,0 +1,15 @@
+{
+    "CKV_FINOPS_01": "FAILED",
+    "CKV_FINOPS_02": "FAILED",
+    "CKV_FINOPS_03": "PASSED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Os recursos principais 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem as tags obrigatórias 'Projeto', 'Time Responsável' e 'Ambiente', mas o valor da tag 'Ambiente' é 'STG', que não é permitido.",
+        "CKV_FINOPS_02": "A tag 'Ambiente' possui o valor 'STG', que não é permitido. Apenas 'PRD' ou 'HML' são valores válidos.",
+        "CKV_FINOPS_03": "Todos os recursos estão configurados para serem provisionados na região 'us-east-1', conforme a variável 'aws_region'.",
+        "CKV_FINOPS_04A": "A instância EC2 'aws_instance' está configurada com o tipo 't2.micro', que pertence à família 't', mas a tag 'Ambiente' não é 'HML'.",
+        "CKV_FINOPS_04B": "A instância RDS 'aws_db_instance' está configurada com a classe 'db.t2.micro', que pertence à família 't', mas a tag 'Ambiente' não é 'HML'."
+    },
+    "arquivo_analisado": "noncompliant-complex-04.json"
+}

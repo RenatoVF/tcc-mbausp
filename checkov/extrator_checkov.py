@@ -4,7 +4,7 @@ import csv
 
 # 1. Definição dos caminhos e regras
 diretorio_checkov = './out'
-arquivo_saida = 'matriz_resultados_checkov.csv'
+arquivo_saida = '../analises/matriz_resultados_checkov.csv'
 
 regras_finops = [
     'CKV_FINOPS_01', 

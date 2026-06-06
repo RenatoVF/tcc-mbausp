@@ -1,0 +1,15 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "PASSED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Todos os recursos principais ('aws_instance', 'aws_db_instance', 'aws_s3_bucket') possuem as tags obrigatórias 'Projeto', 'Time Responsável' e 'Ambiente', e nenhuma delas está vazia.",
+        "CKV_FINOPS_02": "A tag 'Ambiente' possui apenas os valores permitidos 'PRD' ou 'HML'.",
+        "CKV_FINOPS_03": "Todos os recursos estão configurados para serem provisionados na região 'us-east-1', conforme a variável 'aws_region'.",
+        "CKV_FINOPS_04A": "A instância EC2 ('aws_instance') está no ambiente 'PRD', portanto, a regra CKV_FINOPS_04A não se aplica.",
+        "CKV_FINOPS_04B": "A instância RDS ('aws_db_instance') está no ambiente 'PRD', portanto, a regra CKV_FINOPS_04B não se aplica."
+    },
+    "arquivo_analisado": "compliant-medium-05.json"
+}

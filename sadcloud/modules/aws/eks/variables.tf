@@ -28,6 +28,18 @@ variable "globally_accessible" {
   default     = false
 }
 
+variable "enable_eks" {
+  description = "Whether to create EKS cluster or not"
+  type        = bool
+  default     = false
+}
+
+variable "required_tags" {
+  description = "Tags to apply to network resources"
+  type        = map(string)
+  default     = {}
+}
+
 ############## Network ##############
 
 variable "vpc_id" {

@@ -69,3 +69,9 @@ variable "required_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable enable_s3 {
+  description = "Indica se o recurso S3 deve ser habilitado"
+  type        = bool
+  default     = false
+}

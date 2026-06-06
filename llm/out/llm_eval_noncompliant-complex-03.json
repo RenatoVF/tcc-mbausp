@@ -1,0 +1,15 @@
+{
+    "CKV_FINOPS_01": "FAILED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "PASSED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Os recursos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem a tag 'Projeto' vazia, violando a política de tags obrigatórias.",
+        "CKV_FINOPS_02": "Todos os recursos principais possuem a tag 'Ambiente' com valor 'PRD', que é um dos valores permitidos.",
+        "CKV_FINOPS_03": "Todos os recursos estão configurados para serem provisionados na região 'us-east-1', conforme a variável 'aws_region'.",
+        "CKV_FINOPS_04A": "Não há instâncias EC2 com a tag 'Ambiente' definida como 'HML', portanto, a regra é considerada cumprida.",
+        "CKV_FINOPS_04B": "Não há instâncias RDS com a tag 'Ambiente' definida como 'HML', portanto, a regra é considerada cumprida."
+    },
+    "arquivo_analisado": "noncompliant-complex-03.json"
+}

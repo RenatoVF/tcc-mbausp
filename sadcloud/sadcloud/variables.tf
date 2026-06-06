@@ -1,7 +1,7 @@
 variable "all_findings" {
   description = "enable all findings"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "all_acm_findings" {
@@ -158,6 +158,18 @@ variable enable_s3 {
   type        = bool
   default     = false
   description = "Indica se o recurso S3 deve ser habilitado"
+}
+
+variable enable_elbv2 {
+  type        = bool
+  default     = false
+  description = "Indica se o recurso ELBv2 deve ser habilitado"
+}
+
+variable enable_eks {
+  type        = bool
+  default     = false
+  description = "Indica se o recurso EKS deve ser habilitado"
 }
 
 variable "required_tags" { 

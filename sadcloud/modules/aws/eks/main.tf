@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "example" {
   name     = "example"
-  role_arn = aws_iam_role.main.arn
+  role_arn = aws_iam_role.main[0].arn
   version =  var.out_of_date ? "1.14" : null
 
   vpc_config {
@@ -16,11 +16,15 @@ resource "aws_eks_cluster" "example" {
     aws_iam_role_policy_attachment.example-AmazonEKSServicePolicy,
   ]
 
-  count = (var.out_of_date || var.no_logs || var.publicly_accessible || var.globally_accessible) ? 1 : 0
+  count = var.enable_eks ? 1 : 0
 
+  tags = merge({
+    Name = var.name
+  }, var.required_tags)
 }
 
 resource "aws_iam_role" "main" {
+  count = var.enable_eks ? 1 : 0
   name = "eks-cluster-sadcloud-example"
 
   assume_role_policy = <<POLICY
@@ -37,14 +41,20 @@ resource "aws_iam_role" "main" {
   ]
 }
 POLICY
+
+  tags = merge({
+    Name = var.name
+  }, var.required_tags)
 }
 
 resource "aws_iam_role_policy_attachment" "example-AmazonEKSClusterPolicy" {
+  count = var.enable_eks ? 1 : 0
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.main.name
+  role       = aws_iam_role.main[0].name
 }
 
 resource "aws_iam_role_policy_attachment" "example-AmazonEKSServicePolicy" {
+  count = var.enable_eks ? 1 : 0
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role       = aws_iam_role.main.name
+  role       = aws_iam_role.main[0].name
 }

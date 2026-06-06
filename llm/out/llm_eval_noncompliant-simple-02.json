@@ -1,0 +1,15 @@
+{
+    "CKV_FINOPS_01": "FAILED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "PASSED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "A tag 'Time Responsável' está vazia no recurso 'aws_db_instance'.",
+        "CKV_FINOPS_02": "Todos os recursos principais possuem a tag 'Ambiente' com valor 'PRD', que é permitido.",
+        "CKV_FINOPS_03": "Todos os recursos são provisionados na região 'us-east-1', conforme especificado na variável global.",
+        "CKV_FINOPS_04A": "Não há instâncias EC2 (aws_instance) no plano, portanto, a regra é considerada cumprida.",
+        "CKV_FINOPS_04B": "A instância de banco de dados RDS (aws_db_instance) está na família 't' com a classe 'db.t2.micro', e o ambiente é 'PRD', portanto, a regra é cumprida."
+    },
+    "arquivo_analisado": "noncompliant-simple-02.json"
+}

@@ -40,6 +40,10 @@ resource "aws_subnet" "secondary" {
   vpc_id     = aws_vpc.main[0].id
   cidr_block = "10.0.4.0/24"
   availability_zone = data.aws_availability_zones.available.names[1]
+
+  tags = merge({
+    Name = "${var.name}_subnet"
+  }, var.required_tags)
 }
 
 # create internet gateway

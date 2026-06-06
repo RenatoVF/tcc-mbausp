@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "access_logging" {
   acl    = "private"
   force_destroy = true
 
-  count = var.no_access_logs && (var.no_deletion_protection || var.older_ssl_policy) ? 1 : 0 
+  count = var.enable_elbv2 ? 1 : 0
 
   tags = merge({
     Name = var.name
@@ -17,10 +17,14 @@ resource "aws_lb" "main" {
 
   access_logs {
     bucket  = aws_s3_bucket.access_logging[0].bucket_prefix
-    enabled = !var.no_access_logs
+    enabled = !var.enable_elbv2
   }
 
-  count = (var.older_ssl_policy || var.no_access_logs || var.no_deletion_protection) ? 1 : 0
+  count = var.enable_elbv2 ? 1 : 0
+  
+  tags = merge({
+    Name = var.name
+  }, var.required_tags)
 }
 
 resource "aws_lb_target_group" "main" {
@@ -28,7 +32,11 @@ resource "aws_lb_target_group" "main" {
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 
-  count = var.older_ssl_policy ? 1 : 0
+  count = var.enable_elbv2 ? 1 : 0
+
+  tags = merge({
+    Name = var.name
+  }, var.required_tags)
 }
 
 resource "aws_iam_server_certificate" "main" {
@@ -40,7 +48,11 @@ resource "aws_iam_server_certificate" "main" {
     "${path.root}/static/example.key.pem",
   )
 
-  count = var.older_ssl_policy ? 1 : 0
+  count = var.enable_elbv2 ? 1 : 0
+
+  tags = merge({
+    Name = var.name
+  }, var.required_tags)
 }
 
 resource "aws_lb_listener" "main" {
@@ -55,5 +67,9 @@ resource "aws_lb_listener" "main" {
     target_group_arn = aws_lb_target_group.main[0].arn
   }
 
-  count = var.older_ssl_policy ? 1 : 0
+  count = var.enable_elbv2 ? 1 : 0
+
+  tags = merge({
+    Name = var.name
+  }, var.required_tags)
 }

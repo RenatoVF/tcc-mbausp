@@ -4,26 +4,26 @@ module "network" {
   source = "../modules/aws/network"
 
   # This is a workaround until Terraform supports dynamic modules or counts for modules
-  needs_network = var.enable_network || var.enable_ec2 || var.enable_rds || var.enable_s3 || var.all_findings || var.all_ec2_findings || var.all_elbv2_findings || var.all_rds_findings || var.all_redshift_findings || var.all_eks_findings
+  needs_network = var.enable_network || var.enable_ec2 || var.enable_rds || var.enable_s3 || var.enable_elbv2 || var.enable_eks || var.all_findings || var.all_ec2_findings || var.all_elbv2_findings || var.all_rds_findings || var.all_redshift_findings || var.all_eks_findings
   required_tags = var.required_tags
 }
 
 ############## SERVICES ##############
 
-module "acm" {
+/* module "acm" {
   source = "../modules/aws/acm"
 
   certificate_transparency_disabled = false || var.all_acm_findings || var.all_findings
-}
+} */
 
-module "cloudformation" {
+/* module "cloudformation" {
   source = "../modules/aws/cloudformation"
 
   stack_with_role = false || var.all_cloudformation_findings || var.all_findings
   stack_with_secret_output = false || var.all_cloudformation_findings || var.all_findings
-}
+} */
 
-module "cloudtrail" {
+/* module "cloudtrail" {
   source = "../modules/aws/cloudtrail"
 
   no_data_logging = false || var.all_cloudtrail_findings || var.all_findings
@@ -32,27 +32,27 @@ module "cloudtrail" {
   no_logging = false || var.all_cloudtrail_findings || var.all_findings
   duplicated_global_services_logging = false || var.all_cloudtrail_findings || var.all_findings
   not_configured = false || var.all_cloudtrail_findings || var.all_findings
-}
+} */
 
-module "cloudwatch" {
+/* module "cloudwatch" {
   source = "../modules/aws/cloudwatch"
 
   alarm_without_actions = false || var.all_cloudwatch_findings || var.all_findings
-}
+} */
 
-module "config" {
+/* module "config" {
   source = "../modules/aws/config"
 
   config_recorder_not_configured = false || var.all_config_findings || var.all_findings
-}
+} */
 
-module "ebs" {
+/* module "ebs" {
   source = "../modules/aws/ebs"
 
   ebs_default_encryption_disabled = false || var.all_ebs_findings || var.all_findings
   ebs_volume_unencrypted = false || var.all_ebs_findings || var.all_findings
   ebs_snapshot_unencrypted = false || var.all_ebs_findings || var.all_findings
-}
+} */
 
 module "ec2" {
   source = "../modules/aws/ec2"
@@ -82,15 +82,17 @@ module "ec2" {
    ec2_overlapping_security_group = false || var.all_ec2_findings || var.all_findings
 }
 
-module "ecr" {
+/* module "ecr" {
   source = "../modules/aws/ecr"
 
   ecr_scanning_disabled = false || var.all_ecr_findings || var.all_findings
   ecr_repo_public = false || var.all_ecr_findings || var.all_findings
-}
+} */
 
 module "eks" {
   source = "../modules/aws/eks"
+  required_tags = var.required_tags
+  enable_eks = var.enable_eks
 
   main_subnet_id = module.network.main_subnet_id
   secondary_subnet_id = module.network.secondary_subnet_id
@@ -102,18 +104,18 @@ module "eks" {
   globally_accessible = false || var.all_eks_findings || var.all_findings
 }
 
-module "elasticsearch" {
+/* module "elasticsearch" {
   source = "../modules/aws/elasticsearch"
 
   elasticsearch_logging_disabled = false || var.all_elasticsearch_findings || var.all_findings
   elasticsearch_open_access = false || var.all_elasticsearch_findings || var.all_findings
-}
+} */
 
-module "elb" {
+/* module "elb" {
   source = "../modules/aws/elb"
 
   no_access_logs = false || var.all_elb_findings || var.all_findings
-}
+} */
 
 module "elbv2" {
   source = "../modules/aws/elbv2"
@@ -122,19 +124,20 @@ module "elbv2" {
   secondary_subnet_id = module.network.secondary_subnet_id
   vpc_id = module.network.vpc_id  
   required_tags = var.required_tags
+  enable_elbv2 = var.enable_elbv2
 
   no_access_logs = false || var.all_elbv2_findings || var.all_findings
   no_deletion_protection = false || var.all_elbv2_findings || var.all_findings
   older_ssl_policy = false || var.all_elbv2_findings || var.all_findings
 }
 
-module "glacier" {
+/* module "glacier" {
   source = "../modules/aws/glacier"
 
   glacier_public = false || var.all_glacier_findings || var.all_findings
-}
+} */
 
-module "iam" {
+/* module "iam" {
   source = "../modules/aws/iam"
 
   password_policy_minimum_length = false || var.all_iam_findings || var.all_findings
@@ -152,20 +155,20 @@ module "iam" {
   assume_role_no_mfa = false || var.all_iam_findings || var.all_findings
   admin_iam_policy = false || var.all_iam_findings || var.all_findings
   admin_not_indicated_policy = false || var.all_iam_findings || var.all_findings
-}
+} */
 
-module "kms" {
+/* module "kms" {
   source = "../modules/aws/kms"
 
   key_rotation_disabled = false || var.all_kms_findings || var.all_findings
   kms_key_exposed = false || var.all_kms_findings || var.all_findings
-}
+} */
 
-module "lightsail" {
+/* module "lightsail" {
   source = "../modules/aws/lightsail"
   lightsail_in_use = false || var.all_lightsail_findings || var.all_findings
   aws_region = var.aws_region
-}
+} */
 
 module "rds" {
   source = "../modules/aws/rds"
@@ -183,7 +186,7 @@ module "rds" {
   rds_publicly_accessible = false || var.all_rds_findings || var.all_findings
 }
 
-module "redshift" {
+/* module "redshift" {
   source = "../modules/aws/redshift"
 
   main_subnet_id = module.network.main_subnet_id
@@ -193,12 +196,13 @@ module "redshift" {
   cluster_publicly_accessible = false || var.all_redshift_findings || var.all_findings
   cluster_no_version_upgrade = false || var.all_redshift_findings || var.all_findings
   cluster_database_not_encrypted = false || var.all_redshift_findings || var.all_findings
-}
+} */
 
 module "s3" {
   source = "../modules/aws/s3"
 
   required_tags = var.required_tags
+  enable_s3 = var.enable_s3
   allow_cleartext = false || var.all_s3_findings || var.all_findings
   no_default_encryption = false || var.all_s3_findings || var.all_findings
   no_logging = false || var.all_s3_findings || var.all_findings
@@ -208,15 +212,15 @@ module "s3" {
   s3_public = false || var.all_s3_findings || var.all_findings
 }
 
-module "ses" {
+
+/* module "ses" {
   source = "../modules/aws/ses"
 
   no_dkim_enabled = false || var.all_ses_findings || var.all_findings
   identity_world_policy  = false || var.all_ses_findings || var.all_findings
-}
+} */
 
-
-module "sns" {
+/* module "sns" {
   source = "../modules/aws/sns"
 
   topic_world_policy = false || var.all_sns_findings || var.all_findings
@@ -227,4 +231,4 @@ module "sqs" {
 
   queue_world_policy = false || var.all_sqs_findings || var.all_findings
   sqs_server_side_encryption_disabled = false || var.all_sqs_findings || var.all_findings
-}
+} */

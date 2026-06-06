@@ -1,4 +1,5 @@
 resource "aws_s3_bucket" "main" {
+  count = var.enable_s3 ? 1 : 0
   bucket_prefix = var.name
   acl    = "private"
   force_destroy = true
@@ -15,14 +16,14 @@ resource "aws_s3_bucket" "main" {
     }
   }
 
-  dynamic "logging" {
+  /* dynamic "logging" {
     for_each = var.no_logging ? [] : tolist([var.no_logging])
 
     content {
       target_bucket = aws_s3_bucket.logging[0].id
       target_prefix = var.name
     }
-  }
+  } */
 
   versioning {
       enabled = var.no_versioning ? false : true
@@ -47,7 +48,7 @@ resource "aws_s3_bucket" "logging" {
   acl    = var.bucket_acl
   force_destroy = true
 
-  count = var.no_logging ? 0 : 1
+  count = 0
 
   tags = merge({
     Name = var.name
@@ -69,8 +70,8 @@ data "aws_iam_policy_document" "force_ssl_only_access" {
     actions = ["s3:*"]
 
     resources = [
-      aws_s3_bucket.main.arn,
-      "${aws_s3_bucket.main.arn}/*",
+      aws_s3_bucket.main[0].arn,
+      "${aws_s3_bucket.main[0].arn}/*",
     ]
 
     condition {
@@ -79,11 +80,13 @@ data "aws_iam_policy_document" "force_ssl_only_access" {
       values   = ["false"]
     }
   }
+
+  count = var.enable_s3 ? 1 : 0
 }
 
 resource "aws_s3_bucket_policy" "force_ssl_only_access" {
-  bucket = aws_s3_bucket.main.id
-  policy = data.aws_iam_policy_document.force_ssl_only_access.json
+  bucket = aws_s3_bucket.main[0].id
+  policy = data.aws_iam_policy_document.force_ssl_only_access[0].json
 
   count = var.allow_cleartext ? 1 : 0
 }

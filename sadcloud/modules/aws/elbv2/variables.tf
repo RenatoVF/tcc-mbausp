@@ -46,3 +46,9 @@ variable "required_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable enable_elbv2 {
+  type        = bool
+  default     = false
+  description = "Indica se o recurso ELBv2 deve ser habilitado"
+}

@@ -4,10 +4,11 @@ docker compose run --rm --entrypoint sh terraform -c "../tfvars/run_specific_pla
 
 #infracost
 docker compose run --rm --entrypoint sh infracost -c "sh /scripts/run_infracost_all.sh"
-docker run --rm -v "${PWD}:/data" -w /data python:3.12-slim python generate_infracost_markdown.py out infracost_summary.md
 
 #checkov
 docker compose run --rm checkov -c "sh /scripts/run_checkov_all.sh"
 
-#python
-docker run --rm -v ${PWD}:/app -w /app python:3.12-slim python
+#analises
+docker run --rm -v ${PWD}:/app -v ${PWD}/../analises:/analises -w /app python:3.12-slim python extrator_infracost.py
+docker run --rm -v ${PWD}:/app -v ${PWD}/../analises:/analises -w /app python:3.12-slim python extrator_checkov.py
+docker run --rm -v ${PWD}:/app -v ${PWD}/../analises:/analises -w /app python:3.12-slim python extrator_llm.py

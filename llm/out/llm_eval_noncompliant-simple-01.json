@@ -1,0 +1,15 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "FAILED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Todos os recursos principais ('aws_instance') possuem as tags obrigatórias 'Projeto', 'Time Responsável' e 'Ambiente' preenchidas.",
+        "CKV_FINOPS_02": "A tag 'Ambiente' possui o valor 'PRD', que é um dos valores permitidos ('PRD' ou 'HML').",
+        "CKV_FINOPS_03": "A região configurada é 'us-west-2', mas a política exige que todos os recursos sejam provisionados na região 'us-east-1'.",
+        "CKV_FINOPS_04A": "A instância EC2 possui o tipo 't2.micro', que é permitido para o ambiente 'HML'. No entanto, o ambiente é 'PRD', então a regra não se aplica.",
+        "CKV_FINOPS_04B": "Não há instâncias de banco de dados RDS configuradas, portanto, a regra não se aplica."
+    },
+    "arquivo_analisado": "noncompliant-simple-01.json"
+}
