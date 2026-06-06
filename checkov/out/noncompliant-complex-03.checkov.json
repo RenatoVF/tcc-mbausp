@@ -5852,8 +5852,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -5953,8 +5953,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -6082,8 +6082,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -6183,8 +6183,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -6407,11 +6407,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "family",
-                        "parameter[?(@/name=='db2comm')]/value",
-                        "parameter[?(@/name=='require_secure_transport')]/value",
                         "resource_type",
-                        "parameter[?(@/name=='rds/force_ssl')]/value"
+                        "parameter[?(@/name=='db2comm')]/value",
+                        "parameter[?(@/name=='rds/force_ssl')]/value",
+                        "family",
+                        "parameter[?(@/name=='require_secure_transport')]/value"
                     ]
                 },
                 "code_block": null,
@@ -6521,10 +6521,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -6625,10 +6625,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -6728,10 +6728,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -6808,10 +6808,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -6888,10 +6888,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -6994,10 +6994,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -7095,10 +7095,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy_arn",
                         "arn",
-                        "managed_policy_arns/*",
                         "managed_policy_arn",
+                        "policy_arn",
+                        "managed_policy_arns/*",
                         "name"
                     ]
                 },
@@ -7126,176 +7126,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-56",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_76",
-                "bc_check_id": null,
-                "check_name": "Ensure AWS ALB attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_lb": {
-                            "main": {
-                                "access_logs": [
-                                    {
-                                        "bucket": [
-                                            ""
-                                        ],
-                                        "enabled": [
-                                            false
-                                        ],
-                                        "prefix": [
-                                            null
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-complex-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ],
-                                        "references_": [
-                                            [
-                                                "aws_s3_bucket.access_logging[0].bucket_prefix",
-                                                "aws_s3_bucket.access_logging[0]",
-                                                "aws_s3_bucket.access_logging"
-                                            ]
-                                        ]
-                                    }
-                                ],
-                                "client_keep_alive": [
-                                    3600
-                                ],
-                                "connection_logs": [
-                                    []
-                                ],
-                                "customer_owned_ipv4_pool": [
-                                    null
-                                ],
-                                "desync_mitigation_mode": [
-                                    "defensive"
-                                ],
-                                "dns_record_client_routing_policy": [
-                                    null
-                                ],
-                                "drop_invalid_header_fields": [
-                                    false
-                                ],
-                                "enable_cross_zone_load_balancing": [
-                                    null
-                                ],
-                                "enable_deletion_protection": [
-                                    false
-                                ],
-                                "enable_http2": [
-                                    true
-                                ],
-                                "enable_tls_version_and_cipher_suite_headers": [
-                                    false
-                                ],
-                                "enable_waf_fail_open": [
-                                    false
-                                ],
-                                "enable_xff_client_port": [
-                                    false
-                                ],
-                                "enable_zonal_shift": [
-                                    false
-                                ],
-                                "health_check_logs": [
-                                    []
-                                ],
-                                "idle_timeout": [
-                                    60
-                                ],
-                                "ipam_pools": [
-                                    []
-                                ],
-                                "load_balancer_type": [
-                                    "application"
-                                ],
-                                "minimum_load_balancer_capacity": [
-                                    []
-                                ],
-                                "preserve_host_header": [
-                                    false
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "xff_header_processing_mode": [
-                                    "append"
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_lb.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "internal",
-                        "rule/*/statement/managed_rule_group_statement/name"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_lb.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_lb.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -7360,8 +7190,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -7450,8 +7280,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -7543,8 +7373,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -7631,8 +7461,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -7824,8 +7654,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -7992,8 +7822,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -8160,8 +7990,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -8325,8 +8155,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -8498,8 +8328,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
                         "statement[?(@/effect == Allow)]/actions[*]"
                     ]
                 },
@@ -8527,6 +8357,176 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_76",
+                "bc_check_id": null,
+                "check_name": "Ensure AWS ALB attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_lb": {
+                            "main": {
+                                "access_logs": [
+                                    {
+                                        "bucket": [
+                                            ""
+                                        ],
+                                        "enabled": [
+                                            false
+                                        ],
+                                        "prefix": [
+                                            null
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-complex-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ],
+                                        "references_": [
+                                            [
+                                                "aws_s3_bucket.access_logging[0].bucket_prefix",
+                                                "aws_s3_bucket.access_logging[0]",
+                                                "aws_s3_bucket.access_logging"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                "client_keep_alive": [
+                                    3600
+                                ],
+                                "connection_logs": [
+                                    []
+                                ],
+                                "customer_owned_ipv4_pool": [
+                                    null
+                                ],
+                                "desync_mitigation_mode": [
+                                    "defensive"
+                                ],
+                                "dns_record_client_routing_policy": [
+                                    null
+                                ],
+                                "drop_invalid_header_fields": [
+                                    false
+                                ],
+                                "enable_cross_zone_load_balancing": [
+                                    null
+                                ],
+                                "enable_deletion_protection": [
+                                    false
+                                ],
+                                "enable_http2": [
+                                    true
+                                ],
+                                "enable_tls_version_and_cipher_suite_headers": [
+                                    false
+                                ],
+                                "enable_waf_fail_open": [
+                                    false
+                                ],
+                                "enable_xff_client_port": [
+                                    false
+                                ],
+                                "enable_zonal_shift": [
+                                    false
+                                ],
+                                "health_check_logs": [
+                                    []
+                                ],
+                                "idle_timeout": [
+                                    60
+                                ],
+                                "ipam_pools": [
+                                    []
+                                ],
+                                "load_balancer_type": [
+                                    "application"
+                                ],
+                                "minimum_load_balancer_capacity": [
+                                    []
+                                ],
+                                "preserve_host_header": [
+                                    false
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "xff_header_processing_mode": [
+                                    "append"
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_lb.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "internal",
+                        "rule/*/statement/managed_rule_group_statement/name",
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_lb.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_lb.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -8745,6 +8745,101 @@
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
             },
             {
+                "check_id": "CKV2_AWS_2",
+                "bc_check_id": "BC_AWS_GENERAL_60",
+                "check_name": "Ensure that only encrypted EBS volumes are attached to EC2 instances",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_ebs_volume": {
+                            "main": {
+                                "availability_zone": [
+                                    "us-east-1a"
+                                ],
+                                "encrypted": [
+                                    false
+                                ],
+                                "final_snapshot": [
+                                    false
+                                ],
+                                "multi_attach_enabled": [
+                                    null
+                                ],
+                                "outpost_arn": [
+                                    null
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "size": [
+                                    1
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "volume_initialization_rate": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.ebs.aws_ebs_volume.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "encrypted",
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.ebs.aws_ebs_volume.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.ebs.aws_ebs_volume.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-only-encrypted-ebs-volumes-are-attached-to-ec2-instances",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
                 "check_id": "CKV2_AWS_44",
                 "bc_check_id": "BC_AWS_NETWORKING_80",
                 "check_name": "Ensure AWS route table with VPC peering does not contain routes overly permissive to all traffic",
@@ -8922,10 +9017,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "vpc_peering_connection_id",
-                        "destination_cidr_block",
                         "route/*/cidr_block",
+                        "vpc_peering_connection_id",
                         "route/*/vpc_peering_connection_id",
+                        "destination_cidr_block",
                         "destination_ipv6_cidr_block",
                         "route/*/ipv6_cidr_block"
                     ]
@@ -8964,101 +9059,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-route-table-with-vpc-peering-does-not-contain-routes-overly-permissive-to-all-traffic",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_2",
-                "bc_check_id": "BC_AWS_GENERAL_60",
-                "check_name": "Ensure that only encrypted EBS volumes are attached to EC2 instances",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_ebs_volume": {
-                            "main": {
-                                "availability_zone": [
-                                    "us-east-1a"
-                                ],
-                                "encrypted": [
-                                    false
-                                ],
-                                "final_snapshot": [
-                                    false
-                                ],
-                                "multi_attach_enabled": [
-                                    null
-                                ],
-                                "outpost_arn": [
-                                    null
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "size": [
-                                    1
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "volume_initialization_rate": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.ebs.aws_ebs_volume.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "encrypted"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.ebs.aws_ebs_volume.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.ebs.aws_ebs_volume.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-only-encrypted-ebs-volumes-are-attached-to-ec2-instances",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -9124,12 +9124,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant/*/permission",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/permission",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -9256,12 +9256,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant/*/permission",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/permission",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -9360,12 +9360,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant/*/permission",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/permission",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -9464,12 +9464,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant/*/permission",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/permission",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -9622,8 +9622,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "subject_alternative_names/*",
                         "subject_alternative_names",
+                        "subject_alternative_names/*",
                         "domain_name"
                     ]
                 },
@@ -9871,12 +9871,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "default_action/redirect/*/port",
+                        "resource_type",
+                        "default_action/type",
+                        "port",
                         "default_action/redirect/*/protocol",
                         "protocol",
-                        "default_action/type",
-                        "resource_type",
-                        "port"
+                        "default_action/redirect/*/port"
                     ]
                 },
                 "code_block": null,
@@ -9968,11 +9968,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -10099,11 +10099,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -10202,11 +10202,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -10305,11 +10305,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy/grant",
-                        "acl",
+                        "access_control_policy",
                         "resource_type",
-                        "access_control_policy"
+                        "acl",
+                        "access_control_policy/grant",
+                        "access_control_policy/grant/*/grantee/uri"
                     ]
                 },
                 "code_block": null,
@@ -10628,10 +10628,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/instance_id",
-                        "instance_id",
                         "route/*/cidr_block",
-                        "destination_cidr_block"
+                        "route/*/instance_id",
+                        "destination_cidr_block",
+                        "instance_id"
                     ]
                 },
                 "code_block": null,
@@ -10990,8 +10990,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Ambiente",
-                        "instance_class"
+                        "instance_class",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -22646,8 +22646,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "advanced_security_options/internal_user_database_enabled",
-                        "advanced_security_options/enabled"
+                        "advanced_security_options/enabled",
+                        "advanced_security_options/internal_user_database_enabled"
                     ]
                 },
                 "code_block": null,
@@ -23025,8 +23025,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -23250,8 +23250,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -23475,8 +23475,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24114,8 +24114,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24385,8 +24385,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24610,8 +24610,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -24835,8 +24835,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25012,8 +25012,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25143,8 +25143,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25274,8 +25274,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25499,8 +25499,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25724,8 +25724,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -25949,8 +25949,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -26174,8 +26174,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -26388,8 +26388,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "engine",
-                        "copy_tags_to_snapshot"
+                        "copy_tags_to_snapshot",
+                        "engine"
                     ]
                 },
                 "code_block": null,
@@ -26431,19 +26431,56 @@
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
             },
             {
-                "check_id": "CKV2_AWS_48",
-                "bc_check_id": "BC_AWS_GENERAL_183",
-                "check_name": "Ensure AWS Config must record all possible resources",
+                "check_id": "CKV2_AWS_12",
+                "bc_check_id": "BC_AWS_NETWORKING_4",
+                "check_name": "Ensure the default security group of every VPC restricts all traffic",
                 "check_result": {
                     "result": "FAILED",
                     "entity": {
-                        "aws_config_configuration_recorder": {
+                        "aws_vpc": {
                             "main": {
-                                "name": [
-                                    "sadcloud-config"
+                                "assign_generated_ipv6_cidr_block": [
+                                    true
+                                ],
+                                "cidr_block": [
+                                    "10.0.0.0/16"
+                                ],
+                                "enable_dns_hostnames": [
+                                    true
+                                ],
+                                "enable_dns_support": [
+                                    true
+                                ],
+                                "instance_tenancy": [
+                                    "default"
+                                ],
+                                "ipv4_ipam_pool_id": [
+                                    null
+                                ],
+                                "ipv4_netmask_length": [
+                                    null
+                                ],
+                                "ipv6_ipam_pool_id": [
+                                    null
+                                ],
+                                "ipv6_netmask_length": [
+                                    null
                                 ],
                                 "region": [
                                     "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadcloud_vpc",
+                                        "Projeto": "",
+                                        "Time Respons\u00e1vel": "Time M",
+                                        "__file__": "/data/noncompliant-complex-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
                                 ],
                                 "__file__": [
                                     "/data/noncompliant-complex-03.json"
@@ -26460,17 +26497,7 @@
                                 "end_line": [
                                     0
                                 ],
-                                "role_arn": [
-                                    "aws_iam_role.config_role[0].arn"
-                                ],
-                                "references_": [
-                                    [
-                                        "aws_iam_role.config_role[0].arn",
-                                        "aws_iam_role.config_role[0]",
-                                        "aws_iam_role.config_role"
-                                    ]
-                                ],
-                                "__address__": "module.config.aws_config_configuration_recorder.main[0]",
+                                "__address__": "module.network.aws_vpc.main[0]",
                                 "__change_actions__": [
                                     "create"
                                 ],
@@ -26479,7 +26506,15 @@
                         }
                     },
                     "evaluated_keys": [
-                        "recording_group/include_global_resource_types"
+                        "egress/cidr_blocks",
+                        "resource_type",
+                        "ingress/protocol",
+                        "egress/protocol",
+                        "ingress/from_port",
+                        "egress/from_port",
+                        "ingress/self",
+                        "egress/to_port",
+                        "ingress/to_port"
                     ]
                 },
                 "code_block": null,
@@ -26490,14 +26525,24 @@
                     0,
                     0
                 ],
-                "resource": "module.config.aws_config_configuration_recorder.main[0]",
+                "resource": "module.network.aws_vpc.main[0]",
                 "evaluations": null,
                 "check_class": "checkov.common.graph.checks_infra.base_check",
                 "fixed_definition": null,
-                "entity_tags": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadcloud_vpc",
+                    "Projeto": "",
+                    "Time Respons\u00e1vel": "Time M",
+                    "__file__": "/data/noncompliant-complex-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
                 "caller_file_path": null,
                 "caller_file_line_range": null,
-                "resource_address": "module.config.aws_config_configuration_recorder.main[0]",
+                "resource_address": "module.network.aws_vpc.main[0]",
                 "severity": null,
                 "bc_category": null,
                 "benchmarks": null,
@@ -26505,7 +26550,7 @@
                 "short_description": null,
                 "vulnerability_details": null,
                 "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-config-must-record-all-possible-resources",
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -26646,56 +26691,19 @@
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
             },
             {
-                "check_id": "CKV2_AWS_12",
-                "bc_check_id": "BC_AWS_NETWORKING_4",
-                "check_name": "Ensure the default security group of every VPC restricts all traffic",
+                "check_id": "CKV2_AWS_48",
+                "bc_check_id": "BC_AWS_GENERAL_183",
+                "check_name": "Ensure AWS Config must record all possible resources",
                 "check_result": {
                     "result": "FAILED",
                     "entity": {
-                        "aws_vpc": {
+                        "aws_config_configuration_recorder": {
                             "main": {
-                                "assign_generated_ipv6_cidr_block": [
-                                    true
-                                ],
-                                "cidr_block": [
-                                    "10.0.0.0/16"
-                                ],
-                                "enable_dns_hostnames": [
-                                    true
-                                ],
-                                "enable_dns_support": [
-                                    true
-                                ],
-                                "instance_tenancy": [
-                                    "default"
-                                ],
-                                "ipv4_ipam_pool_id": [
-                                    null
-                                ],
-                                "ipv4_netmask_length": [
-                                    null
-                                ],
-                                "ipv6_ipam_pool_id": [
-                                    null
-                                ],
-                                "ipv6_netmask_length": [
-                                    null
+                                "name": [
+                                    "sadcloud-config"
                                 ],
                                 "region": [
                                     "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadcloud_vpc",
-                                        "Projeto": "",
-                                        "Time Respons\u00e1vel": "Time M",
-                                        "__file__": "/data/noncompliant-complex-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
                                 ],
                                 "__file__": [
                                     "/data/noncompliant-complex-03.json"
@@ -26712,7 +26720,17 @@
                                 "end_line": [
                                     0
                                 ],
-                                "__address__": "module.network.aws_vpc.main[0]",
+                                "role_arn": [
+                                    "aws_iam_role.config_role[0].arn"
+                                ],
+                                "references_": [
+                                    [
+                                        "aws_iam_role.config_role[0].arn",
+                                        "aws_iam_role.config_role[0]",
+                                        "aws_iam_role.config_role"
+                                    ]
+                                ],
+                                "__address__": "module.config.aws_config_configuration_recorder.main[0]",
                                 "__change_actions__": [
                                     "create"
                                 ],
@@ -26721,15 +26739,7 @@
                         }
                     },
                     "evaluated_keys": [
-                        "egress/cidr_blocks",
-                        "egress/to_port",
-                        "ingress/to_port",
-                        "ingress/from_port",
-                        "egress/protocol",
-                        "ingress/protocol",
-                        "egress/from_port",
-                        "ingress/self",
-                        "resource_type"
+                        "recording_group/include_global_resource_types"
                     ]
                 },
                 "code_block": null,
@@ -26740,24 +26750,14 @@
                     0,
                     0
                 ],
-                "resource": "module.network.aws_vpc.main[0]",
+                "resource": "module.config.aws_config_configuration_recorder.main[0]",
                 "evaluations": null,
                 "check_class": "checkov.common.graph.checks_infra.base_check",
                 "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadcloud_vpc",
-                    "Projeto": "",
-                    "Time Respons\u00e1vel": "Time M",
-                    "__file__": "/data/noncompliant-complex-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
+                "entity_tags": null,
                 "caller_file_path": null,
                 "caller_file_line_range": null,
-                "resource_address": "module.network.aws_vpc.main[0]",
+                "resource_address": "module.config.aws_config_configuration_recorder.main[0]",
                 "severity": null,
                 "bc_category": null,
                 "benchmarks": null,
@@ -26765,7 +26765,193 @@
                 "short_description": null,
                 "vulnerability_details": null,
                 "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-config-must-record-all-possible-resources",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_40",
+                "bc_check_id": "BC_AWS_IAM_73",
+                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_iam_policy": {
+                            "admin_not_indicated_policy": {
+                                "delay_after_policy_creation_in_ms": [
+                                    null
+                                ],
+                                "description": [
+                                    null
+                                ],
+                                "name": [
+                                    "sadcloud_superuser_policy"
+                                ],
+                                "path": [
+                                    "/"
+                                ],
+                                "policy": [
+                                    {
+                                        "Statement": [
+                                            {
+                                                "Action": "*",
+                                                "Effect": "Allow",
+                                                "Resource": "*"
+                                            }
+                                        ],
+                                        "Version": "2012-10-17"
+                                    }
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_40",
+                "bc_check_id": "BC_AWS_IAM_73",
+                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_iam_policy": {
+                            "policy": {
+                                "delay_after_policy_creation_in_ms": [
+                                    null
+                                ],
+                                "description": [
+                                    null
+                                ],
+                                "name_prefix": [
+                                    "wildcard_IAM_policy"
+                                ],
+                                "path": [
+                                    "/"
+                                ],
+                                "policy": [
+                                    {
+                                        "Statement": [
+                                            {
+                                                "Action": "*",
+                                                "Effect": "Allow",
+                                                "Resource": "*"
+                                            }
+                                        ],
+                                        "Version": "2012-10-17"
+                                    }
+                                ],
+                                "tags": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.iam.aws_iam_policy.policy[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.iam.aws_iam_policy.policy[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.iam.aws_iam_policy.policy[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -27002,192 +27188,6 @@
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
             },
             {
-                "check_id": "CKV2_AWS_40",
-                "bc_check_id": "BC_AWS_IAM_73",
-                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_iam_policy": {
-                            "admin_not_indicated_policy": {
-                                "delay_after_policy_creation_in_ms": [
-                                    null
-                                ],
-                                "description": [
-                                    null
-                                ],
-                                "name": [
-                                    "sadcloud_superuser_policy"
-                                ],
-                                "path": [
-                                    "/"
-                                ],
-                                "policy": [
-                                    {
-                                        "Statement": [
-                                            {
-                                                "Action": "*",
-                                                "Effect": "Allow",
-                                                "Resource": "*"
-                                            }
-                                        ],
-                                        "Version": "2012-10-17"
-                                    }
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "statement[?(@/effect == Allow)]/actions[*]"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.iam.aws_iam_policy.admin_not_indicated_policy[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_40",
-                "bc_check_id": "BC_AWS_IAM_73",
-                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_iam_policy": {
-                            "policy": {
-                                "delay_after_policy_creation_in_ms": [
-                                    null
-                                ],
-                                "description": [
-                                    null
-                                ],
-                                "name_prefix": [
-                                    "wildcard_IAM_policy"
-                                ],
-                                "path": [
-                                    "/"
-                                ],
-                                "policy": [
-                                    {
-                                        "Statement": [
-                                            {
-                                                "Action": "*",
-                                                "Effect": "Allow",
-                                                "Resource": "*"
-                                            }
-                                        ],
-                                        "Version": "2012-10-17"
-                                    }
-                                ],
-                                "tags": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.iam.aws_iam_policy.policy[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "statement[?(@/effect == Allow)]/actions[*]"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.iam.aws_iam_policy.policy[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.iam.aws_iam_policy.policy[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
                 "check_id": "CKV2_AWS_64",
                 "bc_check_id": "BC_AWS_IAM_76",
                 "check_name": "Ensure KMS key Policy is defined",
@@ -27410,12 +27410,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "ssl_policy",
-                        "load_balancer_type",
-                        "protocol",
-                        "default_action/type",
                         "resource_type",
-                        "default_action/redirect/protocol"
+                        "default_action/type",
+                        "ssl_policy",
+                        "default_action/redirect/protocol",
+                        "load_balancer_type",
+                        "protocol"
                     ]
                 },
                 "code_block": null,
@@ -27507,8 +27507,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "replication_configuration/rules/*/status",
                         "resource_type",
+                        "replication_configuration/rules/*/status",
                         "rule/*/status"
                     ]
                 },
@@ -27608,8 +27608,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "replication_configuration/rules/*/status",
                         "resource_type",
+                        "replication_configuration/rules/*/status",
                         "rule/*/status"
                     ]
                 },
@@ -27737,8 +27737,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "replication_configuration/rules/*/status",
                         "resource_type",
+                        "replication_configuration/rules/*/status",
                         "rule/*/status"
                     ]
                 },
@@ -27838,8 +27838,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "replication_configuration/rules/*/status",
                         "resource_type",
+                        "replication_configuration/rules/*/status",
                         "rule/*/status"
                     ]
                 },
@@ -27877,433 +27877,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_62",
-                "bc_check_id": "BC_AWS_LOGGING_36",
-                "check_name": "Ensure S3 buckets should have event notifications enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadelb",
-                                        "Projeto": "",
-                                        "Time Respons\u00e1vel": "Time M",
-                                        "__file__": "/data/noncompliant-complex-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadelb",
-                    "Projeto": "",
-                    "Time Respons\u00e1vel": "Time M",
-                    "__file__": "/data/noncompliant-complex-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_62",
-                "bc_check_id": "BC_AWS_LOGGING_36",
-                "check_name": "Ensure S3 buckets should have event notifications enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "getonly": {
-                                "bucket_prefix": [
-                                    "sadcloudhetonlys3"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadcloud",
-                                        "Projeto": "",
-                                        "Time Respons\u00e1vel": "Time M",
-                                        "__file__": "/data/noncompliant-complex-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.getonly[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.getonly[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadcloud",
-                    "Projeto": "",
-                    "Time Respons\u00e1vel": "Time M",
-                    "__file__": "/data/noncompliant-complex-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.getonly[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_62",
-                "bc_check_id": "BC_AWS_LOGGING_36",
-                "check_name": "Ensure S3 buckets should have event notifications enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "main": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadcloud"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadcloud",
-                                        "Projeto": "",
-                                        "Time Respons\u00e1vel": "Time M",
-                                        "__file__": "/data/noncompliant-complex-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "versioning": [
-                                    {
-                                        "enabled": [
-                                            false
-                                        ],
-                                        "mfa_delete": [
-                                            false
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-complex-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.main",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.main",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadcloud",
-                    "Projeto": "",
-                    "Time Respons\u00e1vel": "Time M",
-                    "__file__": "/data/noncompliant-complex-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.main",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-complex-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_62",
-                "bc_check_id": "BC_AWS_LOGGING_36",
-                "check_name": "Ensure S3 buckets should have event notifications enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "public": {
-                                "bucket_prefix": [
-                                    "sadcloudhetonlys3"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadcloud",
-                                        "Projeto": "",
-                                        "Time Respons\u00e1vel": "Time M",
-                                        "__file__": "/data/noncompliant-complex-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-complex-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.public[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-complex-03.json",
-                "file_abs_path": "/data/noncompliant-complex-03.json",
-                "repo_file_path": "/noncompliant-complex-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.public[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadcloud",
-                    "Projeto": "",
-                    "Time Respons\u00e1vel": "Time M",
-                    "__file__": "/data/noncompliant-complex-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.public[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -28446,8 +28019,8 @@
                     },
                     "evaluated_keys": [
                         "resource_type",
-                        "internal",
-                        "load_balancer_type"
+                        "load_balancer_type",
+                        "internal"
                     ]
                 },
                 "code_block": null,
@@ -28540,8 +28113,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -28641,8 +28214,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -28770,8 +28343,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -28871,8 +28444,8 @@
                     },
                     "evaluated_keys": [
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "resource_type",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -28909,6 +28482,433 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_62",
+                "bc_check_id": "BC_AWS_LOGGING_36",
+                "check_name": "Ensure S3 buckets should have event notifications enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadelb",
+                                        "Projeto": "",
+                                        "Time Respons\u00e1vel": "Time M",
+                                        "__file__": "/data/noncompliant-complex-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadelb",
+                    "Projeto": "",
+                    "Time Respons\u00e1vel": "Time M",
+                    "__file__": "/data/noncompliant-complex-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_62",
+                "bc_check_id": "BC_AWS_LOGGING_36",
+                "check_name": "Ensure S3 buckets should have event notifications enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "getonly": {
+                                "bucket_prefix": [
+                                    "sadcloudhetonlys3"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadcloud",
+                                        "Projeto": "",
+                                        "Time Respons\u00e1vel": "Time M",
+                                        "__file__": "/data/noncompliant-complex-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.getonly[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.getonly[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadcloud",
+                    "Projeto": "",
+                    "Time Respons\u00e1vel": "Time M",
+                    "__file__": "/data/noncompliant-complex-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.getonly[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_62",
+                "bc_check_id": "BC_AWS_LOGGING_36",
+                "check_name": "Ensure S3 buckets should have event notifications enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "main": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadcloud"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadcloud",
+                                        "Projeto": "",
+                                        "Time Respons\u00e1vel": "Time M",
+                                        "__file__": "/data/noncompliant-complex-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "versioning": [
+                                    {
+                                        "enabled": [
+                                            false
+                                        ],
+                                        "mfa_delete": [
+                                            false
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-complex-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.main",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.main",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadcloud",
+                    "Projeto": "",
+                    "Time Respons\u00e1vel": "Time M",
+                    "__file__": "/data/noncompliant-complex-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.main",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-complex-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_62",
+                "bc_check_id": "BC_AWS_LOGGING_36",
+                "check_name": "Ensure S3 buckets should have event notifications enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "public": {
+                                "bucket_prefix": [
+                                    "sadcloudhetonlys3"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadcloud",
+                                        "Projeto": "",
+                                        "Time Respons\u00e1vel": "Time M",
+                                        "__file__": "/data/noncompliant-complex-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-complex-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.public[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-complex-03.json",
+                "file_abs_path": "/data/noncompliant-complex-03.json",
+                "repo_file_path": "/noncompliant-complex-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.public[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadcloud",
+                    "Projeto": "",
+                    "Time Respons\u00e1vel": "Time M",
+                    "__file__": "/data/noncompliant-complex-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.public[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-complex-03.json"
@@ -28974,8 +28974,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "block_public_policy",
+                        "resource_type",
                         "block_public_acls"
                     ]
                 },
@@ -29075,8 +29075,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "block_public_policy",
+                        "resource_type",
                         "block_public_acls"
                     ]
                 },
@@ -29204,8 +29204,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "block_public_policy",
+                        "resource_type",
                         "block_public_acls"
                     ]
                 },
@@ -29305,8 +29305,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "block_public_policy",
+                        "resource_type",
                         "block_public_acls"
                     ]
                 },
@@ -29409,8 +29409,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -29509,8 +29509,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -29637,8 +29637,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -29737,8 +29737,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "logging"
+                        "logging",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -29855,8 +29855,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -30390,8 +30390,8 @@
                     },
                     "evaluated_keys": [
                         "resource_type",
-                        "versioning/enabled",
-                        "versioning_configuration/status"
+                        "versioning_configuration/status",
+                        "versioning/enabled"
                     ]
                 },
                 "code_block": null,
@@ -30491,8 +30491,8 @@
                     },
                     "evaluated_keys": [
                         "resource_type",
-                        "versioning/enabled",
-                        "versioning_configuration/status"
+                        "versioning_configuration/status",
+                        "versioning/enabled"
                     ]
                 },
                 "code_block": null,
@@ -30620,8 +30620,8 @@
                     },
                     "evaluated_keys": [
                         "resource_type",
-                        "versioning/enabled",
-                        "versioning_configuration/status"
+                        "versioning_configuration/status",
+                        "versioning/enabled"
                     ]
                 },
                 "code_block": null,
@@ -30721,8 +30721,8 @@
                     },
                     "evaluated_keys": [
                         "resource_type",
-                        "versioning/enabled",
-                        "versioning_configuration/status"
+                        "versioning_configuration/status",
+                        "versioning/enabled"
                     ]
                 },
                 "code_block": null,
@@ -30859,7 +30859,7 @@
                     "evaluated_keys": [
                         "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Responsavel"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -30963,7 +30963,7 @@
                     "evaluated_keys": [
                         "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Responsavel"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -31188,7 +31188,7 @@
                     "evaluated_keys": [
                         "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Responsavel"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -31289,7 +31289,7 @@
                     "evaluated_keys": [
                         "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Responsavel"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -31418,7 +31418,7 @@
                     "evaluated_keys": [
                         "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Responsavel"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -31519,7 +31519,7 @@
                     "evaluated_keys": [
                         "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Responsavel"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,

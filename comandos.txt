@@ -1,5 +1,6 @@
 #sadcloud
 docker compose run --rm --entrypoint sh terraform -c "../tfvars/run_plans.sh"
+docker compose run --rm --entrypoint sh terraform -c "../tfvars/run_specific_plan.sh noncompliant-complex-05.tfvars"
 
 #infracost
 docker compose run --rm --entrypoint sh infracost -c "sh /scripts/run_infracost_all.sh"
@@ -7,3 +8,6 @@ docker run --rm -v "${PWD}:/data" -w /data python:3.12-slim python generate_infr
 
 #checkov
 docker compose run --rm checkov -c "sh /scripts/run_checkov_all.sh"
+
+#python
+docker run --rm -v ${PWD}:/app -w /app python:3.12-slim python

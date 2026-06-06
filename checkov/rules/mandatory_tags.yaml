@@ -14,14 +14,14 @@ definition:
       attribute: "tags.Projeto"
       operator: "is_not_empty"
       
-    # 2. Verifica se a tag Time Responsavel EXISTE e NÃO ESTÁ VAZIA
+    # 2. Verifica se a tag Time Responsável EXISTE e NÃO ESTÁ VAZIA
     - cond_type: "attribute"
       resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
-      attribute: "tags.Time Responsavel"
+      attribute: "tags.Time Responsável"
       operator: "exists"
     - cond_type: "attribute"
       resource_types: ["aws_instance", "aws_db_instance", "aws_s3_bucket"]
-      attribute: "tags.Time Responsavel"
+      attribute: "tags.Time Responsável"
       operator: "is_not_empty"
       
     # 3. Verifica se a tag Ambiente EXISTE e NÃO ESTÁ VAZIA

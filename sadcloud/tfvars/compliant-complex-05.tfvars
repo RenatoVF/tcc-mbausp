@@ -2,7 +2,7 @@ aws_region = "us-east-1"
 required_tags = {
   Projeto = "TCC"
   "Time Responsável" = "Time O"
-  Ambiente = "PRD"
+  Ambiente = "HML"
 }
 
 enable_network = true

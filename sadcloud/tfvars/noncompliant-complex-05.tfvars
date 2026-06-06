@@ -1,9 +1,9 @@
-# Pair for compliant-complex-05: violation = wrong RDS family for PRD (use non-db.t)
+# Pair for compliant-complex-05: violation = wrong RDS family for HML (use non-db.t)
 aws_region = "us-east-1"
 required_tags = {
   Projeto = "TCC"
   "Time Responsável" = "Time O"
-  Ambiente = "PRD"
+  Ambiente = "HML"
 }
 
 enable_network = true
@@ -15,4 +15,4 @@ enable_eks = true
 ec2_count = 10
 rds_count = 3
 instance_type = "t2.small"
-rds_instance_class = "db.m5.large" # violates db.t* requirement for HML only but included to diversify
+rds_instance_class = "db.m5.large" # violates db.t* requirement for HML 
