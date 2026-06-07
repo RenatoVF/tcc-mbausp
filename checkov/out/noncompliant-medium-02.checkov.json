@@ -667,11 +667,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "family",
                         "parameter[?(@/name=='require_secure_transport')]/value",
                         "parameter[?(@/name=='db2comm')]/value",
+                        "resource_type",
                         "parameter[?(@/name=='rds/force_ssl')]/value",
-                        "resource_type"
+                        "family"
                     ]
                 },
                 "code_block": null,
@@ -923,9 +923,9 @@
                     "evaluated_keys": [
                         "route/*/cidr_block",
                         "destination_cidr_block",
-                        "destination_ipv6_cidr_block",
                         "route/*/ipv6_cidr_block",
                         "vpc_peering_connection_id",
+                        "destination_ipv6_cidr_block",
                         "route/*/vpc_peering_connection_id"
                     ]
                 },
@@ -1178,8 +1178,8 @@
                     "evaluated_keys": [
                         "route/*/instance_id",
                         "destination_cidr_block",
-                        "route/*/cidr_block",
-                        "instance_id"
+                        "instance_id",
+                        "route/*/cidr_block"
                     ]
                 },
                 "code_block": null,
@@ -1345,8 +1345,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Projeto",
                         "tags/Time Respons\u00e1vel",
+                        "tags/Projeto",
                         "tags/Ambiente"
                     ]
                 },
@@ -1601,8 +1601,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Projeto",
                         "tags/Time Respons\u00e1vel",
+                        "tags/Projeto",
                         "tags/Ambiente"
                     ]
                 },
@@ -1857,7 +1857,427 @@
                         }
                     },
                     "evaluated_keys": [
-                        "instance_class",
+                        "tags/Ambiente",
+                        "instance_class"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-02.json",
+                "file_abs_path": "/data/noncompliant-medium-02.json",
+                "repo_file_path": "/noncompliant-medium-02.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.rds.aws_db_instance.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloudrds",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time G",
+                    "__file__": "/data/noncompliant-medium-02.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.rds.aws_db_instance.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-02.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_02",
+                "bc_check_id": null,
+                "check_name": "Garantir que a tag Ambiente contenha apenas os valores PRD ou HML",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_instance": {
+                            "main": {
+                                "ami": [
+                                    "ami-0fb0b230890ccd1e6"
+                                ],
+                                "associate_public_ip_address": [
+                                    false
+                                ],
+                                "credit_specification": [
+                                    []
+                                ],
+                                "force_destroy": [
+                                    false
+                                ],
+                                "get_password_data": [
+                                    false
+                                ],
+                                "hibernation": [
+                                    null
+                                ],
+                                "instance_type": [
+                                    "m5.large"
+                                ],
+                                "launch_template": [
+                                    []
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "source_dest_check": [
+                                    true
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloud-ec2",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time G",
+                                        "__file__": "/data/noncompliant-medium-02.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloud-ec2"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time G"
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-02.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "user_data": [
+                                    null
+                                ],
+                                "user_data_replace_on_change": [
+                                    false
+                                ],
+                                "volume_tags": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-02.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "references_": [
+                                    [
+                                        "data.aws_ami.ubuntu.id",
+                                        "data.aws_ami.ubuntu"
+                                    ]
+                                ],
+                                "__address__": "module.ec2.aws_instance.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "tags/Ambiente"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-02.json",
+                "file_abs_path": "/data/noncompliant-medium-02.json",
+                "repo_file_path": "/noncompliant-medium-02.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.ec2.aws_instance.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "HML",
+                    "Name": "sadcloud-ec2",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time G",
+                    "__file__": "/data/noncompliant-medium-02.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.ec2.aws_instance.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": {},
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": null,
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-02.json"
+            },
+            {
+                "check_id": "CKV_FINOPS_02",
+                "bc_check_id": null,
+                "check_name": "Garantir que a tag Ambiente contenha apenas os valores PRD ou HML",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_db_instance": {
+                            "main": {
+                                "allocated_storage": [
+                                    20
+                                ],
+                                "allow_major_version_upgrade": [
+                                    null
+                                ],
+                                "apply_immediately": [
+                                    false
+                                ],
+                                "auto_minor_version_upgrade": [
+                                    true
+                                ],
+                                "backup_retention_period": [
+                                    1
+                                ],
+                                "blue_green_update": [
+                                    []
+                                ],
+                                "copy_tags_to_snapshot": [
+                                    false
+                                ],
+                                "custom_iam_instance_profile": [
+                                    null
+                                ],
+                                "customer_owned_ip_enabled": [
+                                    null
+                                ],
+                                "db_name": [
+                                    "sadcloudrds"
+                                ],
+                                "db_subnet_group_name": [
+                                    "main"
+                                ],
+                                "dedicated_log_volume": [
+                                    false
+                                ],
+                                "delete_automated_backups": [
+                                    true
+                                ],
+                                "deletion_protection": [
+                                    null
+                                ],
+                                "domain": [
+                                    null
+                                ],
+                                "domain_auth_secret_arn": [
+                                    null
+                                ],
+                                "domain_dns_ips": [
+                                    null
+                                ],
+                                "domain_iam_role_name": [
+                                    null
+                                ],
+                                "domain_ou": [
+                                    null
+                                ],
+                                "enabled_cloudwatch_logs_exports": [
+                                    null
+                                ],
+                                "engine": [
+                                    "mysql"
+                                ],
+                                "final_snapshot_identifier": [
+                                    null
+                                ],
+                                "iam_database_authentication_enabled": [
+                                    null
+                                ],
+                                "instance_class": [
+                                    "db.t2.micro"
+                                ],
+                                "manage_master_user_password": [
+                                    null
+                                ],
+                                "max_allocated_storage": [
+                                    null
+                                ],
+                                "monitoring_interval": [
+                                    0
+                                ],
+                                "multi_az": [
+                                    true
+                                ],
+                                "password": [
+                                    "foobarbaz"
+                                ],
+                                "password_wo": [
+                                    null
+                                ],
+                                "password_wo_version": [
+                                    null
+                                ],
+                                "performance_insights_enabled": [
+                                    false
+                                ],
+                                "publicly_accessible": [
+                                    false
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "replicate_source_db": [
+                                    null
+                                ],
+                                "restore_to_point_in_time": [
+                                    []
+                                ],
+                                "s3_import": [
+                                    []
+                                ],
+                                "skip_final_snapshot": [
+                                    true
+                                ],
+                                "storage_encrypted": [
+                                    true
+                                ],
+                                "storage_type": [
+                                    "gp2"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "HML",
+                                        "Name": "sadcloudrds",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time G",
+                                        "__file__": "/data/noncompliant-medium-02.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "tags_all": [
+                                    {
+                                        "Ambiente": [
+                                            "HML"
+                                        ],
+                                        "Name": [
+                                            "sadcloudrds"
+                                        ],
+                                        "Projeto": [
+                                            "TCC"
+                                        ],
+                                        "Time Respons\u00e1vel": [
+                                            "Time G"
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-02.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "upgrade_storage_config": [
+                                    null
+                                ],
+                                "username": [
+                                    "foo"
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-02.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "references_": [
+                                    [
+                                        "aws_db_subnet_group.default[0].name",
+                                        "aws_db_subnet_group.default[0]",
+                                        "aws_db_subnet_group.default"
+                                    ]
+                                ],
+                                "__address__": "module.rds.aws_db_instance.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
                         "tags/Ambiente"
                     ]
                 },
@@ -2279,426 +2699,6 @@
                     },
                     "evaluated_keys": [
                         "region"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-02.json",
-                "file_abs_path": "/data/noncompliant-medium-02.json",
-                "repo_file_path": "/noncompliant-medium-02.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.rds.aws_db_instance.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloudrds",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time G",
-                    "__file__": "/data/noncompliant-medium-02.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.rds.aws_db_instance.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-02.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_02",
-                "bc_check_id": null,
-                "check_name": "Garantir que a tag Ambiente contenha apenas os valores PRD ou HML",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_instance": {
-                            "main": {
-                                "ami": [
-                                    "ami-0fb0b230890ccd1e6"
-                                ],
-                                "associate_public_ip_address": [
-                                    false
-                                ],
-                                "credit_specification": [
-                                    []
-                                ],
-                                "force_destroy": [
-                                    false
-                                ],
-                                "get_password_data": [
-                                    false
-                                ],
-                                "hibernation": [
-                                    null
-                                ],
-                                "instance_type": [
-                                    "m5.large"
-                                ],
-                                "launch_template": [
-                                    []
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "source_dest_check": [
-                                    true
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloud-ec2",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time G",
-                                        "__file__": "/data/noncompliant-medium-02.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloud-ec2"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time G"
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-02.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "user_data": [
-                                    null
-                                ],
-                                "user_data_replace_on_change": [
-                                    false
-                                ],
-                                "volume_tags": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-02.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "references_": [
-                                    [
-                                        "data.aws_ami.ubuntu.id",
-                                        "data.aws_ami.ubuntu"
-                                    ]
-                                ],
-                                "__address__": "module.ec2.aws_instance.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Ambiente"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-02.json",
-                "file_abs_path": "/data/noncompliant-medium-02.json",
-                "repo_file_path": "/noncompliant-medium-02.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.ec2.aws_instance.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "HML",
-                    "Name": "sadcloud-ec2",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time G",
-                    "__file__": "/data/noncompliant-medium-02.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.ec2.aws_instance.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": {},
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": null,
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-02.json"
-            },
-            {
-                "check_id": "CKV_FINOPS_02",
-                "bc_check_id": null,
-                "check_name": "Garantir que a tag Ambiente contenha apenas os valores PRD ou HML",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_db_instance": {
-                            "main": {
-                                "allocated_storage": [
-                                    20
-                                ],
-                                "allow_major_version_upgrade": [
-                                    null
-                                ],
-                                "apply_immediately": [
-                                    false
-                                ],
-                                "auto_minor_version_upgrade": [
-                                    true
-                                ],
-                                "backup_retention_period": [
-                                    1
-                                ],
-                                "blue_green_update": [
-                                    []
-                                ],
-                                "copy_tags_to_snapshot": [
-                                    false
-                                ],
-                                "custom_iam_instance_profile": [
-                                    null
-                                ],
-                                "customer_owned_ip_enabled": [
-                                    null
-                                ],
-                                "db_name": [
-                                    "sadcloudrds"
-                                ],
-                                "db_subnet_group_name": [
-                                    "main"
-                                ],
-                                "dedicated_log_volume": [
-                                    false
-                                ],
-                                "delete_automated_backups": [
-                                    true
-                                ],
-                                "deletion_protection": [
-                                    null
-                                ],
-                                "domain": [
-                                    null
-                                ],
-                                "domain_auth_secret_arn": [
-                                    null
-                                ],
-                                "domain_dns_ips": [
-                                    null
-                                ],
-                                "domain_iam_role_name": [
-                                    null
-                                ],
-                                "domain_ou": [
-                                    null
-                                ],
-                                "enabled_cloudwatch_logs_exports": [
-                                    null
-                                ],
-                                "engine": [
-                                    "mysql"
-                                ],
-                                "final_snapshot_identifier": [
-                                    null
-                                ],
-                                "iam_database_authentication_enabled": [
-                                    null
-                                ],
-                                "instance_class": [
-                                    "db.t2.micro"
-                                ],
-                                "manage_master_user_password": [
-                                    null
-                                ],
-                                "max_allocated_storage": [
-                                    null
-                                ],
-                                "monitoring_interval": [
-                                    0
-                                ],
-                                "multi_az": [
-                                    true
-                                ],
-                                "password": [
-                                    "foobarbaz"
-                                ],
-                                "password_wo": [
-                                    null
-                                ],
-                                "password_wo_version": [
-                                    null
-                                ],
-                                "performance_insights_enabled": [
-                                    false
-                                ],
-                                "publicly_accessible": [
-                                    false
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "replicate_source_db": [
-                                    null
-                                ],
-                                "restore_to_point_in_time": [
-                                    []
-                                ],
-                                "s3_import": [
-                                    []
-                                ],
-                                "skip_final_snapshot": [
-                                    true
-                                ],
-                                "storage_encrypted": [
-                                    true
-                                ],
-                                "storage_type": [
-                                    "gp2"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "HML",
-                                        "Name": "sadcloudrds",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time G",
-                                        "__file__": "/data/noncompliant-medium-02.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "tags_all": [
-                                    {
-                                        "Ambiente": [
-                                            "HML"
-                                        ],
-                                        "Name": [
-                                            "sadcloudrds"
-                                        ],
-                                        "Projeto": [
-                                            "TCC"
-                                        ],
-                                        "Time Respons\u00e1vel": [
-                                            "Time G"
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-02.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "upgrade_storage_config": [
-                                    null
-                                ],
-                                "username": [
-                                    "foo"
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-02.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "references_": [
-                                    [
-                                        "aws_db_subnet_group.default[0].name",
-                                        "aws_db_subnet_group.default[0]",
-                                        "aws_db_subnet_group.default"
-                                    ]
-                                ],
-                                "__address__": "module.rds.aws_db_instance.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -3296,8 +3296,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "copy_tags_to_snapshot",
-                        "engine"
+                        "engine",
+                        "copy_tags_to_snapshot"
                     ]
                 },
                 "code_block": null,
@@ -3445,15 +3445,15 @@
                         }
                     },
                     "evaluated_keys": [
-                        "egress/protocol",
                         "ingress/self",
-                        "ingress/from_port",
-                        "ingress/protocol",
-                        "egress/cidr_blocks",
-                        "egress/from_port",
                         "ingress/to_port",
+                        "ingress/protocol",
+                        "resource_type",
+                        "ingress/from_port",
+                        "egress/from_port",
+                        "egress/cidr_blocks",
                         "egress/to_port",
-                        "resource_type"
+                        "egress/protocol"
                     ]
                 },
                 "code_block": null,

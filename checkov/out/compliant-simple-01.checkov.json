@@ -361,12 +361,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/ipv6_cidr_block",
                         "destination_cidr_block",
-                        "vpc_peering_connection_id",
                         "destination_ipv6_cidr_block",
-                        "route/*/cidr_block",
-                        "route/*/vpc_peering_connection_id"
+                        "route/*/ipv6_cidr_block",
+                        "route/*/vpc_peering_connection_id",
+                        "vpc_peering_connection_id",
+                        "route/*/cidr_block"
                     ]
                 },
                 "code_block": null,
@@ -617,9 +617,9 @@
                     },
                     "evaluated_keys": [
                         "destination_cidr_block",
-                        "instance_id",
                         "route/*/cidr_block",
-                        "route/*/instance_id"
+                        "route/*/instance_id",
+                        "instance_id"
                     ]
                 },
                 "code_block": null,
@@ -952,9 +952,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
                         "tags/Projeto",
-                        "tags/Ambiente"
+                        "tags/Ambiente",
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -1627,12 +1627,12 @@
                     },
                     "evaluated_keys": [
                         "ingress/to_port",
-                        "ingress/protocol",
-                        "egress/to_port",
-                        "resource_type",
                         "egress/protocol",
                         "ingress/from_port",
+                        "resource_type",
                         "egress/cidr_blocks",
+                        "egress/to_port",
+                        "ingress/protocol",
                         "egress/from_port",
                         "ingress/self"
                     ]
@@ -1948,8 +1948,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "networking"
+                        "networking",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,

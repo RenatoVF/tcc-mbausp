@@ -591,10 +591,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "family",
                         "parameter[?(@/name=='require_secure_transport')]/value",
-                        "parameter[?(@/name=='rds/force_ssl')]/value",
                         "parameter[?(@/name=='db2comm')]/value",
+                        "family",
+                        "parameter[?(@/name=='rds/force_ssl')]/value",
                         "resource_type"
                     ]
                 },
@@ -846,11 +846,11 @@
                     },
                     "evaluated_keys": [
                         "route/*/vpc_peering_connection_id",
-                        "destination_cidr_block",
                         "vpc_peering_connection_id",
-                        "route/*/cidr_block",
+                        "destination_cidr_block",
                         "destination_ipv6_cidr_block",
-                        "route/*/ipv6_cidr_block"
+                        "route/*/ipv6_cidr_block",
+                        "route/*/cidr_block"
                     ]
                 },
                 "code_block": null,
@@ -1100,10 +1100,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/cidr_block",
-                        "route/*/instance_id",
                         "destination_cidr_block",
-                        "instance_id"
+                        "route/*/cidr_block",
+                        "instance_id",
+                        "route/*/instance_id"
                     ]
                 },
                 "code_block": null,
@@ -2500,14 +2500,14 @@
                         }
                     },
                     "evaluated_keys": [
+                        "egress/to_port",
+                        "ingress/protocol",
+                        "egress/protocol",
+                        "ingress/to_port",
+                        "egress/from_port",
                         "ingress/self",
                         "ingress/from_port",
                         "egress/cidr_blocks",
-                        "egress/from_port",
-                        "ingress/to_port",
-                        "egress/to_port",
-                        "egress/protocol",
-                        "ingress/protocol",
                         "resource_type"
                     ]
                 },

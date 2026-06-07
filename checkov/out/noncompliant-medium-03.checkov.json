@@ -1038,9 +1038,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type",
                         "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
                     ]
                 },
                 "code_block": null,
@@ -1263,11 +1263,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "parameter[?(@/name=='rds/force_ssl')]/value",
                         "resource_type",
-                        "family",
+                        "parameter[?(@/name=='require_secure_transport')]/value",
+                        "parameter[?(@/name=='rds/force_ssl')]/value",
                         "parameter[?(@/name=='db2comm')]/value",
-                        "parameter[?(@/name=='require_secure_transport')]/value"
+                        "family"
                     ]
                 },
                 "code_block": null,
@@ -1486,12 +1486,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/vpc_peering_connection_id",
-                        "destination_ipv6_cidr_block",
-                        "route/*/cidr_block",
-                        "destination_cidr_block",
                         "vpc_peering_connection_id",
-                        "route/*/ipv6_cidr_block"
+                        "route/*/ipv6_cidr_block",
+                        "destination_ipv6_cidr_block",
+                        "destination_cidr_block",
+                        "route/*/cidr_block",
+                        "route/*/vpc_peering_connection_id"
                     ]
                 },
                 "code_block": null,
@@ -1528,6 +1528,201 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-route-table-with-vpc-peering-does-not-contain-routes-overly-permissive-to-all-traffic",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_40",
+                "bc_check_id": "BC_AWS_IAM_73",
+                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_iam_policy_document": {
+                            "force_ssl_only_access": {
+                                "override_json": [
+                                    null
+                                ],
+                                "override_policy_documents": [
+                                    null
+                                ],
+                                "policy_id": [
+                                    null
+                                ],
+                                "source_json": [
+                                    null
+                                ],
+                                "source_policy_documents": [
+                                    null
+                                ],
+                                "statement": [
+                                    {
+                                        "actions": [
+                                            [
+                                                "s3:*"
+                                            ]
+                                        ],
+                                        "condition": [
+                                            {
+                                                "test": [
+                                                    "Bool"
+                                                ],
+                                                "values": [
+                                                    [
+                                                        "false"
+                                                    ]
+                                                ],
+                                                "variable": [
+                                                    "aws:SecureTransport"
+                                                ],
+                                                "__file__": [
+                                                    "/data/noncompliant-medium-03.json"
+                                                ],
+                                                "__startline__": [
+                                                    1
+                                                ],
+                                                "__endline__": [
+                                                    1
+                                                ],
+                                                "start_line": [
+                                                    0
+                                                ],
+                                                "end_line": [
+                                                    0
+                                                ]
+                                            }
+                                        ],
+                                        "effect": [
+                                            "Deny"
+                                        ],
+                                        "not_actions": [
+                                            null
+                                        ],
+                                        "not_principals": [
+                                            []
+                                        ],
+                                        "not_resources": [
+                                            null
+                                        ],
+                                        "principals": [
+                                            {
+                                                "identifiers": [
+                                                    [
+                                                        "*"
+                                                    ]
+                                                ],
+                                                "type": [
+                                                    "AWS"
+                                                ],
+                                                "__file__": [
+                                                    "/data/noncompliant-medium-03.json"
+                                                ],
+                                                "__startline__": [
+                                                    1
+                                                ],
+                                                "__endline__": [
+                                                    1
+                                                ],
+                                                "start_line": [
+                                                    0
+                                                ],
+                                                "end_line": [
+                                                    0
+                                                ]
+                                            }
+                                        ],
+                                        "resources": [
+                                            [
+                                                "aws_s3_bucket.main[0].arn"
+                                            ]
+                                        ],
+                                        "sid": [
+                                            "ForceSSLOnlyAccess"
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ],
+                                        "references_": [
+                                            [
+                                                "aws_s3_bucket.main[0].arn",
+                                                "aws_s3_bucket.main[0]",
+                                                "aws_s3_bucket.main",
+                                                "aws_s3_bucket.main[0].arn",
+                                                "aws_s3_bucket.main[0]",
+                                                "aws_s3_bucket.main"
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                "version": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.data.aws_iam_policy_document.force_ssl_only_access[0]",
+                                "__change_actions__": [
+                                    "read"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
+                        "statement[?(@/effect == Allow)]/actions[*]",
+                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-03.json",
+                "file_abs_path": "/data/noncompliant-medium-03.json",
+                "repo_file_path": "/noncompliant-medium-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.data.aws_iam_policy_document.force_ssl_only_access[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": null,
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.data.aws_iam_policy_document.force_ssl_only_access[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
@@ -1716,11 +1911,11 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy",
-                        "access_control_policy/grant/*/grantee/uri",
                         "resource_type",
+                        "access_control_policy/grant/*/grantee/uri",
+                        "acl",
                         "access_control_policy/grant",
-                        "access_control_policy/grant/*/permission",
-                        "acl"
+                        "access_control_policy/grant/*/permission"
                     ]
                 },
                 "code_block": null,
@@ -1757,201 +1952,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-2-acl-write-permissions-everyone",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_40",
-                "bc_check_id": "BC_AWS_IAM_73",
-                "check_name": "Ensure AWS IAM policy does not allow full IAM privileges",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_iam_policy_document": {
-                            "force_ssl_only_access": {
-                                "override_json": [
-                                    null
-                                ],
-                                "override_policy_documents": [
-                                    null
-                                ],
-                                "policy_id": [
-                                    null
-                                ],
-                                "source_json": [
-                                    null
-                                ],
-                                "source_policy_documents": [
-                                    null
-                                ],
-                                "statement": [
-                                    {
-                                        "actions": [
-                                            [
-                                                "s3:*"
-                                            ]
-                                        ],
-                                        "condition": [
-                                            {
-                                                "test": [
-                                                    "Bool"
-                                                ],
-                                                "values": [
-                                                    [
-                                                        "false"
-                                                    ]
-                                                ],
-                                                "variable": [
-                                                    "aws:SecureTransport"
-                                                ],
-                                                "__file__": [
-                                                    "/data/noncompliant-medium-03.json"
-                                                ],
-                                                "__startline__": [
-                                                    1
-                                                ],
-                                                "__endline__": [
-                                                    1
-                                                ],
-                                                "start_line": [
-                                                    0
-                                                ],
-                                                "end_line": [
-                                                    0
-                                                ]
-                                            }
-                                        ],
-                                        "effect": [
-                                            "Deny"
-                                        ],
-                                        "not_actions": [
-                                            null
-                                        ],
-                                        "not_principals": [
-                                            []
-                                        ],
-                                        "not_resources": [
-                                            null
-                                        ],
-                                        "principals": [
-                                            {
-                                                "identifiers": [
-                                                    [
-                                                        "*"
-                                                    ]
-                                                ],
-                                                "type": [
-                                                    "AWS"
-                                                ],
-                                                "__file__": [
-                                                    "/data/noncompliant-medium-03.json"
-                                                ],
-                                                "__startline__": [
-                                                    1
-                                                ],
-                                                "__endline__": [
-                                                    1
-                                                ],
-                                                "start_line": [
-                                                    0
-                                                ],
-                                                "end_line": [
-                                                    0
-                                                ]
-                                            }
-                                        ],
-                                        "resources": [
-                                            [
-                                                "aws_s3_bucket.main[0].arn"
-                                            ]
-                                        ],
-                                        "sid": [
-                                            "ForceSSLOnlyAccess"
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ],
-                                        "references_": [
-                                            [
-                                                "aws_s3_bucket.main[0].arn",
-                                                "aws_s3_bucket.main[0]",
-                                                "aws_s3_bucket.main",
-                                                "aws_s3_bucket.main[0].arn",
-                                                "aws_s3_bucket.main[0]",
-                                                "aws_s3_bucket.main"
-                                            ]
-                                        ]
-                                    }
-                                ],
-                                "version": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.data.aws_iam_policy_document.force_ssl_only_access[0]",
-                                "__change_actions__": [
-                                    "read"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "inline_policy/Statement[?(@/Effect == Allow)]/Action[*]",
-                        "statement[?(@/effect == Allow)]/actions[*]"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-03.json",
-                "file_abs_path": "/data/noncompliant-medium-03.json",
-                "repo_file_path": "/noncompliant-medium-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.data.aws_iam_policy_document.force_ssl_only_access[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": null,
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.data.aws_iam_policy_document.force_ssl_only_access[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-2-40",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
@@ -2140,10 +2140,10 @@
                     },
                     "evaluated_keys": [
                         "access_control_policy",
-                        "access_control_policy/grant/*/grantee/uri",
                         "resource_type",
-                        "access_control_policy/grant",
-                        "acl"
+                        "access_control_policy/grant/*/grantee/uri",
+                        "acl",
+                        "access_control_policy/grant"
                     ]
                 },
                 "code_block": null,
@@ -2180,6 +2180,228 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-1-acl-read-permissions-everyone",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_35",
+                "bc_check_id": "BC_AWS_NETWORKING_77",
+                "check_name": "AWS NAT Gateways should be utilized for the default route",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_route_table": {
+                            "main": {
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "route": [
+                                    {
+                                        "carrier_gateway_id": [
+                                            ""
+                                        ],
+                                        "cidr_block": [
+                                            ""
+                                        ],
+                                        "core_network_arn": [
+                                            ""
+                                        ],
+                                        "destination_prefix_list_id": [
+                                            ""
+                                        ],
+                                        "egress_only_gateway_id": [
+                                            ""
+                                        ],
+                                        "ipv6_cidr_block": [
+                                            "::/0"
+                                        ],
+                                        "local_gateway_id": [
+                                            ""
+                                        ],
+                                        "nat_gateway_id": [
+                                            ""
+                                        ],
+                                        "network_interface_id": [
+                                            ""
+                                        ],
+                                        "transit_gateway_id": [
+                                            ""
+                                        ],
+                                        "vpc_endpoint_id": [
+                                            ""
+                                        ],
+                                        "vpc_peering_connection_id": [
+                                            ""
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    },
+                                    {
+                                        "carrier_gateway_id": [
+                                            ""
+                                        ],
+                                        "cidr_block": [
+                                            "0.0.0.0/0"
+                                        ],
+                                        "core_network_arn": [
+                                            ""
+                                        ],
+                                        "destination_prefix_list_id": [
+                                            ""
+                                        ],
+                                        "egress_only_gateway_id": [
+                                            ""
+                                        ],
+                                        "ipv6_cidr_block": [
+                                            ""
+                                        ],
+                                        "local_gateway_id": [
+                                            ""
+                                        ],
+                                        "nat_gateway_id": [
+                                            ""
+                                        ],
+                                        "network_interface_id": [
+                                            ""
+                                        ],
+                                        "transit_gateway_id": [
+                                            ""
+                                        ],
+                                        "vpc_endpoint_id": [
+                                            ""
+                                        ],
+                                        "vpc_peering_connection_id": [
+                                            ""
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "",
+                                        "Name": "sadcloud_routes",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time H",
+                                        "__file__": "/data/noncompliant-medium-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "references_": [
+                                    [
+                                        "aws_internet_gateway.main[0].id",
+                                        "aws_internet_gateway.main[0]",
+                                        "aws_internet_gateway.main",
+                                        "aws_internet_gateway.main[0].id",
+                                        "aws_internet_gateway.main[0]",
+                                        "aws_internet_gateway.main"
+                                    ],
+                                    [
+                                        "aws_vpc.main[0].id",
+                                        "aws_vpc.main[0]",
+                                        "aws_vpc.main"
+                                    ]
+                                ],
+                                "vpc_id": [
+                                    "aws_vpc.main[0].id"
+                                ],
+                                "__address__": "module.network.aws_route_table.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "instance_id",
+                        "destination_cidr_block",
+                        "route/*/instance_id",
+                        "route/*/cidr_block"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-03.json",
+                "file_abs_path": "/data/noncompliant-medium-03.json",
+                "repo_file_path": "/noncompliant-medium-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.network.aws_route_table.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "",
+                    "Name": "sadcloud_routes",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time H",
+                    "__file__": "/data/noncompliant-medium-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.network.aws_route_table.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-nat-gateways-are-utilized-for-the-default-route",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
@@ -2367,8 +2589,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "versioning_configuration/status",
                         "resource_type",
+                        "versioning_configuration/status",
                         "versioning/enabled"
                     ]
                 },
@@ -2406,228 +2628,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-03.json"
-            },
-            {
-                "check_id": "CKV2_AWS_35",
-                "bc_check_id": "BC_AWS_NETWORKING_77",
-                "check_name": "AWS NAT Gateways should be utilized for the default route",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_route_table": {
-                            "main": {
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "route": [
-                                    {
-                                        "carrier_gateway_id": [
-                                            ""
-                                        ],
-                                        "cidr_block": [
-                                            ""
-                                        ],
-                                        "core_network_arn": [
-                                            ""
-                                        ],
-                                        "destination_prefix_list_id": [
-                                            ""
-                                        ],
-                                        "egress_only_gateway_id": [
-                                            ""
-                                        ],
-                                        "ipv6_cidr_block": [
-                                            "::/0"
-                                        ],
-                                        "local_gateway_id": [
-                                            ""
-                                        ],
-                                        "nat_gateway_id": [
-                                            ""
-                                        ],
-                                        "network_interface_id": [
-                                            ""
-                                        ],
-                                        "transit_gateway_id": [
-                                            ""
-                                        ],
-                                        "vpc_endpoint_id": [
-                                            ""
-                                        ],
-                                        "vpc_peering_connection_id": [
-                                            ""
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    },
-                                    {
-                                        "carrier_gateway_id": [
-                                            ""
-                                        ],
-                                        "cidr_block": [
-                                            "0.0.0.0/0"
-                                        ],
-                                        "core_network_arn": [
-                                            ""
-                                        ],
-                                        "destination_prefix_list_id": [
-                                            ""
-                                        ],
-                                        "egress_only_gateway_id": [
-                                            ""
-                                        ],
-                                        "ipv6_cidr_block": [
-                                            ""
-                                        ],
-                                        "local_gateway_id": [
-                                            ""
-                                        ],
-                                        "nat_gateway_id": [
-                                            ""
-                                        ],
-                                        "network_interface_id": [
-                                            ""
-                                        ],
-                                        "transit_gateway_id": [
-                                            ""
-                                        ],
-                                        "vpc_endpoint_id": [
-                                            ""
-                                        ],
-                                        "vpc_peering_connection_id": [
-                                            ""
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "",
-                                        "Name": "sadcloud_routes",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time H",
-                                        "__file__": "/data/noncompliant-medium-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "references_": [
-                                    [
-                                        "aws_internet_gateway.main[0].id",
-                                        "aws_internet_gateway.main[0]",
-                                        "aws_internet_gateway.main",
-                                        "aws_internet_gateway.main[0].id",
-                                        "aws_internet_gateway.main[0]",
-                                        "aws_internet_gateway.main"
-                                    ],
-                                    [
-                                        "aws_vpc.main[0].id",
-                                        "aws_vpc.main[0]",
-                                        "aws_vpc.main"
-                                    ]
-                                ],
-                                "vpc_id": [
-                                    "aws_vpc.main[0].id"
-                                ],
-                                "__address__": "module.network.aws_route_table.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "instance_id",
-                        "route/*/cidr_block",
-                        "destination_cidr_block",
-                        "route/*/instance_id"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-03.json",
-                "file_abs_path": "/data/noncompliant-medium-03.json",
-                "repo_file_path": "/noncompliant-medium-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.network.aws_route_table.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "",
-                    "Name": "sadcloud_routes",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time H",
-                    "__file__": "/data/noncompliant-medium-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.network.aws_route_table.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-nat-gateways-are-utilized-for-the-default-route",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
@@ -2950,8 +2950,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "instance_class",
-                        "tags/Ambiente"
+                        "tags/Ambiente",
+                        "instance_class"
                     ]
                 },
                 "code_block": null,
@@ -4143,131 +4143,6 @@
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
             },
             {
-                "check_id": "CKV2_AWS_12",
-                "bc_check_id": "BC_AWS_NETWORKING_4",
-                "check_name": "Ensure the default security group of every VPC restricts all traffic",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_vpc": {
-                            "main": {
-                                "assign_generated_ipv6_cidr_block": [
-                                    true
-                                ],
-                                "cidr_block": [
-                                    "10.0.0.0/16"
-                                ],
-                                "enable_dns_hostnames": [
-                                    true
-                                ],
-                                "enable_dns_support": [
-                                    true
-                                ],
-                                "instance_tenancy": [
-                                    "default"
-                                ],
-                                "ipv4_ipam_pool_id": [
-                                    null
-                                ],
-                                "ipv4_netmask_length": [
-                                    null
-                                ],
-                                "ipv6_ipam_pool_id": [
-                                    null
-                                ],
-                                "ipv6_netmask_length": [
-                                    null
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "",
-                                        "Name": "sadcloud_vpc",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time H",
-                                        "__file__": "/data/noncompliant-medium-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.network.aws_vpc.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "egress/cidr_blocks",
-                        "resource_type",
-                        "egress/to_port",
-                        "ingress/to_port",
-                        "ingress/self",
-                        "egress/from_port",
-                        "ingress/protocol",
-                        "ingress/from_port",
-                        "egress/protocol"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-03.json",
-                "file_abs_path": "/data/noncompliant-medium-03.json",
-                "repo_file_path": "/noncompliant-medium-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.network.aws_vpc.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "",
-                    "Name": "sadcloud_vpc",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time H",
-                    "__file__": "/data/noncompliant-medium-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.network.aws_vpc.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-03.json"
-            },
-            {
                 "check_id": "CKV2_AWS_41",
                 "bc_check_id": "BC_AWS_IAM_69",
                 "check_name": "Ensure an IAM role is attached to EC2 instance",
@@ -4398,6 +4273,131 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/ensure-an-iam-role-is-attached-to-ec2-instance",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-03.json"
+            },
+            {
+                "check_id": "CKV2_AWS_12",
+                "bc_check_id": "BC_AWS_NETWORKING_4",
+                "check_name": "Ensure the default security group of every VPC restricts all traffic",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_vpc": {
+                            "main": {
+                                "assign_generated_ipv6_cidr_block": [
+                                    true
+                                ],
+                                "cidr_block": [
+                                    "10.0.0.0/16"
+                                ],
+                                "enable_dns_hostnames": [
+                                    true
+                                ],
+                                "enable_dns_support": [
+                                    true
+                                ],
+                                "instance_tenancy": [
+                                    "default"
+                                ],
+                                "ipv4_ipam_pool_id": [
+                                    null
+                                ],
+                                "ipv4_netmask_length": [
+                                    null
+                                ],
+                                "ipv6_ipam_pool_id": [
+                                    null
+                                ],
+                                "ipv6_netmask_length": [
+                                    null
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "",
+                                        "Name": "sadcloud_vpc",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time H",
+                                        "__file__": "/data/noncompliant-medium-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.network.aws_vpc.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "egress/from_port",
+                        "resource_type",
+                        "egress/protocol",
+                        "ingress/to_port",
+                        "egress/to_port",
+                        "ingress/self",
+                        "egress/cidr_blocks",
+                        "ingress/protocol",
+                        "ingress/from_port"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-03.json",
+                "file_abs_path": "/data/noncompliant-medium-03.json",
+                "repo_file_path": "/noncompliant-medium-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.network.aws_vpc.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "",
+                    "Name": "sadcloud_vpc",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time H",
+                    "__file__": "/data/noncompliant-medium-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.network.aws_vpc.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
@@ -4585,8 +4585,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "rule/*/status",
                         "resource_type",
+                        "rule/*/status",
                         "replication_configuration/rules/*/status"
                     ]
                 },
@@ -4624,232 +4624,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-03.json"
-            },
-            {
-                "check_id": "CKV_AWS_145",
-                "bc_check_id": "BC_AWS_GENERAL_56",
-                "check_name": "Ensure that S3 buckets are encrypted with KMS by default",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "main": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadcloud"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "server_side_encryption_configuration": [
-                                    {
-                                        "rule": [
-                                            {
-                                                "apply_server_side_encryption_by_default": [
-                                                    {
-                                                        "kms_master_key_id": [
-                                                            null
-                                                        ],
-                                                        "sse_algorithm": [
-                                                            "AES256"
-                                                        ],
-                                                        "__file__": [
-                                                            "/data/noncompliant-medium-03.json"
-                                                        ],
-                                                        "__startline__": [
-                                                            1
-                                                        ],
-                                                        "__endline__": [
-                                                            1
-                                                        ],
-                                                        "start_line": [
-                                                            0
-                                                        ],
-                                                        "end_line": [
-                                                            0
-                                                        ]
-                                                    }
-                                                ],
-                                                "bucket_key_enabled": [
-                                                    null
-                                                ],
-                                                "__file__": [
-                                                    "/data/noncompliant-medium-03.json"
-                                                ],
-                                                "__startline__": [
-                                                    1
-                                                ],
-                                                "__endline__": [
-                                                    1
-                                                ],
-                                                "start_line": [
-                                                    0
-                                                ],
-                                                "end_line": [
-                                                    0
-                                                ]
-                                            }
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "",
-                                        "Name": "sadcloud",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "Time H",
-                                        "__file__": "/data/noncompliant-medium-03.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "versioning": [
-                                    {
-                                        "enabled": [
-                                            true
-                                        ],
-                                        "mfa_delete": [
-                                            false
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "website": [
-                                    {
-                                        "error_document": [
-                                            null
-                                        ],
-                                        "index_document": [
-                                            "index.html"
-                                        ],
-                                        "redirect_all_requests_to": [
-                                            null
-                                        ],
-                                        "routing_rules": [
-                                            null
-                                        ],
-                                        "__file__": [
-                                            "/data/noncompliant-medium-03.json"
-                                        ],
-                                        "__startline__": [
-                                            1
-                                        ],
-                                        "__endline__": [
-                                            1
-                                        ],
-                                        "start_line": [
-                                            0
-                                        ],
-                                        "end_line": [
-                                            0
-                                        ]
-                                    }
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-03.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.s3.aws_s3_bucket.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "resource_type"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-03.json",
-                "file_abs_path": "/data/noncompliant-medium-03.json",
-                "repo_file_path": "/noncompliant-medium-03.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.s3.aws_s3_bucket.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "",
-                    "Name": "sadcloud",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "Time H",
-                    "__file__": "/data/noncompliant-medium-03.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.s3.aws_s3_bucket.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
@@ -5079,6 +4853,232 @@
                 "definition_context_file_path": "/data/noncompliant-medium-03.json"
             },
             {
+                "check_id": "CKV_AWS_145",
+                "bc_check_id": "BC_AWS_GENERAL_56",
+                "check_name": "Ensure that S3 buckets are encrypted with KMS by default",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "main": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadcloud"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "server_side_encryption_configuration": [
+                                    {
+                                        "rule": [
+                                            {
+                                                "apply_server_side_encryption_by_default": [
+                                                    {
+                                                        "kms_master_key_id": [
+                                                            null
+                                                        ],
+                                                        "sse_algorithm": [
+                                                            "AES256"
+                                                        ],
+                                                        "__file__": [
+                                                            "/data/noncompliant-medium-03.json"
+                                                        ],
+                                                        "__startline__": [
+                                                            1
+                                                        ],
+                                                        "__endline__": [
+                                                            1
+                                                        ],
+                                                        "start_line": [
+                                                            0
+                                                        ],
+                                                        "end_line": [
+                                                            0
+                                                        ]
+                                                    }
+                                                ],
+                                                "bucket_key_enabled": [
+                                                    null
+                                                ],
+                                                "__file__": [
+                                                    "/data/noncompliant-medium-03.json"
+                                                ],
+                                                "__startline__": [
+                                                    1
+                                                ],
+                                                "__endline__": [
+                                                    1
+                                                ],
+                                                "start_line": [
+                                                    0
+                                                ],
+                                                "end_line": [
+                                                    0
+                                                ]
+                                            }
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "",
+                                        "Name": "sadcloud",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "Time H",
+                                        "__file__": "/data/noncompliant-medium-03.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "versioning": [
+                                    {
+                                        "enabled": [
+                                            true
+                                        ],
+                                        "mfa_delete": [
+                                            false
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "website": [
+                                    {
+                                        "error_document": [
+                                            null
+                                        ],
+                                        "index_document": [
+                                            "index.html"
+                                        ],
+                                        "redirect_all_requests_to": [
+                                            null
+                                        ],
+                                        "routing_rules": [
+                                            null
+                                        ],
+                                        "__file__": [
+                                            "/data/noncompliant-medium-03.json"
+                                        ],
+                                        "__startline__": [
+                                            1
+                                        ],
+                                        "__endline__": [
+                                            1
+                                        ],
+                                        "start_line": [
+                                            0
+                                        ],
+                                        "end_line": [
+                                            0
+                                        ]
+                                    }
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-03.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.s3.aws_s3_bucket.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "resource_type",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-03.json",
+                "file_abs_path": "/data/noncompliant-medium-03.json",
+                "repo_file_path": "/noncompliant-medium-03.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.s3.aws_s3_bucket.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "",
+                    "Name": "sadcloud",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "Time H",
+                    "__file__": "/data/noncompliant-medium-03.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.s3.aws_s3_bucket.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-03.json"
+            },
+            {
                 "check_id": "CKV2_AWS_6",
                 "bc_check_id": "BC_AWS_NETWORKING_52",
                 "check_name": "Ensure that S3 bucket has a Public Access block",
@@ -5261,9 +5261,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "block_public_acls",
+                        "resource_type",
                         "block_public_policy",
-                        "resource_type"
+                        "block_public_acls"
                     ]
                 },
                 "code_block": null,
@@ -5605,8 +5605,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "networking",
-                        "resource_type"
+                        "resource_type",
+                        "networking"
                     ]
                 },
                 "code_block": null,
@@ -5830,8 +5830,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "lifecycle_rule",
-                        "resource_type"
+                        "resource_type",
+                        "lifecycle_rule"
                     ]
                 },
                 "code_block": null,
@@ -5967,8 +5967,8 @@
                     },
                     "evaluated_keys": [
                         "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
+                        "tags/Projeto",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -6192,8 +6192,8 @@
                     },
                     "evaluated_keys": [
                         "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
+                        "tags/Projeto",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -6418,8 +6418,8 @@
                     },
                     "evaluated_keys": [
                         "tags/Time Respons\u00e1vel",
-                        "tags/Ambiente",
-                        "tags/Projeto"
+                        "tags/Projeto",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,

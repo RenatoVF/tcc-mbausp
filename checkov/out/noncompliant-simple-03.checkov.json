@@ -361,11 +361,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "route/*/ipv6_cidr_block",
                         "destination_cidr_block",
+                        "destination_ipv6_cidr_block",
+                        "route/*/ipv6_cidr_block",
                         "route/*/cidr_block",
                         "vpc_peering_connection_id",
-                        "destination_ipv6_cidr_block",
                         "route/*/vpc_peering_connection_id"
                     ]
                 },
@@ -616,10 +616,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "destination_cidr_block",
                         "route/*/instance_id",
-                        "instance_id",
-                        "route/*/cidr_block"
+                        "destination_cidr_block",
+                        "route/*/cidr_block",
+                        "instance_id"
                     ]
                 },
                 "code_block": null,
@@ -785,8 +785,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Ambiente",
-                        "instance_type"
+                        "instance_type",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -952,9 +952,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "tags/Time Respons\u00e1vel",
                         "tags/Ambiente",
-                        "tags/Projeto",
-                        "tags/Time Respons\u00e1vel"
+                        "tags/Projeto"
                     ]
                 },
                 "code_block": null,
@@ -1460,15 +1460,15 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "egress/from_port",
-                        "ingress/from_port",
-                        "egress/to_port",
-                        "ingress/self",
-                        "ingress/to_port",
                         "egress/protocol",
+                        "resource_type",
+                        "ingress/self",
+                        "ingress/protocol",
+                        "ingress/to_port",
+                        "egress/to_port",
+                        "ingress/from_port",
                         "egress/cidr_blocks",
-                        "ingress/protocol"
+                        "egress/from_port"
                     ]
                 },
                 "code_block": null,

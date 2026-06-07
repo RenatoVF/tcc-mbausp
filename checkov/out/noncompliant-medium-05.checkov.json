@@ -738,8 +738,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "protocol",
-                        "ssl_policy"
+                        "ssl_policy",
+                        "protocol"
                     ]
                 },
                 "code_block": null,
@@ -841,9 +841,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -1068,8 +1068,8 @@
                     "evaluated_keys": [
                         "parameter[?(@/name=='rds/force_ssl')]/value",
                         "family",
-                        "parameter[?(@/name=='require_secure_transport')]/value",
                         "resource_type",
+                        "parameter[?(@/name=='require_secure_transport')]/value",
                         "parameter[?(@/name=='db2comm')]/value"
                     ]
                 },
@@ -1258,8 +1258,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "internal",
+                        "resource_type",
                         "rule/*/statement/managed_rule_group_statement/name"
                     ]
                 },
@@ -1548,11 +1548,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "default_action/type",
-                        "protocol",
                         "ssl_policy",
-                        "resource_type",
+                        "protocol",
+                        "default_action/type",
                         "load_balancer_type",
+                        "resource_type",
                         "default_action/redirect/protocol"
                     ]
                 },
@@ -1590,6 +1590,113 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-43",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-05.json"
+            },
+            {
+                "check_id": "CKV_AWS_57",
+                "bc_check_id": "BC_AWS_S3_2",
+                "check_name": "S3 Bucket has an ACL defined which allows public WRITE access.",
+                "check_result": {
+                    "result": "PASSED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "",
+                                        "__file__": "/data/noncompliant-medium-05.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-05.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "acl",
+                        "access_control_policy/grant/*/permission",
+                        "access_control_policy/grant/*/grantee/uri",
+                        "access_control_policy",
+                        "resource_type",
+                        "access_control_policy/grant"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-05.json",
+                "file_abs_path": "/data/noncompliant-medium-05.json",
+                "repo_file_path": "/noncompliant-medium-05.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "",
+                    "__file__": "/data/noncompliant-medium-05.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-2-acl-write-permissions-everyone",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -1772,12 +1879,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "vpc_peering_connection_id",
-                        "route/*/cidr_block",
-                        "destination_ipv6_cidr_block",
-                        "route/*/ipv6_cidr_block",
                         "route/*/vpc_peering_connection_id",
-                        "destination_cidr_block"
+                        "route/*/ipv6_cidr_block",
+                        "route/*/cidr_block",
+                        "destination_cidr_block",
+                        "destination_ipv6_cidr_block",
+                        "vpc_peering_connection_id"
                     ]
                 },
                 "code_block": null,
@@ -1814,113 +1921,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-route-table-with-vpc-peering-does-not-contain-routes-overly-permissive-to-all-traffic",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-05.json"
-            },
-            {
-                "check_id": "CKV_AWS_57",
-                "bc_check_id": "BC_AWS_S3_2",
-                "check_name": "S3 Bucket has an ACL defined which allows public WRITE access.",
-                "check_result": {
-                    "result": "PASSED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "",
-                                        "__file__": "/data/noncompliant-medium-05.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-05.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "access_control_policy/grant/*/grantee/uri",
-                        "access_control_policy",
-                        "resource_type",
-                        "access_control_policy/grant",
-                        "access_control_policy/grant/*/permission",
-                        "acl"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-05.json",
-                "file_abs_path": "/data/noncompliant-medium-05.json",
-                "repo_file_path": "/noncompliant-medium-05.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "",
-                    "__file__": "/data/noncompliant-medium-05.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-2-acl-write-permissions-everyone",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -2072,11 +2072,11 @@
                         }
                     },
                     "evaluated_keys": [
-                        "default_action/type",
-                        "default_action/redirect/*/port",
-                        "default_action/redirect/*/protocol",
                         "protocol",
+                        "default_action/type",
+                        "default_action/redirect/*/protocol",
                         "port",
+                        "default_action/redirect/*/port",
                         "resource_type"
                     ]
                 },
@@ -2179,11 +2179,11 @@
                         }
                     },
                     "evaluated_keys": [
+                        "acl",
                         "access_control_policy/grant/*/grantee/uri",
                         "access_control_policy",
                         "resource_type",
-                        "access_control_policy/grant",
-                        "acl"
+                        "access_control_policy/grant"
                     ]
                 },
                 "code_block": null,
@@ -2402,10 +2402,10 @@
                         }
                     },
                     "evaluated_keys": [
-                        "instance_id",
                         "route/*/cidr_block",
-                        "destination_cidr_block",
-                        "route/*/instance_id"
+                        "route/*/instance_id",
+                        "instance_id",
+                        "destination_cidr_block"
                     ]
                 },
                 "code_block": null,
@@ -2540,8 +2540,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Ambiente",
-                        "instance_type"
+                        "instance_type",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -2764,8 +2764,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Ambiente",
-                        "instance_class"
+                        "instance_class",
+                        "tags/Ambiente"
                     ]
                 },
                 "code_block": null,
@@ -4597,131 +4597,6 @@
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
             },
             {
-                "check_id": "CKV2_AWS_12",
-                "bc_check_id": "BC_AWS_NETWORKING_4",
-                "check_name": "Ensure the default security group of every VPC restricts all traffic",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_vpc": {
-                            "main": {
-                                "assign_generated_ipv6_cidr_block": [
-                                    true
-                                ],
-                                "cidr_block": [
-                                    "10.0.0.0/16"
-                                ],
-                                "enable_dns_hostnames": [
-                                    true
-                                ],
-                                "enable_dns_support": [
-                                    true
-                                ],
-                                "instance_tenancy": [
-                                    "default"
-                                ],
-                                "ipv4_ipam_pool_id": [
-                                    null
-                                ],
-                                "ipv4_netmask_length": [
-                                    null
-                                ],
-                                "ipv6_ipam_pool_id": [
-                                    null
-                                ],
-                                "ipv6_netmask_length": [
-                                    null
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadcloud_vpc",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "",
-                                        "__file__": "/data/noncompliant-medium-05.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-05.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.network.aws_vpc.main[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "egress/to_port",
-                        "ingress/self",
-                        "egress/cidr_blocks",
-                        "ingress/protocol",
-                        "ingress/to_port",
-                        "egress/protocol",
-                        "resource_type",
-                        "ingress/from_port",
-                        "egress/from_port"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-05.json",
-                "file_abs_path": "/data/noncompliant-medium-05.json",
-                "repo_file_path": "/noncompliant-medium-05.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.network.aws_vpc.main[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadcloud_vpc",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "",
-                    "__file__": "/data/noncompliant-medium-05.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.network.aws_vpc.main[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-05.json"
-            },
-            {
                 "check_id": "CKV2_AWS_41",
                 "bc_check_id": "BC_AWS_IAM_69",
                 "check_name": "Ensure an IAM role is attached to EC2 instance",
@@ -4857,6 +4732,131 @@
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
             },
             {
+                "check_id": "CKV2_AWS_12",
+                "bc_check_id": "BC_AWS_NETWORKING_4",
+                "check_name": "Ensure the default security group of every VPC restricts all traffic",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_vpc": {
+                            "main": {
+                                "assign_generated_ipv6_cidr_block": [
+                                    true
+                                ],
+                                "cidr_block": [
+                                    "10.0.0.0/16"
+                                ],
+                                "enable_dns_hostnames": [
+                                    true
+                                ],
+                                "enable_dns_support": [
+                                    true
+                                ],
+                                "instance_tenancy": [
+                                    "default"
+                                ],
+                                "ipv4_ipam_pool_id": [
+                                    null
+                                ],
+                                "ipv4_netmask_length": [
+                                    null
+                                ],
+                                "ipv6_ipam_pool_id": [
+                                    null
+                                ],
+                                "ipv6_netmask_length": [
+                                    null
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadcloud_vpc",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "",
+                                        "__file__": "/data/noncompliant-medium-05.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-05.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.network.aws_vpc.main[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "egress/cidr_blocks",
+                        "egress/to_port",
+                        "ingress/to_port",
+                        "ingress/from_port",
+                        "egress/protocol",
+                        "ingress/self",
+                        "egress/from_port",
+                        "resource_type",
+                        "ingress/protocol"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-05.json",
+                "file_abs_path": "/data/noncompliant-medium-05.json",
+                "repo_file_path": "/noncompliant-medium-05.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.network.aws_vpc.main[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadcloud_vpc",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "",
+                    "__file__": "/data/noncompliant-medium-05.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.network.aws_vpc.main[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-4",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-05.json"
+            },
+            {
                 "check_id": "CKV_AWS_144",
                 "bc_check_id": "BC_AWS_GENERAL_72",
                 "check_name": "Ensure that S3 bucket has cross-region replication enabled",
@@ -4917,9 +4917,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
+                        "replication_configuration/rules/*/status",
                         "rule/*/status",
-                        "replication_configuration/rules/*/status"
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -4956,110 +4956,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-05.json"
-            },
-            {
-                "check_id": "CKV_AWS_145",
-                "bc_check_id": "BC_AWS_GENERAL_56",
-                "check_name": "Ensure that S3 buckets are encrypted with KMS by default",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "",
-                                        "__file__": "/data/noncompliant-medium-05.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-05.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
-                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-05.json",
-                "file_abs_path": "/data/noncompliant-medium-05.json",
-                "repo_file_path": "/noncompliant-medium-05.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "",
-                    "__file__": "/data/noncompliant-medium-05.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -5162,6 +5058,317 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-05.json"
+            },
+            {
+                "check_id": "CKV2_AWS_6",
+                "bc_check_id": "BC_AWS_NETWORKING_52",
+                "check_name": "Ensure that S3 bucket has a Public Access block",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "",
+                                        "__file__": "/data/noncompliant-medium-05.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-05.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "block_public_policy",
+                        "resource_type",
+                        "block_public_acls"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-05.json",
+                "file_abs_path": "/data/noncompliant-medium-05.json",
+                "repo_file_path": "/noncompliant-medium-05.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "",
+                    "__file__": "/data/noncompliant-medium-05.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-05.json"
+            },
+            {
+                "check_id": "CKV_AWS_145",
+                "bc_check_id": "BC_AWS_GENERAL_56",
+                "check_name": "Ensure that S3 buckets are encrypted with KMS by default",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "",
+                                        "__file__": "/data/noncompliant-medium-05.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-05.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "server_side_encryption_configuration/rule/apply_server_side_encryption_by_default/sse_algorithm",
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-05.json",
+                "file_abs_path": "/data/noncompliant-medium-05.json",
+                "repo_file_path": "/noncompliant-medium-05.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "",
+                    "__file__": "/data/noncompliant-medium-05.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-05.json"
+            },
+            {
+                "check_id": "CKV_AWS_18",
+                "bc_check_id": "BC_AWS_S3_13",
+                "check_name": "Ensure the S3 bucket has access logging enabled",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "",
+                                        "__file__": "/data/noncompliant-medium-05.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-05.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "resource_type",
+                        "logging"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-05.json",
+                "file_abs_path": "/data/noncompliant-medium-05.json",
+                "repo_file_path": "/noncompliant-medium-05.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "",
+                    "__file__": "/data/noncompliant-medium-05.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-13-enable-logging",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -5313,9 +5520,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "load_balancer_type",
+                        "internal",
                         "resource_type",
-                        "internal"
+                        "load_balancer_type"
                     ]
                 },
                 "code_block": null,
@@ -5352,110 +5559,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-public-facing-alb-are-protected-by-waf",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-05.json"
-            },
-            {
-                "check_id": "CKV2_AWS_6",
-                "bc_check_id": "BC_AWS_NETWORKING_52",
-                "check_name": "Ensure that S3 bucket has a Public Access block",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "",
-                                        "__file__": "/data/noncompliant-medium-05.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-05.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "block_public_acls",
-                        "block_public_policy"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-05.json",
-                "file_abs_path": "/data/noncompliant-medium-05.json",
-                "repo_file_path": "/noncompliant-medium-05.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "",
-                    "__file__": "/data/noncompliant-medium-05.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -5536,8 +5639,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "networking"
+                        "networking",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -5574,212 +5677,6 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/logging-9-enable-vpc-flow-logging",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-05.json"
-            },
-            {
-                "check_id": "CKV_AWS_18",
-                "bc_check_id": "BC_AWS_S3_13",
-                "check_name": "Ensure the S3 bucket has access logging enabled",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "",
-                                        "__file__": "/data/noncompliant-medium-05.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-05.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "logging"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-05.json",
-                "file_abs_path": "/data/noncompliant-medium-05.json",
-                "repo_file_path": "/noncompliant-medium-05.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "",
-                    "__file__": "/data/noncompliant-medium-05.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-13-enable-logging",
-                "details": [],
-                "check_len": null,
-                "definition_context_file_path": "/data/noncompliant-medium-05.json"
-            },
-            {
-                "check_id": "CKV2_AWS_61",
-                "bc_check_id": "BC_AWS_LOGGING_35",
-                "check_name": "Ensure that an S3 bucket has a lifecycle configuration",
-                "check_result": {
-                    "result": "FAILED",
-                    "entity": {
-                        "aws_s3_bucket": {
-                            "access_logging": {
-                                "acl": [
-                                    "private"
-                                ],
-                                "bucket_prefix": [
-                                    "sadelb"
-                                ],
-                                "force_destroy": [
-                                    true
-                                ],
-                                "region": [
-                                    "us-east-1"
-                                ],
-                                "tags": [
-                                    {
-                                        "Ambiente": "PRD",
-                                        "Name": "sadelb",
-                                        "Projeto": "TCC",
-                                        "Time Respons\u00e1vel": "",
-                                        "__file__": "/data/noncompliant-medium-05.json",
-                                        "__startline__": 1,
-                                        "__endline__": 1,
-                                        "start_line": 0,
-                                        "end_line": 0
-                                    }
-                                ],
-                                "timeouts": [
-                                    null
-                                ],
-                                "__file__": [
-                                    "/data/noncompliant-medium-05.json"
-                                ],
-                                "__startline__": [
-                                    1
-                                ],
-                                "__endline__": [
-                                    1
-                                ],
-                                "start_line": [
-                                    0
-                                ],
-                                "end_line": [
-                                    0
-                                ],
-                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                                "__change_actions__": [
-                                    "create"
-                                ],
-                                "__change_keys__": []
-                            }
-                        }
-                    },
-                    "evaluated_keys": [
-                        "resource_type",
-                        "lifecycle_rule"
-                    ]
-                },
-                "code_block": null,
-                "file_path": "/noncompliant-medium-05.json",
-                "file_abs_path": "/data/noncompliant-medium-05.json",
-                "repo_file_path": "/noncompliant-medium-05.json",
-                "file_line_range": [
-                    0,
-                    0
-                ],
-                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "evaluations": null,
-                "check_class": "checkov.common.graph.checks_infra.base_check",
-                "fixed_definition": null,
-                "entity_tags": {
-                    "Ambiente": "PRD",
-                    "Name": "sadelb",
-                    "Projeto": "TCC",
-                    "Time Respons\u00e1vel": "",
-                    "__file__": "/data/noncompliant-medium-05.json",
-                    "__startline__": 1,
-                    "__endline__": 1,
-                    "start_line": 0,
-                    "end_line": 0
-                },
-                "caller_file_path": null,
-                "caller_file_line_range": null,
-                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
-                "severity": null,
-                "bc_category": null,
-                "benchmarks": null,
-                "description": null,
-                "short_description": null,
-                "vulnerability_details": null,
-                "connected_node": null,
-                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -5845,8 +5742,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
                         "versioning/enabled",
+                        "resource_type",
                         "versioning_configuration/status"
                     ]
                 },
@@ -5884,6 +5781,109 @@
                 "vulnerability_details": null,
                 "connected_node": null,
                 "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-16-enable-versioning",
+                "details": [],
+                "check_len": null,
+                "definition_context_file_path": "/data/noncompliant-medium-05.json"
+            },
+            {
+                "check_id": "CKV2_AWS_61",
+                "bc_check_id": "BC_AWS_LOGGING_35",
+                "check_name": "Ensure that an S3 bucket has a lifecycle configuration",
+                "check_result": {
+                    "result": "FAILED",
+                    "entity": {
+                        "aws_s3_bucket": {
+                            "access_logging": {
+                                "acl": [
+                                    "private"
+                                ],
+                                "bucket_prefix": [
+                                    "sadelb"
+                                ],
+                                "force_destroy": [
+                                    true
+                                ],
+                                "region": [
+                                    "us-east-1"
+                                ],
+                                "tags": [
+                                    {
+                                        "Ambiente": "PRD",
+                                        "Name": "sadelb",
+                                        "Projeto": "TCC",
+                                        "Time Respons\u00e1vel": "",
+                                        "__file__": "/data/noncompliant-medium-05.json",
+                                        "__startline__": 1,
+                                        "__endline__": 1,
+                                        "start_line": 0,
+                                        "end_line": 0
+                                    }
+                                ],
+                                "timeouts": [
+                                    null
+                                ],
+                                "__file__": [
+                                    "/data/noncompliant-medium-05.json"
+                                ],
+                                "__startline__": [
+                                    1
+                                ],
+                                "__endline__": [
+                                    1
+                                ],
+                                "start_line": [
+                                    0
+                                ],
+                                "end_line": [
+                                    0
+                                ],
+                                "__address__": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                                "__change_actions__": [
+                                    "create"
+                                ],
+                                "__change_keys__": []
+                            }
+                        }
+                    },
+                    "evaluated_keys": [
+                        "lifecycle_rule",
+                        "resource_type"
+                    ]
+                },
+                "code_block": null,
+                "file_path": "/noncompliant-medium-05.json",
+                "file_abs_path": "/data/noncompliant-medium-05.json",
+                "repo_file_path": "/noncompliant-medium-05.json",
+                "file_line_range": [
+                    0,
+                    0
+                ],
+                "resource": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "evaluations": null,
+                "check_class": "checkov.common.graph.checks_infra.base_check",
+                "fixed_definition": null,
+                "entity_tags": {
+                    "Ambiente": "PRD",
+                    "Name": "sadelb",
+                    "Projeto": "TCC",
+                    "Time Respons\u00e1vel": "",
+                    "__file__": "/data/noncompliant-medium-05.json",
+                    "__startline__": 1,
+                    "__endline__": 1,
+                    "start_line": 0,
+                    "end_line": 0
+                },
+                "caller_file_path": null,
+                "caller_file_line_range": null,
+                "resource_address": "module.elbv2.aws_s3_bucket.access_logging[0]",
+                "severity": null,
+                "bc_category": null,
+                "benchmarks": null,
+                "description": null,
+                "short_description": null,
+                "vulnerability_details": null,
+                "connected_node": null,
+                "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61",
                 "details": [],
                 "check_len": null,
                 "definition_context_file_path": "/data/noncompliant-medium-05.json"
@@ -5982,9 +5982,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Projeto"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -6086,9 +6086,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Projeto"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,
@@ -6311,9 +6311,9 @@
                         }
                     },
                     "evaluated_keys": [
+                        "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Time Respons\u00e1vel",
-                        "tags/Projeto"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,

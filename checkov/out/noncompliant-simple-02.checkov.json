@@ -561,10 +561,10 @@
                     },
                     "evaluated_keys": [
                         "family",
-                        "resource_type",
-                        "parameter[?(@/name=='rds/force_ssl')]/value",
                         "parameter[?(@/name=='require_secure_transport')]/value",
-                        "parameter[?(@/name=='db2comm')]/value"
+                        "parameter[?(@/name=='db2comm')]/value",
+                        "parameter[?(@/name=='rds/force_ssl')]/value",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -783,12 +783,12 @@
                         }
                     },
                     "evaluated_keys": [
+                        "destination_cidr_block",
                         "route/*/cidr_block",
                         "destination_ipv6_cidr_block",
-                        "destination_cidr_block",
+                        "route/*/vpc_peering_connection_id",
                         "route/*/ipv6_cidr_block",
-                        "vpc_peering_connection_id",
-                        "route/*/vpc_peering_connection_id"
+                        "vpc_peering_connection_id"
                     ]
                 },
                 "code_block": null,
@@ -1008,8 +1008,8 @@
                     },
                     "evaluated_keys": [
                         "instance_id",
-                        "route/*/cidr_block",
                         "destination_cidr_block",
+                        "route/*/cidr_block",
                         "route/*/instance_id"
                     ]
                 },
@@ -1233,8 +1233,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "instance_class",
-                        "tags/Ambiente"
+                        "tags/Ambiente",
+                        "instance_class"
                     ]
                 },
                 "code_block": null,
@@ -2095,8 +2095,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "engine",
-                        "copy_tags_to_snapshot"
+                        "copy_tags_to_snapshot",
+                        "engine"
                     ]
                 },
                 "code_block": null,
@@ -2213,15 +2213,15 @@
                         }
                     },
                     "evaluated_keys": [
-                        "ingress/self",
+                        "egress/protocol",
                         "ingress/protocol",
                         "egress/to_port",
-                        "egress/from_port",
                         "ingress/to_port",
-                        "resource_type",
-                        "egress/protocol",
+                        "ingress/self",
                         "ingress/from_port",
-                        "egress/cidr_blocks"
+                        "egress/cidr_blocks",
+                        "resource_type",
+                        "egress/from_port"
                     ]
                 },
                 "code_block": null,
@@ -2338,8 +2338,8 @@
                         }
                     },
                     "evaluated_keys": [
-                        "resource_type",
-                        "networking"
+                        "networking",
+                        "resource_type"
                     ]
                 },
                 "code_block": null,
@@ -2562,9 +2562,9 @@
                         }
                     },
                     "evaluated_keys": [
-                        "tags/Time Respons\u00e1vel",
+                        "tags/Projeto",
                         "tags/Ambiente",
-                        "tags/Projeto"
+                        "tags/Time Respons\u00e1vel"
                     ]
                 },
                 "code_block": null,

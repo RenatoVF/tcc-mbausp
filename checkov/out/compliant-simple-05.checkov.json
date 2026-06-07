@@ -361,12 +361,12 @@
                         }
                     },
                     "evaluated_keys": [
-                        "vpc_peering_connection_id",
-                        "route/*/ipv6_cidr_block",
+                        "route/*/cidr_block",
                         "destination_ipv6_cidr_block",
-                        "route/*/vpc_peering_connection_id",
+                        "route/*/ipv6_cidr_block",
+                        "vpc_peering_connection_id",
                         "destination_cidr_block",
-                        "route/*/cidr_block"
+                        "route/*/vpc_peering_connection_id"
                     ]
                 },
                 "code_block": null,
@@ -616,10 +616,10 @@
                         }
                     },
                     "evaluated_keys": [
+                        "route/*/cidr_block",
                         "route/*/instance_id",
                         "instance_id",
-                        "destination_cidr_block",
-                        "route/*/cidr_block"
+                        "destination_cidr_block"
                     ]
                 },
                 "code_block": null,
@@ -1626,15 +1626,15 @@
                         }
                     },
                     "evaluated_keys": [
+                        "resource_type",
+                        "egress/to_port",
+                        "egress/cidr_blocks",
                         "ingress/protocol",
                         "ingress/to_port",
-                        "egress/from_port",
                         "ingress/self",
-                        "egress/cidr_blocks",
                         "egress/protocol",
-                        "resource_type",
                         "ingress/from_port",
-                        "egress/to_port"
+                        "egress/from_port"
                     ]
                 },
                 "code_block": null,
