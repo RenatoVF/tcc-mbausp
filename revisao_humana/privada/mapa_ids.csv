@@ -1,0 +1,31 @@
+id_publico;arquivo_original;id_amostra_original;conforme;complexidade;regra_violada;recursos_criados
+01;compliant-simple-05;C005;Sim;Simples;Nenhuma;Network, EC2(1)
+02;compliant-complex-03;C013;Sim;Complexo;Nenhuma;Network, EC2(6), RDS(3), S3, ELBv2, EKS
+03;noncompliant-simple-04;NC004;Nao;Simples;RDS fora da família `db.t`;-
+04;noncompliant-medium-02;NC007;Nao;Médio;EC2 fora da família `t` (HML);-
+05;noncompliant-complex-05;NC015;Nao;Complexo;RDS fora da família `db.t`;-
+06;noncompliant-medium-01;NC006;Nao;Médio;Região diferente;-
+07;noncompliant-complex-04;NC014;Nao;Complexo;Valor da Tag `Ambiente` inválido;-
+08;compliant-complex-05;C015;Sim;Complexo;Nenhuma;Network, EC2(10), RDS(3), S3, ELBv2, EKS
+09;noncompliant-complex-01;NC011;Nao;Complexo;Região diferente;-
+10;compliant-medium-01;C006;Sim;Médio;Nenhuma;Network, EC2(2), RDS(1), S3
+11;compliant-medium-03;C008;Sim;Médio;Nenhuma;Network, EC2(3), RDS(1), S3
+12;compliant-medium-05;C010;Sim;Médio;Nenhuma;Network, EC2(2), RDS(1), ELBv2
+13;compliant-simple-01;C001;Sim;Simples;Nenhuma;Network, EC2(1)
+14;noncompliant-complex-02;NC012;Nao;Complexo;EC2 fora da família `t` (HML);-
+15;compliant-complex-04;C014;Sim;Complexo;Nenhuma;Network, EC2(8 HML t), RDS(2), S3, ELBv2, EKS
+16;noncompliant-simple-03;NC003;Nao;Simples;Valor da Tag `Ambiente` inválido;-
+17;noncompliant-complex-03;NC013;Nao;Complexo;Tag `Projeto` vazia;-
+18;compliant-medium-02;C007;Sim;Médio;Nenhuma;Network, EC2(2) (HML t-family), RDS(1)
+19;noncompliant-simple-02;NC002;Nao;Simples;Tag `Time Responsável` vazia;-
+20;compliant-complex-02;C012;Sim;Complexo;Nenhuma;Network, EC2(5 HML t), RDS(2), S3, ELBv2, EKS
+21;compliant-simple-04;C004;Sim;Simples;Nenhuma;Network, RDS(1) (HML, db.t)
+22;compliant-medium-04;C009;Sim;Médio;Nenhuma;Network, EC2(2), RDS(2), S3
+23;compliant-simple-03;C003;Sim;Simples;Nenhuma;Network, EC2(1) (HML, t-family)
+24;noncompliant-simple-05;NC005;Nao;Simples;Tag `Projeto` vazia;-
+25;compliant-complex-01;C011;Sim;Complexo;Nenhuma;Network, EC2(4), RDS(2), S3, ELBv2, EKS
+26;compliant-simple-02;C002;Sim;Simples;Nenhuma;Network, RDS(1)
+27;noncompliant-simple-01;NC001;Nao;Simples;Região diferente;-
+28;noncompliant-medium-05;NC010;Nao;Médio;Tag `Time Responsável` vazia;-
+29;noncompliant-medium-04;NC009;Nao;Médio;Valor da Tag `Ambiente` inválido;-
+30;noncompliant-medium-03;NC008;Nao;Médio;Tag `Ambiente` vazia;-
