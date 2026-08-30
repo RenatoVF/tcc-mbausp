@@ -10,7 +10,7 @@ Comparar o desempenho de três abordagens de validação de alterações de infr
 2. **Ferramenta estática** (Checkov, com regras customizadas)
 3. **Avaliadores humanos**
 
-O experimento segue um desenho A/B: para cada cenário de infraestrutura são gerados dois planos Terraform gêmeos — um **conforme** e um **não conforme** — variando apenas uma violação controlada, o que permite isolar o efeito da não-conformidade na avaliação de cada método.
+O experimento segue um desenho A/B: para cada cenário de infraestrutura são gerados dois planos Terraform gêmeos — um **conforme** e um **não conforme** — variando apenas uma violação controlada.
 
 ## 2. Regras de FinOps avaliadas
 
@@ -19,125 +19,40 @@ O experimento segue um desenho A/B: para cada cenário de infraestrutura são ge
 | `CKV_FINOPS_01` | Tags obrigatórias | `aws_instance`, `aws_db_instance` e `aws_s3_bucket` devem conter as tags `Projeto`, `Time Responsável` e `Ambiente`, todas preenchidas (não vazias). |
 | `CKV_FINOPS_02` | Valores válidos de `Ambiente` | A tag `Ambiente` só pode assumir os valores `PRD` ou `HML`. |
 | `CKV_FINOPS_03` | Região única | Todo recurso deve ser provisionado exclusivamente em `us-east-1`. |
-| `CKV_FINOPS_04A` | Família `t` para EC2 em HML | Se `Ambiente = HML`, instâncias `aws_instance` devem pertencer à família `t` (ex.: `t2.micro`, `t3.medium`). |
-| `CKV_FINOPS_04B` | Família `t` para RDS em HML | Se `Ambiente = HML`, instâncias `aws_db_instance` devem pertencer à família `db.t` (ex.: `db.t3.micro`). |
+| `CKV_FINOPS_04A` | Família `t` para EC2 em HML | Se `Ambiente = HML`, instâncias `aws_instance` devem pertencer à família `t`. |
+| `CKV_FINOPS_04B` | Família `t` para RDS em HML | Se `Ambiente = HML`, instâncias `aws_db_instance` devem pertencer à família `db.t`. |
 
-As definições formais dessas regras estão em `checkov/rules/*.yaml` (uma por arquivo) e são replicadas em linguagem natural no prompt de sistema usado pela LLM (`llm/avaliador_llm.py`).
+Definições formais em `common/checkov/rules/*.yaml`, replicadas em linguagem natural no prompt de sistema em `common/llm/avaliador_llm.py`.
 
-## 3. Dataset (30 amostras)
+## 3. Estrutura do repositório
 
-Os 30 planos são organizados em 15 pares conforme/não-conforme, distribuídos em 3 níveis de complexidade (5 pares cada):
+O repositório é dividido em três áreas:
 
-- **Simples**: 1 recurso principal (EC2 ou RDS) além da rede.
-- **Médio**: múltiplos recursos (EC2, RDS, S3, ELBv2) com dependências entre módulos.
-- **Complexo**: infraestrutura completa (EC2, RDS, S3, ELBv2, EKS) com vários recursos por tipo.
-
-Em cada par, o cenário não conforme mantém a mesma topologia de recursos do conforme, mudando apenas uma violação controlada (região errada, tag ausente/vazia, valor inválido de `Ambiente`, ou família de instância incorreta em HML). O mapeamento completo dos 30 casos (arquivo base, complexidade, regra violada, recursos criados e dependências) está documentado em `analises/amostras.md`.
-
-## 4. Estrutura de pastas
-
-### 4.1 `sadcloud/`
-
-Base para geração dos planos Terraform. O projeto **Sadcloud** (infraestrutura AWS deliberadamente parametrizável via módulos — `network`, `ec2`, `rds`, `s3`, `elb`/`elbv2`, `eks`, entre outros, em `sadcloud/modules/aws`) é usado para gerar os planos via manipulação de arquivos `.tfvars`.
-
-- `sadcloud/tfvars/`: contém os 30 cenários, cada um com três arquivos:
-  - `<caso>.tfvars` — variáveis de entrada (região, tags, flags de habilitação de módulos, tipos de instância);
-  - `<caso>.plan` — plano binário do Terraform;
-  - `<caso>.json` — plano exportado em JSON (`terraform show -json`), que é o artefato consumido pelo Checkov e pela LLM.
-  - `run_plans.sh` / `run_specific_plan.sh`: scripts para gerar todos os planos ou um plano específico.
-
-### 4.2 `infracost/`
-
-Estimativa de custo mensal de cada um dos 30 planos gerados em `sadcloud/tfvars`.
-
-- `infracost/out/`: saída bruta do Infracost por caso (`*.infracost.json`).
-- `extrator_infracost.py`: consolida as saídas em `analises/matriz_custos_infracost.csv`.
-
-### 4.3 `checkov/`
-
-Análise estática dos 30 planos contra as 5 regras de FinOps.
-
-- `checkov/rules/`: definição de cada regra em YAML (policy DSL nativa do Checkov), uma por arquivo (`mandatory_tags.yaml`, `tag_ambiente_valid_values.yaml`, `valid_region.yaml`, `ec2_hml_valid_types.yaml`, `rds_hml_valid_types.yaml`).
-- `checkov/out/`: saída bruta do Checkov por caso (`*.checkov.json`) — inclui não só as 5 regras FinOps customizadas, mas também os checks nativos do Checkov (que não são usados na comparação).
-- `extrator_checkov.py`: filtra apenas as 5 regras FinOps na saída bruta e monta a matriz `PASSED/FAILED`/`N/A` por caso, salva em `analises/matriz_resultados_checkov.csv`. O veredito final do caso é `FAILED` se qualquer uma das regras aplicáveis falhar.
-
-### 4.4 `llm/`
-
-Análise dos mesmos 30 planos via LLM (GPT-4o).
-
-- `avaliador_llm.py`: para cada plano, otimiza o JSON bruto (extrai apenas variáveis globais, provider e atributos relevantes dos recursos — tags, `instance_type`, `instance_class` — descartando o restante para economizar tokens), envia para a API da OpenAI (`gpt-4o`, `temperature=0`, `response_format=json_object`) com um prompt de sistema que replica as 5 regras de FinOps em linguagem natural, e recebe de volta um veredito `PASSED`/`FAILED` por regra mais uma justificativa textual.
-- `llm/out/`: saída da LLM por caso (`llm_eval_<caso>.json`).
-- `extrator_llm.py`: consolida as saídas em `analises/matriz_resultados_llm.csv`.
-
-### 4.5 `analises/`
-
-Compilado final dos resultados, usado para gerar os dados e apêndices do TCC.
-
-- `amostras.md`: mapeamento dos 30 casos (ID, arquivo base, complexidade, regra violada, recursos criados, dependências).
-- `matriz_resultados_checkov.csv`, `matriz_resultados_llm.csv`, `matriz_custos_infracost.csv`: matrizes brutas consolidadas de cada fonte.
-- `apendice_a_matriz_amostra.csv`: apêndice com a caracterização das amostras + custo mensal (gerado por `gerador_apendice_a.py`).
-- `apendice_c_matriz_checkov.csv`: veredito do Checkov traduzido para Aprovado/Falhou (gerado por `gerador_apendice_c.py`).
-- `apendice_e_matriz_llm.csv`: idem para a LLM (gerado por `gerador_apendice_e.py`).
-- `dados_grafico_impacto_financeiro.csv`: impacto financeiro por par conforme/não-conforme, calculado como `IF = Custo Não Conforme − Custo Conforme` (gerado por `gerador_impacto_financeiro.py`, a partir do apêndice A).
-
-> **Observação**: não há, até o momento, nenhum artefato (script, planilha ou saída) referente à etapa de **avaliação humana** dentro desta estrutura. Essa parte da comparação de três vias (LLM x Checkov x humano) ainda precisa ser incorporada ao dataset/pipeline, ou está sendo conduzida fora desta pasta.
-
-## 5. Pipeline de execução
-
-Todos os comandos abaixo (extraídos e organizados a partir de `comandos.txt`) são executados via Docker, cada um a partir do diretório da respectiva etapa.
-
-### 5.1 Geração dos planos (Sadcloud)
-
-```sh
-# gera todos os 30 planos definidos em sadcloud/tfvars
-docker compose run --rm --entrypoint sh terraform -c "../tfvars/run_plans.sh"
-
-# gera (ou regenera) um plano específico
-docker compose run --rm --entrypoint sh terraform -c "../tfvars/run_specific_plan.sh noncompliant-complex-05.tfvars"
+```
+Dataset/
+├── common/          # código e infraestrutura reutilizável (não muda entre datasets)
+├── training_set/    # os 30 casos originais (15 pares) - usados para refinar prompt da LLM e regras do Checkov
+└── test_set/        # os novos 180 planos (90 pares) - dataset de avaliação real, do qual 15 pares (30 planos) vão para revisão humana
 ```
 
-### 5.2 Estimativa de custo (Infracost)
+**`common/`** — todo o código, infraestrutura como código e scripts de pipeline, independentes de qual conjunto de dados está sendo processado:
 
-```sh
-# roda o Infracost sobre todos os planos em sadcloud/tfvars, salvando em infracost/out
-docker compose run --rm --entrypoint sh infracost -c "sh /scripts/run_infracost_all.sh"
+- `sadcloud/` — projeto Sadcloud (módulos Terraform AWS parametrizáveis) usado para gerar os planos, mais os scripts de execução (`scripts/run_plans.sh`, `run_specific_plan.sh`, `run_show_all.sh`).
+- `checkov/` — as 5 regras de FinOps (`rules/`), o script de execução (`run_checkov_all.sh`) e o extrator (`extrator_checkov.py`).
+- `infracost/` — script de execução e extrator de custos.
+- `llm/` — `avaliador_llm.py` (chamada à API do GPT-4o), extrator e infraestrutura Docker.
+- `revisao_humana/` — os dois scripts que geram e anonimizam o material de revisão humana (`gerar_mapa_ids.py`, `finalizar_planos_publicos.py`) e o gerador do formulário (`gerar_formulario.js`). Ambos os scripts Python recebem o caminho do conjunto (`training_set` ou `test_set`) como argumento.
+- `analises/` — os geradores dos apêndices e do gráfico de impacto financeiro.
+- `comandos.txt` — todos os comandos de execução do pipeline, com instruções para rodar contra o `training_set` (padrão) ou o `test_set`.
 
-# consolida infracost/out em analises/matriz_custos_infracost.csv
-docker run --rm -v ${PWD}:/app -v ${PWD}/../analises:/analises -w /app python:3.12-slim python extrator_infracost.py
-```
+**`training_set/`** e **`test_set/`** — mesma forma interna, contendo apenas **dados** (nenhum script): os planos gerados (`sadcloud/tfvars/`), as saídas brutas de cada ferramenta (`checkov/out/`, `infracost/out/`, `llm/out/`), as análises consolidadas (`analises/`) e o material de revisão humana (`revisao_humana/`).
 
-### 5.3 Análise estática (Checkov)
+O `training_set/` contém os 30 casos originais, que serviram para refinar o prompt da LLM e as regras do Checkov antes da coleta de dados real. O `test_set/` está com o esqueleto pronto (pastas vazias, com `.gitkeep`) aguardando a geração dos 180 novos planos (90 pares conforme/não-conforme), dos quais 15 pares (30 planos) serão selecionados para a etapa de revisão humana.
 
-```sh
-# roda o Checkov (com as regras de checkov/rules) sobre todos os planos, salvando em checkov/out
-docker compose run --rm checkov -c "sh /scripts/run_checkov_all.sh"
+## 4. Pipeline de execução
 
-# filtra as 5 regras FinOps e consolida em analises/matriz_resultados_checkov.csv
-docker run --rm -v ${PWD}:/app -v ${PWD}/../analises:/analises -w /app python:3.12-slim python extrator_checkov.py
-```
+Ver `common/comandos.txt` para todos os comandos, na ordem: geração dos planos (Sadcloud) → estimativa de custo (Infracost) / análise estática (Checkov) / análise via LLM (podem rodar em paralelo) → revisão humana → geração dos apêndices e dados do TCC. O arquivo já traz a variante de comando para rodar contra o `test_set` em vez do `training_set` (variáveis `TFVARS_DIR` / `OUT_DIR`, ou trocar o caminho passado aos scripts de revisão humana e aos geradores de análise).
 
-### 5.4 Análise via LLM
+## 5. Amostragem do test_set
 
-```sh
-# sobe o container que executa avaliador_llm.py contra todos os planos, salvando em llm/out
-docker compose up --build
-
-# consolida llm/out em analises/matriz_resultados_llm.csv
-docker run --rm -v ${PWD}:/app -v ${PWD}/../analises:/analises -w /app python:3.12-slim python extrator_llm.py
-```
-
-### 5.5 Geração dos apêndices e dados do TCC
-
-```sh
-# a partir da pasta analises/
-docker run --rm -v ${PWD}:/app -w /app python:3.12-slim python gerador_apendice_a.py
-docker run --rm -v ${PWD}:/app -w /app python:3.12-slim python gerador_apendice_c.py
-docker run --rm -v ${PWD}:/app -w /app python:3.12-slim python gerador_apendice_e.py
-docker run --rm -v ${PWD}:/app -w /app python:3.12-slim python gerador_impacto_financeiro.py
-```
-
-**Ordem de execução recomendada**: 5.1 (Sadcloud) → 5.2, 5.3 e 5.4 (podem rodar em paralelo, todos consomem `sadcloud/tfvars`) → 5.5 (depende das matrizes geradas nas etapas anteriores).
-
-## 6. Pontos em aberto
-
-- **Avaliação humana**: ainda não há artefatos desta etapa no repositório (nem script, nem planilha de coleta, nem saída consolidada). Precisa ser definida a forma de coleta (ex.: formulário com os mesmos 30 planos) e o formato de saída para poder alimentar uma matriz equivalente a `matriz_resultados_checkov.csv` / `matriz_resultados_llm.csv`.
+Ainda a definir (em conversa com o orientador): os critérios de geração dos 90 pares e o critério de seleção dos 15 pares que irão para avaliação humana.

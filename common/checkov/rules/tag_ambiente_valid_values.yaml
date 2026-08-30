@@ -1,0 +1,15 @@
+metadata:
+  name: "Garantir que a tag Ambiente contenha apenas os valores PRD ou HML"
+  id: "CKV_FINOPS_02"
+  category: "CONVENTION"
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "aws_instance"
+    - "aws_db_instance"
+    - "aws_s3_bucket"
+  attribute: "tags.Ambiente"
+  operator: "within"
+  value:
+    - "PRD"
+    - "HML"

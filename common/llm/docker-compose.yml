@@ -1,0 +1,9 @@
+services:
+  avaliador_llm:
+    build: .
+    container_name: avaliador_llm_container
+    env_file:
+      - .env
+    volumes:
+      - ${TFVARS_DIR:-../../training_set/sadcloud/tfvars}:/app/sadcloud/tfvars
+      - ${OUT_DIR:-../../training_set/llm/out}:/app/out

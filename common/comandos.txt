@@ -1,0 +1,74 @@
+Convenção: todos os comandos abaixo assumem que você está dentro da respectiva
+pasta em common/ (ex.: cd common/sadcloud/sadcloud). Por padrão, todos os
+serviços apontam para o TRAINING_SET. Para rodar contra o TEST_SET, defina as
+variáveis de ambiente TFVARS_DIR / OUT_DIR antes do comando, como mostrado na
+seção "Rodando contra o test_set" no fim deste arquivo.
+
+#sadcloud (a partir de common/sadcloud/sadcloud)
+docker compose run --rm --entrypoint sh terraform -c "sh /scripts/run_plans.sh"
+docker compose run --rm --entrypoint sh terraform -c "sh /scripts/run_specific_plan.sh noncompliant-complex-05.tfvars"
+docker compose run --rm --entrypoint sh terraform -c "sh /scripts/run_show_all.sh"
+
+#infracost (a partir de common/infracost)
+docker compose run --rm --entrypoint sh infracost -c "sh /scripts/run_infracost_all.sh"
+docker run --rm -v ${PWD}:/app -v ${PWD}/../../training_set/analises:/analises -w /app python:3.12-slim python extrator_infracost.py
+
+#checkov (a partir de common/checkov)
+docker compose run --rm checkov -c "sh /scripts/run_checkov_all.sh"
+docker run --rm -v ${PWD}:/app -v ${PWD}/../../training_set/analises:/analises -w /app python:3.12-slim python extrator_checkov.py
+
+#llm (a partir de common/llm)
+docker compose up --build
+docker run --rm -v ${PWD}:/app -v ${PWD}/../../training_set/analises:/analises -w /app python:3.12-slim python extrator_llm.py
+
+#revisao_humana (a partir de common/revisao_humana)
+python3 gerar_mapa_ids.py ../../training_set
+python3 finalizar_planos_publicos.py ../../training_set
+
+#analises (a partir de common/analises - script montado à parte dos dados)
+docker run --rm \
+  -v ${PWD}/gerador_apendice_a.py:/app/gerador_apendice_a.py:ro \
+  -v ${PWD}/../../training_set/analises:/app \
+  -w /app python:3.12-slim python gerador_apendice_a.py
+
+docker run --rm \
+  -v ${PWD}/gerador_apendice_c.py:/app/gerador_apendice_c.py:ro \
+  -v ${PWD}/../../training_set/analises:/app \
+  -w /app python:3.12-slim python gerador_apendice_c.py
+
+docker run --rm \
+  -v ${PWD}/gerador_apendice_e.py:/app/gerador_apendice_e.py:ro \
+  -v ${PWD}/../../training_set/analises:/app \
+  -w /app python:3.12-slim python gerador_apendice_e.py
+
+docker run --rm \
+  -v ${PWD}/gerador_impacto_financeiro.py:/app/gerador_impacto_financeiro.py:ro \
+  -v ${PWD}/../../training_set/analises:/app \
+  -w /app python:3.12-slim python gerador_impacto_financeiro.py
+
+# ---------------------------------------------------------------------------
+# Rodando contra o test_set (180 novos planos / 90 pares)
+# ---------------------------------------------------------------------------
+# Basta trocar "training_set" por "test_set" em todos os comandos acima.
+# Para os serviços com docker-compose (sadcloud, checkov, infracost, llm),
+# use as variáveis de ambiente TFVARS_DIR / OUT_DIR, por exemplo:
+#
+#   (a partir de common/sadcloud/sadcloud)
+#   TFVARS_DIR=../../../test_set/sadcloud/tfvars \
+#     docker compose run --rm --entrypoint sh terraform -c "sh /scripts/run_plans.sh"
+#
+#   (a partir de common/checkov)
+#   TFVARS_DIR=../../test_set/sadcloud/tfvars OUT_DIR=../../test_set/checkov/out \
+#     docker compose run --rm checkov -c "sh /scripts/run_checkov_all.sh"
+#
+#   (a partir de common/infracost)
+#   TFVARS_DIR=../../test_set/sadcloud/tfvars OUT_DIR=../../test_set/infracost/out \
+#     docker compose run --rm --entrypoint sh infracost -c "sh /scripts/run_infracost_all.sh"
+#
+#   (a partir de common/llm)
+#   TFVARS_DIR=../../test_set/sadcloud/tfvars OUT_DIR=../../test_set/llm/out \
+#     docker compose up --build
+#
+# Os extratores (extrator_checkov.py, extrator_infracost.py, extrator_llm.py)
+# e os geradores de análises: troque "../../training_set" por "../../test_set"
+# nos comandos "docker run" correspondentes acima.

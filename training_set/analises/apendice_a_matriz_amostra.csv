@@ -1,0 +1,31 @@
+ID do Caso;Arquivo Base;Complexidade;Regra Violada;Recursos Criados;Dependências;Custo Mensal ($)
+C001;compliant-simple-01;Simples;Nenhuma;Network, EC2(1);`network` -> `ec2` (subnet);9,268
+NC001;noncompliant-simple-01;Simples;Região diferente;-;-;9,268
+C002;compliant-simple-02;Simples;Nenhuma;Network, RDS(1);`network` -> `rds` (db subnet group);29,42
+NC002;noncompliant-simple-02;Simples;Tag `Time Responsável` vazia;-;-;29,42
+C003;compliant-simple-03;Simples;Nenhuma;Network, EC2(1) (HML, t-family);`network` -> `ec2`;9,268
+NC003;noncompliant-simple-03;Simples;Valor da Tag `Ambiente` inválido;-;-;9,268
+C004;compliant-simple-04;Simples;Nenhuma;Network, RDS(1) (HML, db.t);`network` -> `rds`;29,42
+NC004;noncompliant-simple-04;Simples;RDS fora da família `db.t`;-;-;254,26
+C005;compliant-simple-05;Simples;Nenhuma;Network, EC2(1);`network` -> `ec2`;17,59
+NC005;noncompliant-simple-05;Simples;Tag `Projeto` vazia;-;-;17,59
+C006;compliant-medium-01;Médio;Nenhuma;Network, EC2(2), RDS(1), S3;"`network` -> `ec2`,`rds`; `s3` é independente";47,01
+NC006;noncompliant-medium-01;Médio;Região diferente;-;-;50,47
+C007;compliant-medium-02;Médio;Nenhuma;Network, EC2(2) (HML t-family), RDS(1);Igual a C006;38,688
+NC007;noncompliant-medium-02;Médio;EC2 fora da família `t` (HML);-;-;100,3
+C008;compliant-medium-03;Médio;Nenhuma;Network, EC2(3), RDS(1), S3;Igual a C006;47,01
+NC008;noncompliant-medium-03;Médio;Tag `Ambiente` vazia;-;-;47,01
+C009;compliant-medium-04;Médio;Nenhuma;Network, EC2(2), RDS(2), S3;Igual a C006;38,688
+NC009;noncompliant-medium-04;Médio;Valor da Tag `Ambiente` inválido;-;-;38,688
+C010;compliant-medium-05;Médio;Nenhuma;Network, EC2(2), RDS(1), ELBv2;`elbv2` depende de subnets;63,435
+NC010;noncompliant-medium-05;Médio;Tag `Time Responsável` vazia;-;-;63,435
+C011;compliant-complex-01;Complexo;Nenhuma;Network, EC2(4), RDS(2), S3, ELBv2, EKS;Vários módulos com dependências em `network`;136,435
+NC011;noncompliant-complex-01;Complexo;Região diferente;-;-;157,152
+C012;compliant-complex-02;Complexo;Nenhuma;Network, EC2(5 HML t), RDS(2), S3, ELBv2, EKS;Igual a C011;128,113
+NC012;noncompliant-complex-02;Complexo;EC2 fora da família `t` (HML);-;-;189,725
+C013;compliant-complex-03;Complexo;Nenhuma;Network, EC2(6), RDS(3), S3, ELBv2, EKS;Igual a C011;136,435
+NC013;noncompliant-complex-03;Complexo;Tag `Projeto` vazia;-;-;136,435
+C014;compliant-complex-04;Complexo;Nenhuma;Network, EC2(8 HML t), RDS(2), S3, ELBv2, EKS;Igual a C011;128,113
+NC014;noncompliant-complex-04;Complexo;Valor da Tag `Ambiente` inválido;-;-;128,113
+C015;compliant-complex-05;Complexo;Nenhuma;Network, EC2(10), RDS(3), S3, ELBv2, EKS;Igual a C011;136,435
+NC015;noncompliant-complex-05;Complexo;RDS fora da família `db.t`;-;-;361,275
