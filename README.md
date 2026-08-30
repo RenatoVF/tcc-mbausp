@@ -61,4 +61,15 @@ Ver `common/comandos.txt` para todos os comandos, na ordem: geração dos planos
 
 ## 6. Amostragem do test_set
 
-Critérios em definição — ver discussão em andamento. Assim que fechados, os 90 pares serão gerados a partir daqui, respeitando a tag `training-set-frozen-v1` (nenhum ajuste de prompt/regras a partir dos resultados deste conjunto).
+Definida em resposta ao feedback do orientador sobre os resultados preliminares: aumentar substancialmente o número de casos automatizados frente aos 30 originais e incluir cenários com violações múltiplas simultâneas (o experimento original testava exatamente uma violação por caso, o que é pouco realista). Os 30 planos (15 pares) de avaliação humana são mantidos nesse tamanho por causa do esforço dos especialistas revisores.
+
+**Total: 90 pares (180 planos)**, divididos em:
+
+- **75 pares de violação única** — 5 regras (`CKV_FINOPS_01` a `04B`) × 3 níveis de complexidade (Simples/Médio/Complexo) × 5 repetições cada. Dentro dos 15 pares de `CKV_FINOPS_01` (tags), a violação é rotacionada entre os 3 tipos possíveis (`Projeto` vazio, `Time Responsável` vazio, `Ambiente` vazio/ausente), para preservar a diversidade que já existia nos 30 casos originais.
+- **15 pares de violação múltipla** (~17% do total) — 5 por nível de complexidade, cada um combinando 2 a 3 regras violadas simultaneamente, em combinações variadas (não repetidas). O objetivo é testar se cada método consegue sinalizar corretamente **todas** as regras violadas num mesmo caso, e não só acertar o veredito agregado do plano — o que conecta diretamente com a necessidade de ground truth por regra (também levantado pelo orientador).
+
+**Seleção dos 15 pares (30 planos) para a revisão humana**: amostragem estratificada com seed fixa e documentada (mesmo padrão reprodutível já usado em `common/revisao_humana/gerar_mapa_ids.py`) — 5 pares por nível de complexidade, sendo em cada nível 4 pares de violação única (priorizando cobrir o maior número possível de regras distintas) e 1 par de violação múltipla. Isso mantém, na amostra que os humanos avaliam, uma proporção de casos multi-violação (~20%) próxima da proporção no conjunto completo (~17%).
+
+A tabela de mapeamento completa (arquivo, regras violadas, complexidade) será gerada junto com os planos, no mesmo formato de `training_set/analises/amostras.md`. O ID público entregue aos revisores continua embaralhado e sem qualquer relação com conformidade, exatamente como no fluxo já existente para o `training_set`.
+
+Geração ainda pendente de execução — nenhum plano do `test_set` foi criado até o momento. Quando for gerado, deve respeitar a tag `training-set-frozen-v1` (nenhum ajuste de prompt/regras a partir da observação dos resultados deste conjunto).
