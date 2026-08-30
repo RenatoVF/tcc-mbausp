@@ -10,7 +10,7 @@ Comparar o desempenho de três abordagens de validação de alterações de infr
 2. **Ferramenta estática** (Checkov, com regras customizadas)
 3. **Avaliadores humanos**
 
-O experimento segue um desenho A/B: para cada cenário de infraestrutura são gerados dois planos Terraform gêmeos — um **conforme** e um **não conforme** — variando apenas uma violação controlada.
+O experimento segue um desenho A/B: para cada cenário de infraestrutura são gerados dois planos Terraform gêmeos — um **conforme** e um **não conforme** — variando uma ou mais violações controladas.
 
 ## 2. Regras de FinOps avaliadas
 
@@ -24,15 +24,21 @@ O experimento segue um desenho A/B: para cada cenário de infraestrutura são ge
 
 Definições formais em `common/checkov/rules/*.yaml`, replicadas em linguagem natural no prompt de sistema em `common/llm/avaliador_llm.py`.
 
-## 3. Estrutura do repositório
+## 3. Disciplina dev-set / holdout
+
+O `training_set` (os 30 casos originais) é tratado exclusivamente como **conjunto de desenvolvimento**: foi usado para refinar o prompt da LLM e as regras do Checkov, e portanto **não pode** ser usado para reportar os resultados principais do TCC — esses números devem vir do `test_set`.
+
+O estado do prompt, das regras do Checkov e da lógica de extração usado durante esse refino está marcado na tag git `training-set-frozen-v1`. Qualquer alteração de prompt, regra ou lógica de extração feita depois dessa tag conta como uma nova versão do protocolo, e um `test_set` só pode ser gerado (e seus resultados só podem ser reportados como principais) depois que essa nova versão também estiver congelada — nunca ajustar o protocolo observando o desempenho no próprio `test_set`.
+
+## 4. Estrutura do repositório
 
 O repositório é dividido em três áreas:
 
 ```
 Dataset/
 ├── common/          # código e infraestrutura reutilizável (não muda entre datasets)
-├── training_set/    # os 30 casos originais (15 pares) - usados para refinar prompt da LLM e regras do Checkov
-└── test_set/        # os novos 180 planos (90 pares) - dataset de avaliação real, do qual 15 pares (30 planos) vão para revisão humana
+├── training_set/    # os 30 casos originais (15 pares) - conjunto de DESENVOLVIMENTO, não reportar como resultado principal
+└── test_set/        # os novos 180 planos (90 pares) - HOLDOUT oficial, fonte dos resultados principais do TCC
 ```
 
 **`common/`** — todo o código, infraestrutura como código e scripts de pipeline, independentes de qual conjunto de dados está sendo processado:
@@ -47,12 +53,12 @@ Dataset/
 
 **`training_set/`** e **`test_set/`** — mesma forma interna, contendo apenas **dados** (nenhum script): os planos gerados (`sadcloud/tfvars/`), as saídas brutas de cada ferramenta (`checkov/out/`, `infracost/out/`, `llm/out/`), as análises consolidadas (`analises/`) e o material de revisão humana (`revisao_humana/`).
 
-O `training_set/` contém os 30 casos originais, que serviram para refinar o prompt da LLM e as regras do Checkov antes da coleta de dados real. O `test_set/` está com o esqueleto pronto (pastas vazias, com `.gitkeep`) aguardando a geração dos 180 novos planos (90 pares conforme/não-conforme), dos quais 15 pares (30 planos) serão selecionados para a etapa de revisão humana.
+O `test_set/` está com o esqueleto pronto (pastas vazias, com `.gitkeep`) aguardando a geração dos 180 novos planos (90 pares conforme/não-conforme), dos quais 15 pares (30 planos) serão selecionados para a etapa de revisão humana.
 
-## 4. Pipeline de execução
+## 5. Pipeline de execução
 
 Ver `common/comandos.txt` para todos os comandos, na ordem: geração dos planos (Sadcloud) → estimativa de custo (Infracost) / análise estática (Checkov) / análise via LLM (podem rodar em paralelo) → revisão humana → geração dos apêndices e dados do TCC. O arquivo já traz a variante de comando para rodar contra o `test_set` em vez do `training_set` (variáveis `TFVARS_DIR` / `OUT_DIR`, ou trocar o caminho passado aos scripts de revisão humana e aos geradores de análise).
 
-## 5. Amostragem do test_set
+## 6. Amostragem do test_set
 
-Ainda a definir (em conversa com o orientador): os critérios de geração dos 90 pares e o critério de seleção dos 15 pares que irão para avaliação humana.
+Critérios em definição — ver discussão em andamento. Assim que fechados, os 90 pares serão gerados a partir daqui, respeitando a tag `training-set-frozen-v1` (nenhum ajuste de prompt/regras a partir dos resultados deste conjunto).
