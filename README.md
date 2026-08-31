@@ -28,7 +28,9 @@ Definições formais em `common/checkov/rules/*.yaml`, replicadas em linguagem n
 
 O `training_set` (os 30 casos originais) é tratado exclusivamente como **conjunto de desenvolvimento**: foi usado para refinar o prompt da LLM e as regras do Checkov, e portanto **não pode** ser usado para reportar os resultados principais do TCC — esses números devem vir do `test_set`.
 
-O estado do prompt, das regras do Checkov e da lógica de extração usado durante esse refino está marcado na tag git `training-set-frozen-v1`. Qualquer alteração de prompt, regra ou lógica de extração feita depois dessa tag conta como uma nova versão do protocolo, e um `test_set` só pode ser gerado (e seus resultados só podem ser reportados como principais) depois que essa nova versão também estiver congelada — nunca ajustar o protocolo observando o desempenho no próprio `test_set`.
+O estado do prompt, das regras do Checkov e da lógica de extração usado durante o refino inicial está marcado na tag git `training-set-frozen-v1`. Esse refino continuou depois dessa tag (ajustes na semântica de N/A, correção de uma assimetria de informação entre LLM e Checkov, reforço de minimização de dados no payload da LLM, entre outros — ver `common/analises/` e `common/llm/*.md` para o detalhamento de cada um), sempre sobre o `training_set`, nunca sobre o `test_set`. Esse segundo ciclo de refino está congelado na tag `protocol-frozen-v2`, que é o estado atual do protocolo.
+
+Qualquer alteração de prompt, regra ou lógica de extração feita depois de `protocol-frozen-v2` conta como uma nova versão do protocolo, e um `test_set` só pode ser gerado (e seus resultados só podem ser reportados como principais) depois que essa nova versão também estiver congelada em uma nova tag — nunca ajustar o protocolo observando o desempenho no próprio `test_set`.
 
 ## 4. Estrutura do repositório
 
@@ -72,4 +74,4 @@ Definida em resposta ao feedback do orientador sobre os resultados preliminares:
 
 A tabela de mapeamento completa (arquivo, regras violadas, complexidade) será gerada junto com os planos, no mesmo formato de `training_set/analises/amostras.md`. O ID público entregue aos revisores continua embaralhado e sem qualquer relação com conformidade, exatamente como no fluxo já existente para o `training_set`.
 
-Geração ainda pendente de execução — nenhum plano do `test_set` foi criado até o momento. Quando for gerado, deve respeitar a tag `training-set-frozen-v1` (nenhum ajuste de prompt/regras a partir da observação dos resultados deste conjunto).
+Geração ainda pendente de execução — nenhum plano do `test_set` foi criado até o momento. Quando for gerado, deve respeitar a tag `protocol-frozen-v2` (nenhum ajuste de prompt/regras a partir da observação dos resultados deste conjunto).
