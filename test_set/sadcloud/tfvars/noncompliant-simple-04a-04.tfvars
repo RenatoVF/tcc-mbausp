@@ -1,0 +1,14 @@
+# Par de compliant-simple-04a-04: violacao = EC2 fora da familia 't' em HML
+aws_region = "us-east-1"
+required_tags = {
+  Projeto = "TCC"
+  "Time Responsável" = "Time 19"
+  Ambiente = "HML"
+}
+
+enable_network = true
+enable_ec2 = true
+enable_rds = false
+enable_s3 = false
+ec2_count = 1
+instance_type = "m5.large"
