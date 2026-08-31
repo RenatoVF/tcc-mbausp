@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "FAILED",
+    "CKV_FINOPS_02": "FAILED",
+    "CKV_FINOPS_03": "PASSED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": "CKV_FINOPS_01 falhou porque a tag 'Ambiente' está vazia em todos os recursos aplicáveis ('aws_instance', 'aws_db_instance', 'aws_s3_bucket'). CKV_FINOPS_02 falhou porque a tag 'Ambiente' está vazia em todos os recursos aplicáveis, o que implica que nenhum deles tem um valor válido ('PRD' ou 'HML'). CKV_FINOPS_03 passou porque todos os recursos aplicáveis estão na região 'us-east-1'. CKV_FINOPS_04A passou porque não há instâncias 'aws_instance' com 'Ambiente' igual a 'HML' e 'instance_type' que não comece com 't'. CKV_FINOPS_04B passou porque não há instâncias 'aws_db_instance' com 'Ambiente' igual a 'HML' e 'instance_class' que não comece com 'db.t'.",
+    "arquivo_analisado": "noncompliant-medium-03.json",
+    "_modelo_resolvido": "gpt-4o-2024-08-06"
+}

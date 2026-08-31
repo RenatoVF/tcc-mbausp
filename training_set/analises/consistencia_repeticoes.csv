@@ -1,0 +1,7 @@
+Regra;Casos avaliados;Casos 100% consistentes entre repeticoes;Taxa de consistencia
+CKV_FINOPS_01;30;30;1.000
+CKV_FINOPS_02;30;29;0.967
+CKV_FINOPS_03;30;29;0.967
+CKV_FINOPS_04A;30;30;1.000
+CKV_FINOPS_04B;30;30;1.000
+TODAS;150;148;0.987

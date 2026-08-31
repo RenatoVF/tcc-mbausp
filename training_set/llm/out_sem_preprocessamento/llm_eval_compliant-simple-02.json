@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "N/A",
+    "CKV_FINOPS_04A": "N/A",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": "CKV_FINOPS_01: Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem as tags 'Projeto', 'Time Responsável' e 'Ambiente' preenchidas. CKV_FINOPS_02: O único recurso relevante ('aws_db_instance') possui a tag 'Ambiente' com valor 'PRD', que é válido. CKV_FINOPS_03: Não há recursos dos tipos aplicáveis ('aws_instance', 'aws_db_instance', 'aws_s3_bucket', 'aws_elb', 'aws_lb', 'aws_eks_cluster') para verificar a região. CKV_FINOPS_04A: Não há recursos do tipo 'aws_instance' no plano. CKV_FINOPS_04B: O recurso 'aws_db_instance' possui 'Ambiente' igual a 'PRD', e o 'instance_class' começa com 'db.t', portanto, está em conformidade.",
+    "arquivo_analisado": "compliant-simple-02.json",
+    "modo_preprocessamento": "sem_variaveis"
+}

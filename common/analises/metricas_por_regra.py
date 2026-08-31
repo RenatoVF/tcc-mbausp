@@ -31,6 +31,7 @@ REGRAS = ["CKV_FINOPS_01", "CKV_FINOPS_02", "CKV_FINOPS_03", "CKV_FINOPS_04A", "
 FONTES = {
     "matriz_resultados_checkov.csv": "Checkov",
     "matriz_resultados_llm.csv": "LLM",
+    "matriz_resultados_llm_sem_preprocessamento.csv": "LLM (sem pre-processamento)",
     "matriz_resultados_humanos.csv": "Humano",
 }
 

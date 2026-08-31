@@ -11,15 +11,50 @@ docker compose run --rm --entrypoint sh terraform -c "sh /scripts/run_show_all.s
 
 #infracost (a partir de common/infracost)
 docker compose run --rm --entrypoint sh infracost -c "sh /scripts/run_infracost_all.sh"
-docker run --rm -v ${PWD}:/app -v ${PWD}/../../training_set/analises:/analises -w /app python:3.12-slim python extrator_infracost.py
+docker run --rm \
+  -v ${PWD}:/app \
+  -v ${PWD}/../../training_set/infracost/out:/app/out \
+  -v ${PWD}/../../training_set/analises:/analises \
+  -w /app python:3.12-slim python extrator_infracost.py
 
 #checkov (a partir de common/checkov)
 docker compose run --rm checkov -c "sh /scripts/run_checkov_all.sh"
-docker run --rm -v ${PWD}:/app -v ${PWD}/../../training_set/analises:/analises -w /app python:3.12-slim python extrator_checkov.py
+docker run --rm \
+  -v ${PWD}:/app \
+  -v ${PWD}/../../training_set/checkov/out:/app/out \
+  -v ${PWD}/../../training_set/analises:/analises \
+  -w /app python:3.12-slim python extrator_checkov.py
 
 #llm (a partir de common/llm)
 docker compose up --build
-docker run --rm -v ${PWD}:/app -v ${PWD}/../../training_set/analises:/analises -w /app python:3.12-slim python extrator_llm.py
+docker run --rm \
+  -v ${PWD}:/app \
+  -v ${PWD}/../../training_set/llm/out:/app/out \
+  -v ${PWD}/../../training_set/analises:/analises \
+  -w /app python:3.12-slim python extrator_llm.py
+
+#llm - estudo de ablacao do pre-processamento (ver common/llm/ablacao_preprocessamento.md)
+OUT_DIR=../../training_set/llm/out_sem_preprocessamento PREPROCESSAMENTO=sem_variaveis \
+  docker compose up --build
+docker run --rm \
+  -v ${PWD}:/app \
+  -v ${PWD}/../../training_set/llm/out_sem_preprocessamento:/app/out \
+  -v ${PWD}/../../training_set/analises:/analises \
+  -w /app python:3.12-slim python extrator_llm.py ./out ../analises/matriz_resultados_llm_sem_preprocessamento.csv
+
+#llm - protocolo de repeticoes / consistencia (ver common/llm/consistencia_llm.md)
+# Repita o bloco abaixo 5 vezes, trocando N de 1 a 5 a cada rodada.
+# (a partir de common/llm)
+OUT_DIR=../../training_set/llm/out_repN \
+  docker compose up --build
+docker run --rm \
+  -v ${PWD}:/app \
+  -v ${PWD}/../../training_set/llm/out_repN:/app/out \
+  -v ${PWD}/../../training_set/analises:/analises \
+  -w /app python:3.12-slim python extrator_llm.py ./out ../analises/matriz_resultados_llm_repN.csv
+
+# depois das 5 rodadas (a partir de common/analises):
+python3 consistencia_repeticoes.py ../../training_set matriz_resultados_llm_rep1.csv matriz_resultados_llm_rep2.csv matriz_resultados_llm_rep3.csv matriz_resultados_llm_rep4.csv matriz_resultados_llm_rep5.csv
 
 #revisao_humana (a partir de common/revisao_humana)
 python3 gerar_mapa_ids.py ../../training_set
@@ -71,4 +106,13 @@ docker run --rm \
 #
 # Os extratores (extrator_checkov.py, extrator_infracost.py, extrator_llm.py)
 # e os geradores de análises: troque "../../training_set" por "../../test_set"
-# nos comandos "docker run" correspondentes acima.
+# nos comandos "docker run" correspondentes acima (agora cada extrator tem
+# duas ocorrências de "training_set" para trocar: o volume de /app/out e o
+# volume de /analises). Exemplo completo para o checkov:
+#
+#   (a partir de common/checkov)
+#   docker run --rm \
+#     -v ${PWD}:/app \
+#     -v ${PWD}/../../test_set/checkov/out:/app/out \
+#     -v ${PWD}/../../test_set/analises:/analises \
+#     -w /app python:3.12-slim python extrator_checkov.py

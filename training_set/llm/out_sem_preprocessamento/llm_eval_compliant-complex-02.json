@@ -1,0 +1,16 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "FAILED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem as tags 'Projeto', 'Time Responsável' e 'Ambiente' preenchidas.",
+        "CKV_FINOPS_02": "Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem a tag 'Ambiente' com valor 'HML', que é válido.",
+        "CKV_FINOPS_03": "A região não está explicitamente definida como 'us-east-1' devido à referência de variável 'var.aws_region' sem valor especificado.",
+        "CKV_FINOPS_04A": "O recurso 'aws_instance' possui 'Ambiente' igual a 'HML' e 'instance_type' começando com 't', portanto, está em conformidade.",
+        "CKV_FINOPS_04B": "O recurso 'aws_db_instance' possui 'Ambiente' igual a 'HML' e 'instance_class' começando com 'db.t', portanto, está em conformidade."
+    },
+    "arquivo_analisado": "compliant-complex-02.json",
+    "modo_preprocessamento": "sem_variaveis"
+}

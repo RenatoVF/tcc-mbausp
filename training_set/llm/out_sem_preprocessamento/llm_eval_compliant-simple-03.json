@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "N/A",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "N/A",
+    "justificativa": "CKV_FINOPS_01: Todos os recursos aplicáveis ('aws_instance') possuem as tags obrigatórias preenchidas. CKV_FINOPS_02: O recurso 'aws_instance' possui a tag 'Ambiente' com valor 'HML', que é válido. CKV_FINOPS_03: Não há recursos dos tipos aplicáveis ('aws_instance', 'aws_db_instance', 'aws_s3_bucket', 'aws_elb', 'aws_lb', 'aws_eks_cluster') para avaliar a região. CKV_FINOPS_04A: O recurso 'aws_instance' com 'Ambiente' igual a 'HML' possui 'instance_type' começando com 't', que é permitido. CKV_FINOPS_04B: Não há recursos do tipo 'aws_db_instance' para avaliar.",
+    "arquivo_analisado": "compliant-simple-03.json",
+    "modo_preprocessamento": "sem_variaveis"
+}

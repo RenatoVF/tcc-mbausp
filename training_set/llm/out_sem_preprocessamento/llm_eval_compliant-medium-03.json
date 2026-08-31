@@ -1,0 +1,16 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "N/A",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem as tags 'Projeto', 'Time Responsável' e 'Ambiente' preenchidas.",
+        "CKV_FINOPS_02": "Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem a tag 'Ambiente' com valores válidos ('PRD' ou 'HML').",
+        "CKV_FINOPS_03": "Não há recursos dos tipos aplicáveis ('aws_instance', 'aws_db_instance', 'aws_s3_bucket', 'aws_elb', 'aws_lb', 'aws_eks_cluster') com região especificada.",
+        "CKV_FINOPS_04A": "O recurso 'aws_instance' possui a tag 'Ambiente' igual a 'PRD', portanto, não há instâncias 'HML' com 'instance_type' inadequado.",
+        "CKV_FINOPS_04B": "O recurso 'aws_db_instance' possui a tag 'Ambiente' igual a 'PRD', portanto, não há instâncias 'HML' com 'instance_class' inadequado."
+    },
+    "arquivo_analisado": "compliant-medium-03.json",
+    "modo_preprocessamento": "sem_variaveis"
+}

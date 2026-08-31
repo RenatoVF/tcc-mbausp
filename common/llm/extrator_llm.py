@@ -1,10 +1,30 @@
 import os
+import sys
 import json
 import csv
 
 # 1. Definição dos caminhos e regras
-diretorio_llm = './out'
-arquivo_saida = '../analises/matriz_resultados_llm.csv'
+# Uso padrão (sem argumentos): python extrator_llm.py -> lê ./out e grava
+# em ../analises/matriz_resultados_llm.csv, como sempre.
+# Uso com argumentos (usado no estudo de ablação do pré-processamento):
+#   python extrator_llm.py <pasta_de_entrada> <arquivo_csv_de_saida>
+diretorio_llm = sys.argv[1] if len(sys.argv) > 1 else './out'
+arquivo_saida = sys.argv[2] if len(sys.argv) > 2 else '../analises/matriz_resultados_llm.csv'
+
+# Checagem de integridade: avaliador_llm.py so grava
+# 'metadata_execucao.json' quando termina de processar todos os planos. Se
+# esse arquivo nao existir, a execucao foi interrompida antes do fim (por
+# exemplo, "docker compose up --build -d" seguido do extrator cedo demais,
+# antes do container terminar as chamadas a API) e a matriz abaixo
+# provavelmente esta incompleta.
+if not os.path.exists(os.path.join(diretorio_llm, "metadata_execucao.json")):
+    print("=" * 70)
+    print(f"[AVISO] metadata_execucao.json nao encontrado em '{diretorio_llm}'.")
+    print("Isso normalmente indica que avaliador_llm.py foi interrompido antes")
+    print("de terminar (ex.: rodou com 'docker compose up --build -d' e o")
+    print("extrator foi chamado antes do container terminar). Confira o numero")
+    print("de casos processados abaixo antes de usar esta matriz nas analises.")
+    print("=" * 70)
 
 regras_finops = [
     'CKV_FINOPS_01', 
@@ -17,8 +37,11 @@ regras_finops = [
 dados_matriz = []
 
 # 2. Iterar sobre todos os arquivos JSON na pasta de saída do LLM
+# ('metadata_execucao.json' tambem termina em .json, mas nao e um caso
+# avaliado - e o resumo da execucao gravado pelo avaliador_llm.py - entao
+# precisa ser explicitamente ignorado aqui.
 for arquivo in sorted(os.listdir(diretorio_llm)):
-    if arquivo.endswith('.json'):
+    if arquivo.endswith('.json') and arquivo != 'metadata_execucao.json':
         caminho_arquivo = os.path.join(diretorio_llm, arquivo)
         
         with open(caminho_arquivo, 'r', encoding='utf-8') as f:

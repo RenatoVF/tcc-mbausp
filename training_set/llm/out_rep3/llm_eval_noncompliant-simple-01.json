@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "FAILED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "N/A",
+    "justificativa": "CKV_FINOPS_01: Todos os recursos dos tipos relevantes possuem as tags obrigatórias preenchidas. CKV_FINOPS_02: Todos os recursos com a tag 'Ambiente' têm valores válidos ('PRD'). CKV_FINOPS_03: A instância 'aws_instance' está na região 'us-west-2', violando a política de uso exclusivo de 'us-east-1'. CKV_FINOPS_04A: A instância 'aws_instance' não está em 'HML' com um tipo de instância que não começa com 't'. CKV_FINOPS_04B: Não há recursos do tipo 'aws_db_instance' no plano.",
+    "arquivo_analisado": "noncompliant-simple-01.json",
+    "_modelo_resolvido": "gpt-4o-2024-08-06"
+}

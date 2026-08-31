@@ -4,12 +4,6 @@
     "CKV_FINOPS_03": "PASSED",
     "CKV_FINOPS_04A": "PASSED",
     "CKV_FINOPS_04B": "PASSED",
-    "justificativa": {
-        "CKV_FINOPS_01": "Os recursos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem a tag 'Ambiente' vazia, violando a política de tags obrigatórias.",
-        "CKV_FINOPS_02": "A tag 'Ambiente' está vazia nos recursos principais, violando a política de valores permitidos ('PRD' ou 'HML').",
-        "CKV_FINOPS_03": "Todos os recursos estão configurados para serem provisionados na região 'us-east-1', conforme esperado.",
-        "CKV_FINOPS_04A": "Não há instâncias EC2 com a tag 'Ambiente' definida como 'HML', portanto, não há violação da política de tipo de instância.",
-        "CKV_FINOPS_04B": "Não há instâncias RDS com a tag 'Ambiente' definida como 'HML', portanto, não há violação da política de tipo de instância."
-    },
+    "justificativa": "CKV_FINOPS_01 falhou porque a tag 'Ambiente' está vazia em todos os recursos aplicáveis ('aws_instance', 'aws_db_instance', 'aws_s3_bucket'). CKV_FINOPS_02 falhou porque a tag 'Ambiente' está vazia em todos os recursos aplicáveis, o que implica que nenhum deles tem um valor válido ('PRD' ou 'HML'). CKV_FINOPS_03 passou porque todos os recursos aplicáveis estão na região 'us-east-1'. CKV_FINOPS_04A passou porque não há instâncias 'aws_instance' com 'Ambiente' igual a 'HML' e 'instance_type' que não comece com 't'. CKV_FINOPS_04B passou porque não há instâncias 'aws_db_instance' com 'Ambiente' igual a 'HML' e 'instance_class' que não comece com 'db.t'.",
     "arquivo_analisado": "noncompliant-medium-03.json"
 }

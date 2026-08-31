@@ -1,0 +1,11 @@
+{
+    "modelo_solicitado": "gpt-4o",
+    "modelos_resolvidos": [
+        "gpt-4o-2024-08-06"
+    ],
+    "temperatura": 0,
+    "sdk_openai_versao": "1.13.3",
+    "prompt_sistema_sha256": "4be99d2a07cb7f9522afad89856aa298a8eab147a5057f4561da8c6ebfea7962",
+    "timestamp_inicio_utc": "2026-08-31T01:26:24.958942+00:00",
+    "timestamp_fim_utc": "2026-08-31T01:28:41.728966+00:00"
+}

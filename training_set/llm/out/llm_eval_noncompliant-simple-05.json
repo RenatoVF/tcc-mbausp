@@ -3,13 +3,7 @@
     "CKV_FINOPS_02": "PASSED",
     "CKV_FINOPS_03": "PASSED",
     "CKV_FINOPS_04A": "PASSED",
-    "CKV_FINOPS_04B": "PASSED",
-    "justificativa": {
-        "CKV_FINOPS_01": "Falha porque o recurso 'aws_instance' não possui a tag 'Projeto' preenchida.",
-        "CKV_FINOPS_02": "Passou porque todos os recursos principais têm a tag 'Ambiente' com valor 'PRD', que é permitido.",
-        "CKV_FINOPS_03": "Passou porque todos os recursos estão configurados para a região 'us-east-1'.",
-        "CKV_FINOPS_04A": "Passou porque a instância EC2 está na família 't' e o ambiente é 'PRD'.",
-        "CKV_FINOPS_04B": "Passou porque não há instâncias RDS configuradas, portanto, a regra não se aplica."
-    },
+    "CKV_FINOPS_04B": "N/A",
+    "justificativa": "CKV_FINOPS_01: FAILED porque a 'aws_instance' não possui a tag 'Projeto' preenchida. CKV_FINOPS_02: PASSED porque a tag 'Ambiente' da 'aws_instance' está corretamente preenchida como 'PRD'. CKV_FINOPS_03: PASSED porque todos os recursos aplicáveis estão na região 'us-east-1'. CKV_FINOPS_04A: PASSED porque a única 'aws_instance' tem 'Ambiente' diferente de 'HML'. CKV_FINOPS_04B: N/A porque não há recursos do tipo 'aws_db_instance'.",
     "arquivo_analisado": "noncompliant-simple-05.json"
 }

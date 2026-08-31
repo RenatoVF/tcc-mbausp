@@ -1,0 +1,16 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "FAILED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem as tags 'Projeto', 'Time Responsável' e 'Ambiente' preenchidas.",
+        "CKV_FINOPS_02": "Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem a tag 'Ambiente' com valor 'PRD' ou 'HML'.",
+        "CKV_FINOPS_03": "A região não pôde ser verificada devido à referência de variável 'var.aws_region' sem valor definido.",
+        "CKV_FINOPS_04A": "A instância 'aws_instance' com 'Ambiente' igual a 'HML' possui 'instance_type' começando com 't'.",
+        "CKV_FINOPS_04B": "A instância 'aws_db_instance' com 'Ambiente' igual a 'HML' possui 'instance_class' começando com 'db.t'."
+    },
+    "arquivo_analisado": "compliant-complex-05.json",
+    "modo_preprocessamento": "sem_variaveis"
+}

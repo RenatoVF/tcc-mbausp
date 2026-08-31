@@ -1,0 +1,3 @@
+Regra;ID do Caso;Valores nas repeticoes (na ordem informada);Valor majoritario;Frequencia do majoritario
+CKV_FINOPS_02;noncompliant-simple-04;FAILED | FAILED | FAILED | FAILED | PASSED;FAILED;4/5
+CKV_FINOPS_03;compliant-simple-03;PASSED | N/A | PASSED | PASSED | PASSED;PASSED;4/5

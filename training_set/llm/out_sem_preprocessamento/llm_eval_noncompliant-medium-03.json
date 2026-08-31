@@ -1,0 +1,16 @@
+{
+    "CKV_FINOPS_01": "FAILED",
+    "CKV_FINOPS_02": "N/A",
+    "CKV_FINOPS_03": "N/A",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": {
+        "CKV_FINOPS_01": "FAILED porque pelo menos um recurso ('aws_instance', 'aws_db_instance', 'aws_s3_bucket') tem a tag 'Ambiente' ausente ou vazia.",
+        "CKV_FINOPS_02": "N/A porque nenhum recurso tem a tag 'Ambiente' preenchida.",
+        "CKV_FINOPS_03": "N/A porque não há recursos dos tipos aplicáveis ('aws_instance', 'aws_db_instance', 'aws_s3_bucket', 'aws_elb', 'aws_lb', 'aws_eks_cluster') com região especificada.",
+        "CKV_FINOPS_04A": "PASSED porque não há 'aws_instance' com 'Ambiente' igual a 'HML' e 'instance_type' que não comece com 't'.",
+        "CKV_FINOPS_04B": "PASSED porque não há 'aws_db_instance' com 'Ambiente' igual a 'HML' e 'instance_class' que não comece com 'db.t'."
+    },
+    "arquivo_analisado": "noncompliant-medium-03.json",
+    "modo_preprocessamento": "sem_variaveis"
+}
