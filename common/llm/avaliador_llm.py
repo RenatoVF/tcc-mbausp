@@ -66,10 +66,21 @@ def otimizar_plano_terraform(plano_json_str):
                 
             after = res.get("change", {}).get("after", {})
             if isinstance(after, dict):
+                # Minimizacao de dados (ajuste feito apos conversa com o orientador):
+                # so repassamos as 3 tags que alguma das 5 regras de FinOps
+                # de fato usa (Projeto, Time Responsavel, Ambiente) - outras
+                # tags eventualmente presentes no recurso (ex.: 'Name') nao
+                # sao relevantes para nenhuma regra e nao sao enviadas a API.
+                tags_brutas = after.get("tags") or {}
+                tags_relevantes = {
+                    chave: tags_brutas.get(chave)
+                    for chave in ("Projeto", "Time Responsável", "Ambiente")
+                    if chave in tags_brutas
+                }
                 payload_otimizado["recursos_modificados"].append({
                     "tipo": res.get("type"),
                     "nome": res.get("name"),
-                    "tags": after.get("tags"),
+                    "tags": tags_relevantes,
                     "instance_type": after.get("instance_type"),
                     "instance_class": after.get("instance_class"),
                     "region": after.get("region")

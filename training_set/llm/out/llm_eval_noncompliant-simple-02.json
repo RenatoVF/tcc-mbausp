@@ -1,9 +1,10 @@
 {
-    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_01": "FAILED",
     "CKV_FINOPS_02": "PASSED",
     "CKV_FINOPS_03": "PASSED",
     "CKV_FINOPS_04A": "N/A",
     "CKV_FINOPS_04B": "PASSED",
-    "justificativa": "CKV_FINOPS_01: Todos os recursos dos tipos relevantes possuem as tags obrigatórias preenchidas. CKV_FINOPS_02: Todos os recursos com a tag 'Ambiente' têm valores válidos ('PRD' ou 'HML'). CKV_FINOPS_03: Todos os recursos aplicáveis estão na região 'us-east-1'. CKV_FINOPS_04A: Não há recursos do tipo 'aws_instance'. CKV_FINOPS_04B: O recurso 'aws_db_instance' com 'Ambiente' igual a 'PRD' tem 'instance_class' começando com 'db.t'.",
-    "arquivo_analisado": "noncompliant-simple-02.json"
+    "justificativa": "CKV_FINOPS_01 falhou porque o recurso 'aws_db_instance' tem a tag 'Time Responsável' vazia. CKV_FINOPS_02 passou porque todos os recursos aplicáveis têm a tag 'Ambiente' com valores válidos ('PRD'). CKV_FINOPS_03 passou porque todos os recursos aplicáveis estão na região 'us-east-1'. CKV_FINOPS_04A não é aplicável porque não há recursos do tipo 'aws_instance'. CKV_FINOPS_04B passou porque o recurso 'aws_db_instance' com 'Ambiente' igual a 'PRD' tem 'instance_class' começando com 'db.t'.",
+    "arquivo_analisado": "noncompliant-simple-02.json",
+    "_modelo_resolvido": "gpt-4o-2024-08-06"
 }

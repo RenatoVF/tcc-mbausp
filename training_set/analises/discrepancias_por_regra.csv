@@ -1,5 +1,4 @@
 Avaliador;Regra;ID do Caso;Ground Truth;Resultado Avaliador;Tipo
-LLM;CKV_FINOPS_02;noncompliant-simple-04;PASSED;FAILED;Falso Positivo (avaliador reprovou indevidamente)
 LLM (sem pre-processamento);CKV_FINOPS_01;noncompliant-simple-02;FAILED;PASSED;Falso Negativo (avaliador aprovou indevidamente)
 LLM (sem pre-processamento);CKV_FINOPS_02;noncompliant-complex-05;PASSED;FAILED;Falso Positivo (avaliador reprovou indevidamente)
 LLM (sem pre-processamento);CKV_FINOPS_02;noncompliant-medium-03;FAILED;N/A;Divergencia de aplicabilidade (N/A)
