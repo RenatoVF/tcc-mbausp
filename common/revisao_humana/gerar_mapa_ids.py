@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """
-Gera o mapeamento privado ID publico (1..N) <-> caso original, com ordem
-embaralhada (para nao correlacionar o numero do ID com conformidade,
-complexidade ou posicao original).
+Gera, para CADA avaliador humano (R1, R2, R3, ...), um mapeamento privado
+INDEPENDENTE de ID publico (1..N) <-> caso original.
+
+Ajuste (ponto 8 da resposta do orientador, 2026-08-31): cada avaliador deve
+receber uma ordem diferente dos planos, para reduzir efeitos de aprendizado/
+fadiga e evitar que avaliadores comparem anotacoes por numero de plano. Por
+isso este script nao gera mais um unico mapa_ids.csv compartilhado - gera um
+mapa_ids.csv por avaliador, cada um com seu proprio embaralhamento (seed
+propria, derivada deterministicamente de SEED_BASE + indice do avaliador,
+documentada abaixo para reprodutibilidade).
 
 Script comum: opera sobre QUALQUER conjunto (training_set ou test_set),
 indicado como argumento de linha de comando.
@@ -14,15 +21,30 @@ Exemplos (rodando de dentro de common/revisao_humana/):
     python3 gerar_mapa_ids.py ../../training_set
     python3 gerar_mapa_ids.py ../../test_set
 
-Le a caracterizacao dos casos em <set>/analises/amostras.md (fonte unica de
-verdade) e escreve:
-  - <set>/revisao_humana/privada/mapa_ids.csv  (gabarito - NUNCA vai para o zip publico)
-  - o esqueleto de pastas de <set>/revisao_humana/publica e /privada
+Fonte dos casos (nesta ordem de preferencia):
+  1. <set>/analises/selecao_revisao_humana.md - formato em PARES (usado pelo
+     test_set: 15 pares = 30 planos selecionados para revisao humana dentre
+     os 90 pares do holdout). Quando presente, os "Recursos" de cada par sao
+     enriquecidos via join com <set>/analises/amostras.md (mesmo par de
+     arquivos compliant/non-compliant).
+  2. <set>/analises/amostras.md - formato em LINHA POR ARQUIVO (usado pelo
+     training_set original: 30 casos, IDs C0xx/NC0xx). Mantido como fallback
+     para nao quebrar o fluxo antigo.
 
-Reprodutibilidade: usa uma seed fixa (RANDOM_SEED) para que o embaralhamento
-possa ser regerado de forma identica se necessario. Se o dataset tiver um
-numero de casos diferente de 30 (ex.: os 15 pares = 30 planos do test_set),
-o script funciona igual - so avisa se nao achar nenhuma linha valida.
+Escreve, para cada avaliador em REVISORES:
+  - <set>/revisao_humana/privada/revisores/<codigo>/mapa_ids.csv (gabarito
+    daquele avaliador - NUNCA vai para o zip publico nem para o git, ver
+    .gitignore)
+  - o esqueleto de pastas <set>/revisao_humana/publica/<codigo>/planos
+
+IMPORTANTE (privacidade/anonimato dos avaliadores, pedido explicito do
+autor): este script e todo o pipeline de revisao humana identificam os
+avaliadores SOMENTE pelos codigos R1/R2/R3 em qualquer artefato que possa
+ir para o repositorio git. O nome real de cada avaliador (quando existir)
+fica exclusivamente em <set>/revisao_humana/privada/mapa_revisores.csv, que
+e a UNICA excecao versionada nessa pasta privada (como template vazio) -
+qualquer preenchimento com nome real deve ser feito localmente e nunca
+commitado (ver .gitignore).
 """
 import csv
 import random
@@ -30,11 +52,19 @@ import re
 import sys
 from pathlib import Path
 
-RANDOM_SEED = 20260826  # fixo para reprodutibilidade
+# Seed base para o embaralhamento por avaliador. A seed real de cada
+# avaliador e SEED_BASE + indice (0, 1, 2, ...) na lista REVISORES, para que
+# o mapeamento de qualquer avaliador possa ser regerado de forma identica
+# se necessario, sem precisar guardar N seeds soltas.
+SEED_BASE = 20260826
+
+# Codigos anonimos dos avaliadores. Ajuste esta lista se o numero de
+# avaliadores mudar - o restante do script se adapta automaticamente.
+REVISORES = ["R1", "R2", "R3"]
 
 
-def parse_amostras(md_path: Path):
-    """Extrai as linhas da tabela markdown de analises/amostras.md."""
+def parse_amostras_por_arquivo(md_path: Path):
+    """Formato antigo (training_set): uma linha por arquivo, IDs C0xx/NC0xx."""
     casos = []
     linha_re = re.compile(
         r"^\|\s*(N?C\d{3})\s*\|\s*([\w-]+)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*$"
@@ -57,6 +87,88 @@ def parse_amostras(md_path: Path):
     return casos
 
 
+def parse_amostras_recursos_por_par(md_path: Path):
+    """Le analises/amostras.md (formato em pares do test_set) e devolve um
+    dict {(arquivo_compliant, arquivo_noncompliant): recursos} para
+    enriquecer a selecao com a coluna 'Recursos'."""
+    recursos_por_par = {}
+    if not md_path.exists():
+        return recursos_por_par
+    linha_re = re.compile(
+        r"^\|\s*([\w-]+)\s*\|\s*([\w-]+)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]*?)\s*\|\s*$"
+    )
+    with md_path.open(encoding="utf-8") as f:
+        for linha in f:
+            m = linha_re.match(linha.strip())
+            if not m:
+                continue
+            compliant, noncompliant, _complexidade, _regras, recursos, _violacao = m.groups()
+            if compliant.lower() in ("arquivo compliant",) or set(compliant) <= {"-", ":"}:
+                continue
+            recursos_por_par[(compliant, noncompliant)] = recursos
+    return recursos_por_par
+
+
+def parse_selecao_revisao_humana(md_path: Path, amostras_md_path: Path):
+    """Formato novo (test_set): selecao_revisao_humana.md, em pares.
+    Devolve uma lista com 2 casos (compliant + noncompliant) por par."""
+    recursos_por_par = parse_amostras_recursos_por_par(amostras_md_path)
+
+    casos = []
+    linha_re = re.compile(
+        r"^\|\s*([\w-]+)\s*\|\s*([\w-]+)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*([^\|]+?)\s*\|\s*$"
+    )
+    with md_path.open(encoding="utf-8") as f:
+        for linha in f:
+            m = linha_re.match(linha.strip())
+            if not m:
+                continue
+            compliant, noncompliant, complexidade, regras, tipo = m.groups()
+            if compliant.lower() in ("arquivo compliant",) or set(compliant) <= {"-", ":"}:
+                continue
+            recursos = recursos_por_par.get((compliant, noncompliant), "")
+            par_id = f"{complexidade}-{regras}".replace(" ", "")
+            casos.append(
+                {
+                    "id_amostra_original": f"C-{par_id}",
+                    "arquivo_original": compliant,
+                    "complexidade": complexidade,
+                    "regra_violada": "Nenhuma",
+                    "recursos_criados": recursos,
+                    "tipo_selecao": tipo,
+                }
+            )
+            casos.append(
+                {
+                    "id_amostra_original": f"NC-{par_id}",
+                    "arquivo_original": noncompliant,
+                    "complexidade": complexidade,
+                    "regra_violada": regras,
+                    "recursos_criados": recursos,
+                    "tipo_selecao": tipo,
+                }
+            )
+    return casos
+
+
+def carregar_casos(set_root: Path):
+    selecao_md = set_root / "analises" / "selecao_revisao_humana.md"
+    amostras_md = set_root / "analises" / "amostras.md"
+
+    if selecao_md.exists():
+        print(f"Fonte: {selecao_md} (selecao em pares para revisao humana)")
+        return parse_selecao_revisao_humana(selecao_md, amostras_md)
+
+    if amostras_md.exists():
+        print(f"Fonte: {amostras_md} (formato antigo, uma linha por arquivo)")
+        return parse_amostras_por_arquivo(amostras_md)
+
+    raise SystemExit(
+        f"Nao encontrei nem {selecao_md} nem {amostras_md}. "
+        "Nao ha fonte de casos para gerar o mapeamento."
+    )
+
+
 def main():
     if len(sys.argv) != 2:
         raise SystemExit(
@@ -66,17 +178,12 @@ def main():
         )
 
     SET_ROOT = Path(sys.argv[1]).resolve()
-    AMOSTRAS_MD = SET_ROOT / "analises" / "amostras.md"
     PRIVADA = SET_ROOT / "revisao_humana" / "privada"
     PUBLICA = SET_ROOT / "revisao_humana" / "publica"
-    MAPA_CSV = PRIVADA / "mapa_ids.csv"
 
-    if not AMOSTRAS_MD.exists():
-        raise SystemExit(f"Nao encontrei {AMOSTRAS_MD}")
-
-    casos = parse_amostras(AMOSTRAS_MD)
+    casos = carregar_casos(SET_ROOT)
     if not casos:
-        raise SystemExit(f"Nao encontrei nenhuma linha valida em {AMOSTRAS_MD}. Confira o formato da tabela.")
+        raise SystemExit("Nao encontrei nenhum caso valido. Confira o formato dos arquivos de origem.")
 
     for c in casos:
         eh_conforme = c["arquivo_original"].startswith("compliant-")
@@ -91,20 +198,6 @@ def main():
         if esperado != (c["conforme"] == "Sim"):
             print(f"[AVISO] inconsistencia entre regra_violada e prefixo do arquivo em {c['arquivo_original']}")
 
-    # embaralha com seed fixa e distribui IDs publicos 1..N
-    random.seed(RANDOM_SEED)
-    ordem = casos[:]
-    random.shuffle(ordem)
-    largura = len(str(len(ordem)))
-    for i, c in enumerate(ordem, start=1):
-        c["id_publico"] = str(i).zfill(max(2, largura))
-
-    ordem.sort(key=lambda c: int(c["id_publico"]))
-
-    PRIVADA.mkdir(parents=True, exist_ok=True)
-    (PUBLICA / "planos").mkdir(parents=True, exist_ok=True)
-    (PRIVADA / "revisores").mkdir(parents=True, exist_ok=True)
-
     colunas = [
         "id_publico",
         "arquivo_original",
@@ -114,15 +207,38 @@ def main():
         "regra_violada",
         "recursos_criados",
     ]
-    with MAPA_CSV.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=colunas, delimiter=";")
-        w.writeheader()
-        for c in ordem:
-            w.writerow({k: c[k] for k in colunas})
 
-    print(f"OK: {len(ordem)} casos mapeados (seed={RANDOM_SEED}) para o set em {SET_ROOT}")
-    print(f"Gabarito privado salvo em: {MAPA_CSV}")
-    print(f"Pasta publica preparada em: {PUBLICA}")
+    (PUBLICA).mkdir(parents=True, exist_ok=True)
+    (PRIVADA / "revisores").mkdir(parents=True, exist_ok=True)
+
+    largura = len(str(len(casos)))
+
+    for indice, codigo in enumerate(REVISORES):
+        seed_revisor = SEED_BASE + indice
+        random.seed(seed_revisor)
+        ordem = casos[:]
+        random.shuffle(ordem)
+        for i, c in enumerate(ordem, start=1):
+            c["id_publico"] = str(i).zfill(max(2, largura))
+        ordem.sort(key=lambda c: int(c["id_publico"]))
+
+        pasta_revisor_privada = PRIVADA / "revisores" / codigo
+        pasta_revisor_privada.mkdir(parents=True, exist_ok=True)
+        (PUBLICA / codigo / "planos").mkdir(parents=True, exist_ok=True)
+
+        mapa_csv = pasta_revisor_privada / "mapa_ids.csv"
+        with mapa_csv.open("w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=colunas, delimiter=";")
+            w.writeheader()
+            for c in ordem:
+                w.writerow({k: c.get(k, "") for k in colunas})
+
+        print(f"[{codigo}] seed={seed_revisor} -> {mapa_csv}")
+
+    print()
+    print(f"OK: {len(casos)} casos, {len(REVISORES)} avaliadores ({', '.join(REVISORES)}), cada um com ordem propria.")
+    print(f"Gabaritos privados em: {PRIVADA / 'revisores' / '<codigo>' / 'mapa_ids.csv'}")
+    print(f"Pastas publicas preparadas em: {PUBLICA / '<codigo>' / 'planos'}")
 
 
 if __name__ == "__main__":

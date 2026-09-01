@@ -22,3 +22,14 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Revisao humana: gabaritos privados (mapeamento plano_XX -> caso real e
+# conformidade) e qualquer dado preenchido por avaliadores (incluindo nomes
+# reais) nunca podem ir para o git - isso quebraria o cegamento da avaliacao
+# e exporia dados pessoais. So o esqueleto de pastas (.gitkeep) e o TEMPLATE
+# vazio (mapa_revisores.csv.template) ficam versionados; a copia de trabalho
+# real (mapa_revisores.csv, preenchida localmente com nomes) e ignorada.
+*/revisao_humana/privada/revisores/*/mapa_ids.csv
+*/revisao_humana/privada/revisores/*/*
+!*/revisao_humana/privada/revisores/*/.gitkeep
+*/revisao_humana/privada/mapa_revisores.csv

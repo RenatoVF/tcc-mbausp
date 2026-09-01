@@ -4,6 +4,7 @@ const {
   Header, Footer, PageNumber, LevelFormat, convertInchesToTwip
 } = require("docx");
 const fs = require("fs");
+const path = require("path");
 
 // ---------- Layout ----------
 const PAGE_W = 11906; // A4 portrait width (twips) - swapped to landscape below
@@ -81,6 +82,12 @@ function bullet(text) {
     children: [new TextRun({ text, size: 21 })],
   });
 }
+function campo(rotulo, linhaPreenchimento) {
+  return new Paragraph({
+    spacing: { after: 80 },
+    children: [new TextRun({ text: `${rotulo} ${linhaPreenchimento}`, size: 21 })],
+  });
+}
 
 const introBlocks = [
   h("Formulário de Avaliação de Conformidade FinOps em Alterações de Infraestrutura (Terraform)", HeadingLevel.HEADING_1),
@@ -88,13 +95,14 @@ const introBlocks = [
   p("Você foi convidado(a) a atuar como avaliador(a) humano(a) neste estudo. Sua tarefa é analisar 30 planos de alteração de infraestrutura (gerados pelo Terraform) e indicar, para cada um, se ele está em conformidade com cada uma das 5 regras de FinOps descritas abaixo."),
 
   h("Instruções", HeadingLevel.HEADING_2),
-  p("1. Os planos estão nos arquivos plano_01.txt a plano_30.txt, na pasta \"planos\". Cada arquivo corresponde a uma linha da tabela deste formulário (mesmo número)."),
+  p("1. Os planos estão nos arquivos plano_01.txt a plano_30.txt, na pasta \"planos\" que acompanha este formulário. Cada arquivo corresponde a uma linha da tabela deste formulário (mesmo número). A ordem e a numeração dos planos são exclusivas deste envio — não corresponda ou compare números de plano com os de outros avaliadores."),
   p("2. Avalie os planos de forma independente, na ordem que preferir, sem consultar outras pessoas ou ferramentas de análise durante a avaliação."),
   p("3. Para cada uma das 5 regras, marque \"Aprovado\" se o plano cumpre a regra, \"Falhou\" se a viola, ou \"N/A\" se a regra não se aplica (por exemplo, a regra de família de instância RDS não se aplica a um plano que não cria nenhum recurso RDS)."),
-  p("4. Use a coluna \"Observações\" para registrar qualquer dúvida, ambiguidade ou detalhe relevante sobre sua decisão."),
-  p("5. Anote na coluna \"Tempo de avaliação\" quantos minutos você levou para avaliar aquele plano especificamente (pode usar um cronômetro simples)."),
-  p("6. Não é necessário revisar todos os 30 planos de uma só vez — você pode dividir a avaliação em mais de uma sessão."),
-  p("7. As informações deste formulário serão tratadas de forma confidencial e usadas exclusivamente para fins acadêmicos deste TCC."),
+  p("4. A unidade de análise de cada plano é o conjunto de recursos que serão criados ou lidos (ações \"create\"/\"read\" no plano do Terraform) — ignore recursos marcados para exclusão (\"delete\") ou sem alteração (\"no-op\"), caso apareçam no texto renderizado."),
+  p("5. Use a coluna \"Observações\" para registrar qualquer dúvida, ambiguidade ou detalhe relevante sobre sua decisão."),
+  p("6. Anote na coluna \"Tempo de avaliação\" quantos minutos você levou para avaliar aquele plano especificamente (pode usar um cronômetro simples)."),
+  p("7. Não é necessário revisar todos os 30 planos de uma só vez — você pode dividir a avaliação em mais de uma sessão."),
+  p("8. As informações deste formulário serão tratadas de forma confidencial e usadas exclusivamente para fins acadêmicos deste TCC. Nas análises e no repositório do trabalho, você será identificado(a) apenas por um código anônimo (ex.: R1, R2, R3) — seu nome não será associado publicamente às suas respostas."),
 
   h("Regras de FinOps avaliadas", HeadingLevel.HEADING_2),
 ];
@@ -109,9 +117,20 @@ const regras = [
 
 const idBlocks = [
   h("Identificação do revisor", HeadingLevel.HEADING_2),
-  new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: "Nome completo: ______________________________________________", size: 21 })] }),
-  new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: "Data de início da avaliação: ____ / ____ / ______      Data de término: ____ / ____ / ______", size: 21 })] }),
-  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "Assinatura (se aplicável): ______________________________________________", size: 21 })] }),
+  campo("Nome completo:", "______________________________________________"),
+  campo("E-mail:", "______________________________________________"),
+  campo("Data de início da avaliação: ____ / ____ / ______      Data de término:", "____ / ____ / ______"),
+
+  h("Experiência profissional", HeadingLevel.HEADING_2),
+  p("As perguntas abaixo ajudam a caracterizar o grupo de avaliadores deste estudo (reportado de forma agregada e anônima no TCC, nunca associado ao seu nome)."),
+  campo("Anos de experiência profissional em TI:", "______"),
+  campo("Anos de experiência trabalhando especificamente com AWS e/ou Terraform:", "______"),
+  new Paragraph({
+    spacing: { after: 80 },
+    children: [new TextRun({ text: "Certificações relevantes (ex.: AWS Certified Solutions Architect, HashiCorp Terraform Associate, FinOps Certified Practitioner) — liste todas que possuir ou deixe em branco:", size: 21 })],
+  }),
+  new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "______________________________________________________________________", size: 21 })] }),
+
   h("Tabela de avaliação", HeadingLevel.HEADING_2),
 ];
 
@@ -189,7 +208,8 @@ const doc = new Document({
   ],
 });
 
+const OUT_PATH = path.join(__dirname, "Formulario_Revisao_FinOps.docx");
 Packer.toBuffer(doc).then((buf) => {
-  fs.writeFileSync("/tmp/docx_build/Formulario_Revisao_FinOps.docx", buf);
-  console.log("done");
+  fs.writeFileSync(OUT_PATH, buf);
+  console.log("done ->", OUT_PATH);
 });
