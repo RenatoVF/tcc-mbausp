@@ -1,0 +1,7 @@
+Regra;N (pares aplicaveis a ambos);Checkov correto / LLM incorreto (b);Checkov incorreto / LLM correto (c);Divergencias N/A - Checkov;Divergencias N/A - LLM;p-valor (McNemar exato);Significativo (alfa=0,05)
+CKV_FINOPS_01;180;1;0;0;0;1.0000;Nao
+CKV_FINOPS_02;180;7;0;0;0;0.0156;Sim
+CKV_FINOPS_03;176;0;0;0;4;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04A;150;0;0;0;0;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04B;144;0;0;0;0;;Nao aplicavel (sem pares discordantes)
+TODAS (pooled);830;8;0;0;4;0.0078;Sim
