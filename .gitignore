@@ -33,3 +33,8 @@ Thumbs.db
 */revisao_humana/privada/revisores/*/*
 !*/revisao_humana/privada/revisores/*/.gitkeep
 */revisao_humana/privada/mapa_revisores.csv
+
+
+# Pacotes .zip de conveniencia para envio aos avaliadores (apenas empacotam
+# conteudo ja versionado em publica/<codigo>/ - nao precisam ir para o git)
+*/revisao_humana/publica/_envio/
