@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "N/A",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "N/A",
+    "justificativa": "CKV_FINOPS_01: Todos os recursos dos tipos aplicáveis possuem as tags obrigatórias preenchidas. CKV_FINOPS_02: Todos os recursos com a tag 'Ambiente' possuem valores válidos ('PRD' ou 'HML'). CKV_FINOPS_03: Não há recursos dos tipos aplicáveis para verificar a região. CKV_FINOPS_04A: Existe um recurso 'aws_instance' com 'Ambiente' igual a 'HML', mas o 'instance_type' começa com 't'. CKV_FINOPS_04B: Não há recursos do tipo 'aws_db_instance' no plano.",
+    "arquivo_analisado": "compliant-simple-04a-05.json",
+    "_modelo_resolvido": "gpt-4o-2024-08-06"
+}

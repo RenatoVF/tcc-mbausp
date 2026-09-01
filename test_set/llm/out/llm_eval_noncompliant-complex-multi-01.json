@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "FAILED",
+    "CKV_FINOPS_02": "FAILED",
+    "CKV_FINOPS_03": "FAILED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "FAILED",
+    "justificativa": "CKV_FINOPS_01: Falha devido à ausência da tag 'Projeto' preenchida em recursos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket'. CKV_FINOPS_02: Falha porque os valores da tag 'Ambiente' não são 'PRD' ou 'HML' para os recursos aplicáveis. CKV_FINOPS_03: Falha porque os recursos aplicáveis não estão na região 'us-east-1'. CKV_FINOPS_04A: Passou porque a única 'aws_instance' tem 'instance_type' começando com 't'. CKV_FINOPS_04B: Falha porque 'aws_db_instance' tem 'instance_class' que não começa com 'db.t' e 'Ambiente' é 'HML'.",
+    "arquivo_analisado": "noncompliant-complex-multi-01.json",
+    "_modelo_resolvido": "gpt-4o-2024-08-06"
+}

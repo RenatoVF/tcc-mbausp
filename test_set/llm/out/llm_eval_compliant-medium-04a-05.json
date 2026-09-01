@@ -1,0 +1,10 @@
+{
+    "CKV_FINOPS_01": "PASSED",
+    "CKV_FINOPS_02": "PASSED",
+    "CKV_FINOPS_03": "PASSED",
+    "CKV_FINOPS_04A": "PASSED",
+    "CKV_FINOPS_04B": "PASSED",
+    "justificativa": "CKV_FINOPS_01: Todos os recursos dos tipos 'aws_instance', 'aws_db_instance' e 'aws_s3_bucket' possuem as tags 'Projeto', 'Time Responsável' e 'Ambiente' preenchidas. CKV_FINOPS_02: Todos os recursos com a tag 'Ambiente' têm valores válidos ('PRD' ou 'HML'). CKV_FINOPS_03: Todos os recursos aplicáveis estão na região 'us-east-1'. CKV_FINOPS_04A: Nenhuma 'aws_instance' com 'Ambiente' igual a 'HML' possui 'instance_type' que não começa com 't'. CKV_FINOPS_04B: Nenhuma 'aws_db_instance' com 'Ambiente' igual a 'HML' possui 'instance_class' que não começa com 'db.t'.",
+    "arquivo_analisado": "compliant-medium-04a-05.json",
+    "_modelo_resolvido": "gpt-4o-2024-08-06"
+}

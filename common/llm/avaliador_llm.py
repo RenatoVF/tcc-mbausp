@@ -29,8 +29,23 @@ os.makedirs(pasta_saida, exist_ok=True)
 MODELO_SOLICITADO = "gpt-4o"
 TEMPERATURA = 0
 
+# Retomabilidade (ajuste feito apos duvida sobre credito disponivel na API):
+# se a pasta de saida ja tiver resultados de uma execucao anterior (ex.:
+# interrompida por falta de credito), preserva o conjunto de modelos
+# resolvidos e o timestamp de inicio originais, para que os metadados finais
+# reflitam o historico completo mesmo quando a execucao e retomada em partes.
+caminho_metadata = os.path.join(pasta_saida, "metadata_execucao.json")
 modelos_resolvidos = set()
 timestamp_inicio = datetime.datetime.now(datetime.timezone.utc).isoformat()
+if os.path.exists(caminho_metadata):
+    try:
+        with open(caminho_metadata, "r", encoding="utf-8") as meta_f:
+            metadata_anterior = json.load(meta_f)
+        modelos_resolvidos.update(metadata_anterior.get("modelos_resolvidos", []))
+        if metadata_anterior.get("timestamp_inicio_utc"):
+            timestamp_inicio = metadata_anterior["timestamp_inicio_utc"]
+    except Exception as e:
+        print(f"Aviso: nao foi possivel ler metadata_execucao.json anterior ({e}). Prosseguindo com metadados novos.")
 
 # 3. Função de Engenharia de Dados para Limpar o JSON (Em memória)
 #
@@ -111,7 +126,15 @@ Adicione uma chave 'justificativa' contendo um breve resumo dos motivos das apro
 for arquivo in sorted(os.listdir(pasta_planos)):
     if arquivo.endswith(".json"):
         caminho_arquivo = os.path.join(pasta_planos, arquivo)
-        
+        caminho_saida = os.path.join(pasta_saida, f"llm_eval_{arquivo}")
+
+        # Retomabilidade: pula planos que ja tem um veredito salvo de uma
+        # execucao anterior, para nao pagar novamente pela chamada a API de
+        # planos ja avaliados com sucesso.
+        if os.path.exists(caminho_saida):
+            print(f"[PULADO] {arquivo} ja tem veredito salvo em {caminho_saida}.")
+            continue
+
         # Lê o conteúdo bruto do arquivo
         with open(caminho_arquivo, "r", encoding="utf-8") as f:
             plano_json_bruto = f.read()
@@ -143,7 +166,6 @@ for arquivo in sorted(os.listdir(pasta_planos)):
             modelos_resolvidos.add(response.model)
             
             # Salvando a avaliação final do LLM
-            caminho_saida = os.path.join(pasta_saida, f"llm_eval_{arquivo}")
             with open(caminho_saida, "w", encoding="utf-8") as out_f:
                 json.dump(resultado_dict, out_f, indent=4, ensure_ascii=False)
                 
