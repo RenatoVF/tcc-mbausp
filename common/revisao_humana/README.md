@@ -4,7 +4,7 @@ Estes scripts são compartilhados entre `training_set` e `test_set`: ambos
 recebem o caminho do conjunto como argumento de linha de comando, então
 nunca precisam ser duplicados nem editados entre um conjunto e outro.
 
-Ajuste (ponto 8 da resposta do orientador, 2026-08-31): cada avaliador
+Cada avaliador
 recebe uma **ordem própria e independente** dos 30 planos selecionados, para
 reduzir efeitos de aprendizado/fadiga e para que avaliadores não consigam
 comparar respostas por número de plano. Os avaliadores são identificados
@@ -37,7 +37,7 @@ nunca commitada — ver `.gitignore`; o arquivo versionado é o template vazio
   mudar, ajuste a constante do loop (`for (let i = 1; i <= 30; i++)`) antes
   de gerar. Inclui, na seção "Identificação do revisor": nome, e-mail, datas
   de início/término, anos de experiência em TI, anos de experiência com
-  AWS/Terraform e certificações relevantes (itens pedidos no ponto 8).
+  AWS/Terraform e certificações relevantes.
 
 ## Fonte dos casos (`gerar_mapa_ids.py`)
 
@@ -67,14 +67,44 @@ nunca commitada — ver `.gitignore`; o arquivo versionado é o template vazio
    preencher `<set>/revisao_humana/privada/mapa_revisores.csv` (cópia de
    trabalho local, a partir do template) com o nome real de cada avaliador.
 
-## Próximo passo (fora do escopo desta pasta)
+## Extração dos resultados (`extrator_revisao_humana.py`)
 
-Depois de coletadas as avaliações, um extrator (nos moldes de
-`common/checkov/extrator_checkov.py`) deve ler os `.docx` preenchidos de
-cada avaliador, cruzar com o `mapa_ids.csv` daquele avaliador (dentro de
-`<set>/revisao_humana/privada/revisores/<código>/`) para recuperar o
-`arquivo_original`, e gerar uma `matriz_resultados_humanos.csv` dentro de
-`<set>/analises/` (com uma coluna por avaliador, ex.: `R1`, `R2`, `R3`),
-equivalente às já existentes, para comparar as três abordagens regra a
-regra e calcular a concordância entre avaliadores (ex.: Fleiss' Kappa,
-ponto 8/10 da resposta do orientador).
+Depois de receber os formulários preenchidos (passo 7 acima), rode:
+
+    python3 extrator_revisao_humana.py <caminho_do_set>
+
+O script exige que o formulário preenchido de cada avaliador seja o
+**único arquivo `.docx`** dentro de
+`<set>/revisao_humana/privada/revisores/<código>/` (mesmo lugar do
+`mapa_ids.csv` daquele avaliador) — qualquer nome de arquivo serve. Ele lê
+a tabela de respostas, normaliza o texto digitado (aceita variações
+razoáveis de grafia/acentuação de "Aprovado"/"Falhou"/"N/A"), cruza cada
+`plano_NN` com o `mapa_ids.csv` para recuperar o `arquivo_original`, e
+gera em `<set>/analises/`:
+
+- `matriz_resultados_humanos_bruta.csv` — uma linha por (avaliador, caso),
+  resposta bruta normalizada por regra (usada pelo cálculo de concordância).
+- `matriz_resultados_humanos.csv` — uma linha por caso, com o veredito por
+  **maioria** entre os 3 avaliadores, no mesmo formato de
+  `matriz_resultados_checkov.csv`/`matriz_resultados_llm.csv` (consumido
+  diretamente por `metricas_por_regra.py` e `testes_estatisticos_3vias.py`).
+  Quando os 3 avaliadores discordam totalmente entre si (sem maioria), a
+  célula fica `SEM_MAIORIA` e o caso/regra também é listado em
+  `divergencias_avaliadores.csv`, para revisão manual.
+- `experiencia_avaliadores.csv` — anos de experiência em TI, anos com
+  AWS/Terraform, certificações e tempo médio de análise, por código
+  (`R1`/`R2`/`R3`) — **nunca** nome ou e-mail do avaliador. A extração
+  desses campos de experiência é *best-effort* (regex sobre texto livre);
+  revise manualmente antes de reportar no TCC.
+
+Célula vazia ou com texto não reconhecido gera um aviso no console (nunca
+é adivinhada silenciosamente) — resolva manualmente antes de usar os
+resultados nas análises seguintes.
+
+Na sequência, `common/analises/concordancia_humana.py` (concordância
+exata e Kappa de Fleiss por regra, a partir da matriz bruta) e
+`common/analises/testes_estatisticos_3vias.py` (Cochran's Q e McNemar
+pareado com correção de Holm-Bonferroni entre Checkov/LLM/Humano, a
+partir da matriz agregada) completam a comparação estatística entre
+Checkov, LLM e avaliação humana — ver o cabeçalho de cada script para
+detalhes.

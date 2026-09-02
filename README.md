@@ -47,8 +47,8 @@ Dataset/
 - `checkov/` — as 5 regras de FinOps (`rules/`), o script de execução (`run_checkov_all.sh`) e o extrator (`extrator_checkov.py`).
 - `infracost/` — script de execução e extrator de custos.
 - `llm/` — `avaliador_llm.py` (chamada à API do GPT-4o, com suporte a retomada — pula planos já avaliados em execuções anteriores), extrator e infraestrutura Docker.
-- `revisao_humana/` — `gerar_mapa_ids.py` (gera, para cada avaliador em `REVISORES = ["R1", "R2", "R3"]`, um embaralhamento independente dos casos), `finalizar_planos_publicos.py` (monta os pacotes anonimizados por avaliador, com checagem automática contra vazamento de rótulo) e `gerar_formulario.js` (gera o formulário `.docx` de coleta). Os dois scripts Python recebem o caminho do conjunto (`training_set` ou `test_set`) como argumento.
-- `analises/` — `gerar_ground_truth.py` (gabarito independente por regra, calculado direto do plano JSON bruto), `metricas_por_regra.py` (Precision/Recall/F1/Acurácia por regra e agregado, para cada avaliador disponível), `testes_estatisticos.py` (Teste de McNemar exato e intervalos de confiança por bootstrap), além dos geradores dos apêndices e do gráfico de impacto financeiro.
+- `revisao_humana/` — `gerar_mapa_ids.py` (gera, para cada avaliador em `REVISORES = ["R1", "R2", "R3"]`, um embaralhamento independente dos casos), `finalizar_planos_publicos.py` (monta os pacotes anonimizados por avaliador, com checagem automática contra vazamento de rótulo), `gerar_formulario.js` (gera o formulário `.docx` de coleta) e `extrator_revisao_humana.py` (lê os formulários preenchidos, cruza com o `mapa_ids.csv` de cada avaliador e gera `matriz_resultados_humanos.csv`/`matriz_resultados_humanos_bruta.csv`/`experiencia_avaliadores.csv` em `<set>/analises/`). Os quatro scripts Python recebem o caminho do conjunto (`training_set` ou `test_set`) como argumento.
+- `analises/` — `gerar_ground_truth.py` (gabarito independente por regra, calculado direto do plano JSON bruto), `metricas_por_regra.py` (Precision/Recall/F1/Acurácia por regra e agregado, para cada avaliador disponível), `testes_estatisticos.py` (McNemar exato Checkov x LLM e intervalos de confiança por bootstrap), `concordancia_humana.py` (concordância exata e Kappa de Fleiss entre os 3 avaliadores humanos, por regra), `testes_estatisticos_3vias.py` (Cochran's Q e McNemar pareado com correção de Holm-Bonferroni entre Checkov/LLM/Humano — habilitado quando `matriz_resultados_humanos.csv` existir), além dos geradores dos apêndices e do gráfico de impacto financeiro.
 - `comandos.txt` — todos os comandos de execução do pipeline (Docker), com a variante para rodar contra o `training_set` (padrão) ou o `test_set`.
 
 **`training_set/`** e **`test_set/`** — mesma forma interna, contendo apenas **dados** (nenhum script): os planos gerados (`sadcloud/tfvars/`), as saídas brutas de cada ferramenta (`checkov/out/`, `infracost/out/`, `llm/out/`), as análises consolidadas (`analises/`) e, no `test_set`, o material de revisão humana (`revisao_humana/`).
@@ -64,7 +64,7 @@ Ver `common/comandos.txt` para todos os comandos, na ordem: geração dos planos
 
 ## 6. Amostragem do test_set
 
-Definida em resposta ao feedback do orientador sobre os resultados preliminares: aumentar substancialmente o número de casos automatizados frente aos 30 originais e incluir cenários com violações múltiplas simultâneas (o experimento original testava exatamente uma violação por caso, o que é pouco realista). Os 30 planos (15 pares) de avaliação humana são mantidos nesse tamanho por causa do esforço dos especialistas revisores.
+Definida a partir da análise dos resultados preliminares: aumentar substancialmente o número de casos automatizados frente aos 30 originais e incluir cenários com violações múltiplas simultâneas (o experimento original testava exatamente uma violação por caso, o que é pouco realista). Os 30 planos (15 pares) de avaliação humana são mantidos nesse tamanho por causa do esforço dos especialistas revisores.
 
 **Total: 90 pares (180 planos)**, divididos em:
 
@@ -82,7 +82,7 @@ Três avaliadores especialistas revisam, de forma cega e independente, os mesmos
 
 Cada avaliador é identificado, em qualquer artefato deste repositório, apenas pelo código anônimo **R1**, **R2** ou **R3** — nomes reais nunca são versionados (ficam só em `revisao_humana/privada/mapa_revisores.csv`, fora do git).
 
-**Status atual**: pacotes gerados e entregues aos 3 avaliadores; aguardando devolução dos formulários preenchidos. Quando retornarem, o próximo passo é um extrator que cruza cada formulário com o `mapa_ids.csv` do respectivo avaliador para produzir `test_set/analises/matriz_resultados_humanos.csv` (ainda não existe), habilitando o cálculo de concordância entre avaliadores (ex.: Kappa de Fleiss) e a comparação de 3 vias completa (Cochran's Q).
+**Status atual (2026-09-02)**: pacotes gerados e entregues aos 3 avaliadores; aguardando devolução dos formulários preenchidos. O extrator que cruza cada formulário com o `mapa_ids.csv` do respectivo avaliador (`common/revisao_humana/extrator_revisao_humana.py`) e os testes que dependem dele (`common/analises/concordancia_humana.py` — Kappa de Fleiss; `common/analises/testes_estatisticos_3vias.py` — Cochran's Q e McNemar pareado com correção de Holm-Bonferroni) já estão implementados e testados com dados sintéticos (ver seção 8), prontos para rodar assim que os formulários retornarem — não é mais trabalho pendente, só execução.
 
 ## 8. Análises estatísticas
 
@@ -93,8 +93,14 @@ Sobre o `test_set`, já calculados (Checkov e LLM; a parte que envolve os 3 aval
 - `analises/mcnemar_checkov_vs_llm.csv` — Teste de McNemar exato (binomial de sinal), por regra e agregado, comparando Checkov e LLM sobre a mesma população de casos.
 - `analises/intervalos_confianca.csv` — IC 95% (bootstrap percentil, 10.000 reamostragens, seed documentada) para as 4 métricas acima, por avaliador/regra/agregado.
 
-Pendente (depende da avaliação humana, seção 7): Cochran's Q entre os 3 métodos e medida de concordância entre os 3 avaliadores humanos.
+Prontos para rodar assim que a avaliação humana (seção 7) retornar — código já implementado e testado com dados sintéticos, só falta a matriz real:
+
+- `analises/cochrans_q.csv` — teste de Cochran's Q (Checkov/LLM/Humano simultaneamente), por regra e agregado, via `testes_estatisticos_3vias.py`. Como o número de métodos é fixo em 3 (graus de liberdade = 2), o p-valor usa a forma fechada da qui-quadrado com 2 g.l. (`exp(-Q/2)`), sem depender de `scipy` (não instalado no ambiente).
+- `analises/mcnemar_3vias_pareado.csv` — McNemar exato par a par entre os 3 métodos (Checkov x LLM, Checkov x Humano, LLM x Humano), com correção de Holm-Bonferroni para as 3 comparações múltiplas, via o mesmo script.
+- `analises/concordancia_humana.csv` — concordância exata e Kappa de Fleiss entre R1/R2/R3, por regra e agregado, via `common/analises/concordancia_humana.py`.
+
+Os três scripts foram validados com testes unitários das fórmulas (Fleiss' Kappa, Cochran's Q e Holm-Bonferroni contra exemplos com resultado calculado à mão) e com um teste de ponta a ponta usando formulários sintéticos preenchidos (gerados programaticamente a partir do `Formulario_Revisao_FinOps.docx` real, cruzados com o `mapa_ids.csv` real do `test_set`), cobrindo casos de borda: célula vazia, texto não reconhecido, divergência total entre os 3 avaliadores (sem maioria) e ausência de variabilidade entre métodos (Cochran's Q não aplicável).
 
 ## 9. Manutenção deste README
 
-**Este README deve ser atualizado sempre que o repositório receber uma etapa relevante do trabalho** — geração de um novo conjunto de dados, execução de um avaliador (Checkov/LLM/humano) sobre um conjunto, novo script ou nova análise em `common/analises/`, mudança na disciplina dev-set/holdout, nova tag de protocolo, ou qualquer decisão de desenho que mude o que está descrito aqui. O objetivo é que quem abrir o repositório (incluindo o orientador, via o link citado no Apêndice A do TCC) encontre sempre uma descrição fiel do estado atual, sem depender do histórico de commits para reconstruir o que já foi feito.
+**Este README deve ser atualizado sempre que o repositório receber uma etapa relevante do trabalho** — geração de um novo conjunto de dados, execução de um avaliador (Checkov/LLM/humano) sobre um conjunto, novo script ou nova análise em `common/analises/`, mudança na disciplina dev-set/holdout, nova tag de protocolo, ou qualquer decisão de desenho que mude o que está descrito aqui. O objetivo é que quem abrir o repositório encontre sempre uma descrição fiel do estado atual, sem depender do histórico de commits para reconstruir o que já foi feito.
