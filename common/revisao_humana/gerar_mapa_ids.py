@@ -3,11 +3,10 @@
 Gera, para CADA avaliador humano (R1, R2, R3, ...), um mapeamento privado
 INDEPENDENTE de ID publico (1..N) <-> caso original.
 
-Ajuste (ponto 8 da resposta do orientador, 2026-08-31): cada avaliador deve
-receber uma ordem diferente dos planos, para reduzir efeitos de aprendizado/
-fadiga e evitar que avaliadores comparem anotacoes por numero de plano. Por
-isso este script nao gera mais um unico mapa_ids.csv compartilhado - gera um
-mapa_ids.csv por avaliador, cada um com seu proprio embaralhamento (seed
+Cada avaliador deve receber uma ordem diferente dos planos, para reduzir
+efeitos de aprendizado/fadiga e evitar que avaliadores comparem anotacoes
+por numero de plano. Por isso este script gera um mapa_ids.csv por
+avaliador (nao um unico arquivo compartilhado), cada um com seu proprio embaralhamento (seed
 propria, derivada deterministicamente de SEED_BASE + indice do avaliador,
 documentada abaixo para reprodutibilidade).
 

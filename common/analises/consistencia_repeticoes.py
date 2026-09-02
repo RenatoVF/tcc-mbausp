@@ -12,7 +12,7 @@ Uso:
 
 As matrizes devem estar em <set>/analises/, no mesmo formato de
 matriz_resultados_llm.csv (colunas ID do Caso;CKV_FINOPS_01;...;Veredito LLM).
-Minimo de 2 repeticoes; o recomendado pelo orientador e 5.
+Minimo de 2 repeticoes; o recomendado para este trabalho e 5.
 
 Gera:
     <set>/analises/consistencia_repeticoes.csv    - taxa de consistencia por regra

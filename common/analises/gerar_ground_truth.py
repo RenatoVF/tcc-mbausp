@@ -4,7 +4,7 @@ Gera o ground truth (gabarito) por REGRA de FinOps, para cada caso de um
 conjunto (training_set ou test_set), calculado de forma independente a
 partir do plano JSON bruto do Terraform (nao usa Checkov nem LLM).
 
-Isso resolve o problema apontado na revisao do orientador: o veredito
+O veredito
 final de um plano (Aprovado/Falhou) pode estar correto mesmo que um
 avaliador erre uma regra especifica (ex.: um LLM que marca CKV_FINOPS_01
 como Falhou num caso cuja unica anomalia injetada e um valor invalido em
@@ -45,7 +45,7 @@ common/checkov/rules/*.yaml, mas calculadas de forma independente):
 Unidade de analise: apenas resource_changes cujas acoes NAO sejam
 exatamente ['delete'] ou ['no-op'] (mesmo recorte usado em
 common/llm/avaliador_llm.py), para manter a mesma unidade experimental
-entre os tres metodos (tambem levantado pelo orientador).
+entre os tres metodos.
 """
 import csv
 import json

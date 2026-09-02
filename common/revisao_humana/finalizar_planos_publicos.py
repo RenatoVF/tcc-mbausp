@@ -7,8 +7,8 @@ em texto (gerados pelo common/sadcloud/scripts/run_show_all.sh via
 com nomes puramente numericos (plano_01.txt .. plano_NN.txt), sem nenhuma
 referencia ao nome original do arquivo ou ao status de conformidade.
 
-Ajuste (ponto 8 da resposta do orientador, 2026-08-31): como cada avaliador
-agora tem seu proprio embaralhamento (ver gerar_mapa_ids.py), este script
+Cada avaliador tem seu proprio embaralhamento (ver gerar_mapa_ids.py), e
+por isso este script
 gera uma pasta publica/<codigo>/planos SEPARADA por avaliador - o mesmo
 conteudo de 30 planos, mas com uma correspondencia plano_NN -> caso
 diferente para cada avaliador.

@@ -49,7 +49,7 @@ if os.path.exists(caminho_metadata):
 
 # 3. Função de Engenharia de Dados para Limpar o JSON (Em memória)
 #
-# NOTA (ajuste feito após conversa com o orientador): esta função já enviou, em versões
+# NOTA (ajuste de arquitetura): esta função já enviou, em versões
 # anteriores, um bloco 'variaveis_globais' com os valores resolvidos das
 # variáveis do plano, para que o LLM cruzasse manualmente referências como
 # 'var.aws_region' com o valor real vindo do .tfvars — enquanto o Checkov lê a
@@ -81,7 +81,7 @@ def otimizar_plano_terraform(plano_json_str):
                 
             after = res.get("change", {}).get("after", {})
             if isinstance(after, dict):
-                # Minimizacao de dados (ajuste feito apos conversa com o orientador):
+                # Minimizacao de dados (ajuste de arquitetura):
                 # so repassamos as 3 tags que alguma das 5 regras de FinOps
                 # de fato usa (Projeto, Time Responsavel, Ambiente) - outras
                 # tags eventualmente presentes no recurso (ex.: 'Name') nao

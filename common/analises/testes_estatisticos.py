@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Testes estatisticos complementares as metricas por regra (ponto 10 do
-orientador, parte viavel sem a avaliacao humana):
+Testes estatisticos complementares as metricas por regra, parte viavel
+sem a avaliacao humana:
 
   1. Teste de McNemar exato (binomial de sinal) comparando Checkov e LLM,
      por regra e agregado (pooled), sobre o par de classificacoes
@@ -12,8 +12,8 @@ orientador, parte viavel sem a avaliacao humana):
 
 O teste de Cochran's Q (comparando os 3 metodos simultaneamente) e a
 medida de concordancia entre os 3 avaliadores humanos (ex.: Kappa de
-Fleiss) dependem da matriz de resultados humanos (ponto 8, em andamento)
-e NAO sao calculados aqui.
+Fleiss) dependem da matriz de resultados humanos (ainda pendente de
+coleta) e NAO sao calculados aqui.
 
 Convencao de N/A (importante, replica exatamente a de metricas_por_regra.py):
 um caso so entra na matriz de confusao (TP/FP/FN/TN) de um avaliador

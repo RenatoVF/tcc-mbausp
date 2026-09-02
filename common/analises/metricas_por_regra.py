@@ -6,9 +6,9 @@ agregado do plano), cruzando o ground truth independente
 matrizes de resultado de cada avaliador disponivel no conjunto
 (Checkov, LLM e, quando existir, avaliacao humana).
 
-Classe positiva = FAILED (nao conformidade), conforme a revisao do
-orientador (nao usar "precisao" como sinonimo de "acuracia": as 4
-metricas sao reportadas separadamente).
+Classe positiva = FAILED (nao conformidade). Precision, Recall, F1 e
+Acuracia sao conceitos distintos e sao reportados separadamente (nunca
+usar "precisao" como sinonimo de "acuracia").
 
 Uso:
     python3 metricas_por_regra.py <caminho_para_o_set>
