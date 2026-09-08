@@ -1,0 +1,23 @@
+{
+    "checkov_versao": "3.2.533",
+    "imagem_docker": "bridgecrew/checkov:3.2.533",
+    "motivo_da_execucao": "Execucao original (test_set/checkov/out/) nao capturou tempo de execucao. Esta pasta repete a mesma execucao (mesma versao do Checkov, mesmos 180 planos e regras) apenas para medir o tempo, apos confirmar paridade total dos veredictos com test_set/checkov/out/.",
+    "comando": "TFVARS_DIR=../../test_set/sadcloud/tfvars OUT_DIR=../../test_set/checkov/out_timing docker compose run --rm checkov -c \"sh /scripts/run_checkov_all.sh\"",
+    "metodo_medicao": "PowerShell Measure-Command envolvendo o comando docker compose run",
+    "plataforma": "Windows (Docker Desktop), maquina do autor",
+    "numero_de_planos": 180,
+    "execucoes": [
+        {
+            "observacao": "primeira execucao, incluiu o pull da imagem bridgecrew/checkov:3.2.533 (nao estava em cache local)",
+            "total_segundos": 620.884
+        },
+        {
+            "observacao": "segunda execucao, imagem ja em cache local (sem pull)",
+            "total_segundos": 634.067
+        }
+    ],
+    "media_segundos": 627.4755,
+    "media_segundos_por_caso": 3.486,
+    "paridade_com_execucao_original": "Confirmada: os 180 arquivos .checkov.json desta pasta tem summary (passed/failed/skipped/parsing_errors/resource_count) e lista de failed_checks identicos aos 180 arquivos correspondentes em test_set/checkov/out/. Nenhum veredito reportado no TCC foi alterado por esta medicao.",
+    "data_execucao_utc": "2026-09-08"
+}
