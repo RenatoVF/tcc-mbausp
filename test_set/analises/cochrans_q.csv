@@ -1,0 +1,7 @@
+Regra;N (aplicavel aos 3 metodos);Checkov corretos;Checkov N;LLM corretos;LLM N;Humano corretos;Humano N;Q;gl;p-valor;Significativo (alfa=0,05)
+CKV_FINOPS_01;30;30;30;30;30;30;30;;;;Nao aplicavel
+CKV_FINOPS_02;30;30;30;27;30;30;30;6.0000;2;0.0498;Sim
+CKV_FINOPS_03;29;30;30;29;29;30;30;;;;Nao aplicavel
+CKV_FINOPS_04A;12;24;24;24;24;12;12;;;;Nao aplicavel
+CKV_FINOPS_04B;12;26;26;26;26;12;12;;;;Nao aplicavel
+TODAS (pooled);113;113;113;110;113;113;113;6.0000;2;0.0498;Sim

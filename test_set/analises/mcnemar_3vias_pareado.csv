@@ -1,0 +1,19 @@
+Regra;Par;N (pares aplicaveis);Discordantes (a-sim/b-nao);Discordantes (a-nao/b-sim);p-valor bruto;p-valor (Holm-Bonferroni);Significativo apos correcao (alfa=0,05)
+CKV_FINOPS_01;Checkov x LLM;30;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_01;Checkov x Humano;30;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_01;LLM x Humano;30;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_02;Checkov x LLM;30;3;0;0.2500;0.2500;Nao
+CKV_FINOPS_02;Checkov x Humano;30;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_02;LLM x Humano;30;0;3;0.2500;0.2500;Nao
+CKV_FINOPS_03;Checkov x LLM;29;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_03;Checkov x Humano;30;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_03;LLM x Humano;29;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04A;Checkov x LLM;24;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04A;Checkov x Humano;12;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04A;LLM x Humano;12;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04B;Checkov x LLM;26;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04B;Checkov x Humano;12;0;0;;;Nao aplicavel (sem pares discordantes)
+CKV_FINOPS_04B;LLM x Humano;12;0;0;;;Nao aplicavel (sem pares discordantes)
+TODAS (pooled);Checkov x LLM;139;3;0;0.2500;0.2500;Nao
+TODAS (pooled);Checkov x Humano;114;0;0;;;Nao aplicavel (sem pares discordantes)
+TODAS (pooled);LLM x Humano;113;0;3;0.2500;0.2500;Nao

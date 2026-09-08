@@ -1,0 +1,91 @@
+ID do Caso;Avaliador;CKV_FINOPS_01;CKV_FINOPS_02;CKV_FINOPS_03;CKV_FINOPS_04A;CKV_FINOPS_04B;Observacoes;Tempo (min)
+compliant-complex-01-02;R1;PASSED;PASSED;PASSED;N/A;N/A;prd: 2 buckets s3 tageados + rds db.t2.micro, ec2 t2.micro. tudo us-east-1, ok;5.0
+compliant-complex-01-02;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;1.0
+compliant-complex-01-02;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. As regras de família HML não se aplicam ao ambiente PRD.;15.0
+compliant-complex-02-03;R1;PASSED;PASSED;PASSED;N/A;N/A;prd, tags ok, mais nada nesse plano;6.0
+compliant-complex-02-03;R2;PASSED;FAILED;PASSED;PASSED;PASSED;Tag Ambiente = DEV;2.0
+compliant-complex-02-03;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas.;15.0
+compliant-complex-04a-01;R1;PASSED;PASSED;PASSED;PASSED;PASSED;ok;5.0
+compliant-complex-04a-01;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;2.0
+compliant-complex-04a-01;R3;PASSED;PASSED;PASSED;PASSED;PASSED;Todas as regras foram atendidas.;15.0
+compliant-complex-04b-05;R1;PASSED;PASSED;PASSED;PASSED;PASSED;conforme: t2.micro/db.t2.micro, us-east-1, tags ok;7.0
+compliant-complex-04b-05;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;2.0
+compliant-complex-04b-05;R3;PASSED;PASSED;PASSED;PASSED;PASSED;Todas as regras foram atendidas.;15.0
+compliant-complex-multi-05;R1;PASSED;PASSED;PASSED;PASSED;PASSED;ok;7.0
+compliant-complex-multi-05;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;3.0
+compliant-complex-multi-05;R3;PASSED;PASSED;PASSED;PASSED;PASSED;Todas as regras foram atendidas.;15.0
+compliant-medium-01-02;R1;PASSED;PASSED;PASSED;N/A;N/A;prd, us-east-1, s3 + rds db.t2.micro, ec2 t2.micro. conforme;4.0
+compliant-medium-01-02;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;1.0
+compliant-medium-01-02;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. As regras de família HML não se aplicam ao ambiente PRD.;10.0
+compliant-medium-02-04;R1;PASSED;PASSED;PASSED;N/A;N/A;2 buckets s3 (access_logging + principal), tageados. prd ok;6.0
+compliant-medium-02-04;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;3.0
+compliant-medium-02-04;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. As regras de família HML não se aplicam ao ambiente PRD.;15.0
+compliant-medium-03-01;R1;PASSED;PASSED;PASSED;N/A;N/A;prd us-east-1, s3 tageado, rds db.t2.micro + ec2 t2.micro. sem pendência;4.0
+compliant-medium-03-01;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;1.0
+compliant-medium-03-01;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. As regras de família HML não se aplicam ao ambiente PRD.;12.0
+compliant-medium-04a-03;R1;PASSED;PASSED;PASSED;PASSED;PASSED;hml conforme - t2.micro e db.t2.micro, us-east-1;5.0
+compliant-medium-04a-03;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;1.0
+compliant-medium-04a-03;R3;PASSED;PASSED;PASSED;PASSED;PASSED;Todas as regras foram atendidas.;12.0
+compliant-medium-multi-02;R1;PASSED;PASSED;PASSED;PASSED;PASSED;HML certinho: t2.micro e db.t2.micro, região correta.;4.0
+compliant-medium-multi-02;R2;PASSED;PASSED;PASSED;PASSED;PASSED;;2.0
+compliant-medium-multi-02;R3;PASSED;PASSED;PASSED;PASSED;PASSED;Todas as regras foram atendidas.;13.0
+compliant-simple-01-02;R1;PASSED;PASSED;PASSED;N/A;N/A;só rede + rds. sem ec2 e s3;3.0
+compliant-simple-01-02;R2;PASSED;PASSED;PASSED;N/A;PASSED;;1.0
+compliant-simple-01-02;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. Não existe EC2 e o RDS é de PRD.;6.0
+compliant-simple-03-02;R1;PASSED;PASSED;PASSED;N/A;N/A;plano só de rede + rds db.t2.micro, prd. sem ec2/s3 pra avaliar;3.0
+compliant-simple-03-02;R2;PASSED;PASSED;PASSED;N/A;N/A;;1.0
+compliant-simple-03-02;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. Não existe EC2 e o RDS é de PRD.;6.0
+compliant-simple-04a-05;R1;PASSED;PASSED;PASSED;PASSED;N/A;hml, ec2 t2.micro, us-east-1. só isso;2.0
+compliant-simple-04a-05;R2;PASSED;PASSED;PASSED;PASSED;N/A;;2.0
+compliant-simple-04a-05;R3;PASSED;PASSED;PASSED;PASSED;N/A;Todas as regras aplicáveis foram atendidas. Não existe RDS neste plano.;6.0
+compliant-simple-04b-02;R1;PASSED;PASSED;PASSED;PASSED;PASSED;hml com rds db.t2.micro em conformidade. ec2 t2.micro tb ok;3.0
+compliant-simple-04b-02;R2;PASSED;PASSED;PASSED;N/A;PASSED;;2.0
+compliant-simple-04b-02;R3;PASSED;PASSED;PASSED;N/A;PASSED;Todas as regras aplicáveis foram atendidas. Não existe EC2 e o RDS de HML pertence à família db.t.;6.0
+compliant-simple-multi-05;R1;PASSED;PASSED;PASSED;N/A;N/A;ec2 t2.micro, prod, us-east-1, tags ok. sem rds/s3;3.0
+compliant-simple-multi-05;R2;PASSED;PASSED;PASSED;PASSED;N/A;;2.0
+compliant-simple-multi-05;R3;PASSED;PASSED;PASSED;N/A;N/A;Todas as regras aplicáveis foram atendidas. Não existe RDS e a EC2 é de PRD.;6.0
+noncompliant-complex-01-02;R1;FAILED;PASSED;PASSED;N/A;N/A;tag Projeto null em tudo;2.0
+noncompliant-complex-01-02;R2;FAILED;PASSED;PASSED;PASSED;PASSED;Tag Projeto = null;2.0
+noncompliant-complex-01-02;R3;FAILED;PASSED;PASSED;N/A;N/A;A tag Projeto está sem valor.;13.0
+noncompliant-complex-02-03;R1;PASSED;FAILED;PASSED;N/A;N/A;"ambiente = QA, nao aceito. região e tags certas. 04a/04b nem entram pq nao é hml""";8.0
+noncompliant-complex-02-03;R2;PASSED;FAILED;PASSED;PASSED;PASSED;Tag ambiente = QA;3.0
+noncompliant-complex-02-03;R3;PASSED;FAILED;PASSED;N/A;N/A;A tag Ambiente está como QA, mas somente PRD ou HML são permitidos.;15.0
+noncompliant-complex-04a-01;R1;PASSED;PASSED;PASSED;FAILED;PASSED;ec2 m5.large, fora da família. rds ok;5.0
+noncompliant-complex-04a-01;R2;PASSED;PASSED;PASSED;FAILED;PASSED;Instance ec2 em HML com familia m5;2.0
+noncompliant-complex-04a-01;R3;PASSED;PASSED;PASSED;FAILED;PASSED;A EC2 de HML utiliza m5.large, mas deveria utilizar uma instância da família t.;15.0
+noncompliant-complex-04b-05;R1;PASSED;PASSED;PASSED;PASSED;FAILED;rds veio m5.large, fora do padrao. ec2 t2.micro tá ok;9.0
+noncompliant-complex-04b-05;R2;PASSED;PASSED;PASSED;PASSED;FAILED;RDS em HML com familia db.m;7.0
+noncompliant-complex-04b-05;R3;PASSED;PASSED;PASSED;PASSED;FAILED;O banco RDS de HML utiliza db.m5.large, mas deveria utilizar uma classe da família db.t.;15.0
+noncompliant-complex-multi-05;R1;PASSED;PASSED;FAILED;FAILED;PASSED;udo em us-west-2. hml com ec2 m5.large errado, rds t2.micro tá ok.;9.0
+noncompliant-complex-multi-05;R2;PASSED;PASSED;FAILED;FAILED;PASSED;Recursos criados em us-west-2;2.0
+noncompliant-complex-multi-05;R3;PASSED;PASSED;FAILED;FAILED;PASSED;Os recursos estão na região us-west-2 e a EC2 de HML utiliza m5.large, fora da família t.;15.0
+noncompliant-medium-01-02;R1;FAILED;PASSED;PASSED;N/A;N/A;tag Projeto = null (ec2, rds, s3). resto ok;8.0
+noncompliant-medium-01-02;R2;FAILED;PASSED;PASSED;PASSED;PASSED;Tag Ambiente = null;3.0
+noncompliant-medium-01-02;R3;FAILED;PASSED;PASSED;N/A;N/A;A tag Projeto está sem valor.;10.0
+noncompliant-medium-02-04;R1;PASSED;FAILED;FAILED;N/A;N/A;ambiente = 'DEV', valor invalido. 04a/04b n/a pq nao é hml;3.0
+noncompliant-medium-02-04;R2;PASSED;FAILED;PASSED;PASSED;PASSED;Tag ambiente = producao;5.0
+noncompliant-medium-02-04;R3;PASSED;FAILED;PASSED;N/A;N/A;A tag Ambiente está como producao, mas somente PRD ou HML são permitidos.;13.0
+noncompliant-medium-03-01;R1;PASSED;PASSED;FAILED;N/A;N/A;us-west-2 dnv, mas é PRD com tudo certo. Só a regiao que reprova mesmo;4.0
+noncompliant-medium-03-01;R2;PASSED;PASSED;FAILED;PASSED;PASSED;Recursos criados em us-west-2;2.0
+noncompliant-medium-03-01;R3;PASSED;PASSED;FAILED;N/A;N/A;Os recursos estão na região us-west-2, mas deveriam estar em us-east-1.;10.0
+noncompliant-medium-04a-03;R1;PASSED;PASSED;PASSED;FAILED;PASSED;ec2 m5.large aqui. rds dentro do padrão;4.0
+noncompliant-medium-04a-03;R2;PASSED;PASSED;PASSED;FAILED;PASSED;Instance ec2 em HML com familia m5;3.0
+noncompliant-medium-04a-03;R3;PASSED;PASSED;PASSED;N/A;PASSED;A EC2 de HML utiliza m5.large, mas deveria utilizar uma instância da família t.;11.0
+noncompliant-medium-multi-02;R1;PASSED;PASSED;FAILED;PASSED;FAILED;tudo em ap-southeast-1. hml com rds m5.large. ec2 t2.micro ok;5.0
+noncompliant-medium-multi-02;R2;PASSED;PASSED;FAILED;PASSED;FAILED;Recursos criados em ap-southeast-1;2.0
+noncompliant-medium-multi-02;R3;PASSED;PASSED;FAILED;PASSED;FAILED;Os recursos estão fora da região permitida e o banco RDS de HML não pertence à família db.t.;12.0
+noncompliant-simple-01-02;R1;FAILED;PASSED;PASSED;N/A;N/A;tag Time Responsável null. só rds + rede;4.0
+noncompliant-simple-01-02;R2;FAILED;PASSED;PASSED;N/A;PASSED;Tag Time Responsável = null;2.0
+noncompliant-simple-01-02;R3;FAILED;PASSED;PASSED;N/A;N/A;A tag Time Responsável está sem valor.;7.0
+noncompliant-simple-03-02;R1;PASSED;PASSED;FAILED;N/A;N/A;tudo eu-west-1. prd, rds db.t2.micro, tags ok;3.0
+noncompliant-simple-03-02;R2;PASSED;PASSED;FAILED;N/A;N/A;Somente s3, criado em eu-west-1;1.0
+noncompliant-simple-03-02;R3;PASSED;PASSED;FAILED;N/A;N/A;Os recursos estão na região eu-west-1, mas deveriam estar em us-east-1.;7.0
+noncompliant-simple-04a-05;R1;PASSED;PASSED;PASSED;FAILED;N/A;hml com ec2 m5.large, reprovou por isso mesmo. sem rds/s3;3.0
+noncompliant-simple-04a-05;R2;PASSED;PASSED;FAILED;FAILED;N/A;Instance ec2 em HML com familia m5;1.0
+noncompliant-simple-04a-05;R3;PASSED;PASSED;PASSED;FAILED;N/A;A EC2 de HML utiliza m5.large, mas deveria utilizar uma instância da família t.;5.0
+noncompliant-simple-04b-02;R1;PASSED;PASSED;PASSED;N/A;FAILED;hml usando rds db.m5.large, tá fora da regra. sem ec2 nem s3 aqui;3.0
+noncompliant-simple-04b-02;R2;PASSED;PASSED;PASSED;PASSED;FAILED;Instance rds em HML com familia m5;1.0
+noncompliant-simple-04b-02;R3;PASSED;PASSED;PASSED;N/A;FAILED;O RDS de HML utiliza db.m5.large, mas deveria utilizar uma classe da família db.t.;6.0
+noncompliant-simple-multi-05;R1;PASSED;FAILED;FAILED;N/A;N/A;ambiente = 'DEV', invalido. tudo us-west-2, tags preenchidas;8.0
+noncompliant-simple-multi-05;R2;PASSED;FAILED;FAILED;PASSED;N/A;Tag Ambiente = DEV, recursos criados em us-west-2;4.0
+noncompliant-simple-multi-05;R3;PASSED;FAILED;FAILED;N/A;N/A;O ambiente está como DEV, que não é permitido, e os recursos estão na região us-west-2.;6.0

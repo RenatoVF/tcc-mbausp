@@ -1,0 +1,7 @@
+Regra;N (casos incluidos);N (excluidos - dados incompletos);Categorias observadas;Concordancia exata (%);Fleiss Kappa;Interpretacao (Landis & Koch)
+CKV_FINOPS_01;30;0;FAILED, PASSED;100.0;1.000;Quase perfeito
+CKV_FINOPS_02;30;0;FAILED, PASSED;96.7;0.887;Quase perfeito
+CKV_FINOPS_03;30;0;FAILED, PASSED;93.3;0.855;Quase perfeito
+CKV_FINOPS_04A;30;0;FAILED, N/A, PASSED;50.0;0.444;Moderado
+CKV_FINOPS_04B;30;0;FAILED, N/A, PASSED;60.0;0.544;Moderado
+TODAS (pooled - cada par caso/regra como um sujeito);150;0;FAILED, N/A, PASSED;80.0;0.718;Substancial
