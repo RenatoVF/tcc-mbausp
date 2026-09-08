@@ -1,6 +1,6 @@
 services:
   checkov:
-    image: bridgecrew/checkov:latest
+    image: bridgecrew/checkov:3.2.533
     volumes:
       - ./rules:/rules:ro
       - ${TFVARS_DIR:-../../training_set/sadcloud/tfvars}:/data:ro
