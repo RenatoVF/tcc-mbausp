@@ -82,24 +82,23 @@ Três avaliadores especialistas revisam, de forma cega e independente, os mesmos
 
 Cada avaliador é identificado, em qualquer artefato deste repositório, apenas pelo código anônimo **R1**, **R2** ou **R3** — nomes reais nunca são versionados (ficam só em `revisao_humana/privada/mapa_revisores.csv`, fora do git).
 
-**Status atual (2026-09-02)**: pacotes gerados e entregues aos 3 avaliadores; aguardando devolução dos formulários preenchidos. O extrator que cruza cada formulário com o `mapa_ids.csv` do respectivo avaliador (`common/revisao_humana/extrator_revisao_humana.py`) e os testes que dependem dele (`common/analises/concordancia_humana.py` — Kappa de Fleiss; `common/analises/testes_estatisticos_3vias.py` — Cochran's Q e McNemar pareado com correção de Holm-Bonferroni) já estão implementados e testados com dados sintéticos (ver seção 8), prontos para rodar assim que os formulários retornarem — não é mais trabalho pendente, só execução.
+**Status atual (2026-09-08)**: os 3 formulários preenchidos foram devolvidos, extraídos pelo `common/revisao_humana/extrator_revisao_humana.py` e cruzados com o `mapa_ids.csv` de cada avaliador, gerando `test_set/analises/matriz_resultados_humanos.csv`. A experiência declarada e o tempo médio de análise de cada avaliador estão em `experiencia_avaliadores.csv`: R1 (4 anos de TI, 3 de AWS/Terraform, 4,8 min/plano), R2 (9 anos de TI, 5 de AWS/Terraform, certificação GCP Professional Cloud Architect, 2,2 min/plano) e R3 (2,5 anos de TI, 1,7 de AWS/Terraform, 10,9 min/plano).
+
+A concordância entre os 3 avaliadores (`concordancia_humana.csv`) foi quase perfeita nas 3 regras objetivas (Kappa de Fleiss entre 0,855 e 1,000), mas caiu para moderada nas 2 regras condicionais que dependem da interpretação do valor da tag `Ambiente` (`CKV_FINOPS_04A`: Kappa 0,444; `CKV_FINOPS_04B`: Kappa 0,544), evidenciando ambiguidade de interpretação mesmo entre profissionais experientes.
 
 ## 8. Análises estatísticas
 
-Sobre o `test_set`, já calculados (Checkov e LLM; a parte que envolve os 3 avaliadores humanos depende da seção 7):
+Sobre o `test_set`, com os três métodos (Checkov, LLM e os 3 avaliadores humanos da seção 7):
 
-- `analises/metricas_por_regra.csv` — Precision, Recall, F1 e Acurácia por regra e agregado, classe positiva = não conformidade (`FAILED`).
+- `analises/metricas_por_regra.csv` — Precision, Recall, F1 e Acurácia por regra e agregado, classe positiva = não conformidade (`FAILED`), para Checkov, LLM e Humano.
 - `analises/discrepancias_por_regra.csv` — todo caso em que um avaliador divergiu do gabarito, individualmente listado.
-- `analises/mcnemar_checkov_vs_llm.csv` — Teste de McNemar exato (binomial de sinal), por regra e agregado, comparando Checkov e LLM sobre a mesma população de casos.
+- `analises/mcnemar_checkov_vs_llm.csv` — Teste de McNemar exato (binomial de sinal), por regra e agregado, comparando Checkov e LLM sobre a mesma população de casos (180 planos). Agregado (pooled, n = 830 pares aplicáveis): p = 0,0078, diferença estatisticamente significativa.
 - `analises/intervalos_confianca.csv` — IC 95% (bootstrap percentil, 10.000 reamostragens, seed documentada) para as 4 métricas acima, por avaliador/regra/agregado.
-
-Prontos para rodar assim que a avaliação humana (seção 7) retornar — código já implementado e testado com dados sintéticos, só falta a matriz real:
-
-- `analises/cochrans_q.csv` — teste de Cochran's Q (Checkov/LLM/Humano simultaneamente), por regra e agregado, via `testes_estatisticos_3vias.py`. Como o número de métodos é fixo em 3 (graus de liberdade = 2), o p-valor usa a forma fechada da qui-quadrado com 2 g.l. (`exp(-Q/2)`), sem depender de `scipy` (não instalado no ambiente).
+- `analises/cochrans_q.csv` — teste de Cochran's Q (Checkov/LLM/Humano simultaneamente), por regra e agregado, via `testes_estatisticos_3vias.py`. Como o número de métodos é fixo em 3 (graus de liberdade = 2), o p-valor usa a forma fechada da qui-quadrado com 2 g.l. (`exp(-Q/2)`), sem depender de `scipy` (não instalado no ambiente). Só aplicável às regras com pares discordantes (`CKV_FINOPS_02`).
 - `analises/mcnemar_3vias_pareado.csv` — McNemar exato par a par entre os 3 métodos (Checkov x LLM, Checkov x Humano, LLM x Humano), com correção de Holm-Bonferroni para as 3 comparações múltiplas, via o mesmo script.
 - `analises/concordancia_humana.csv` — concordância exata e Kappa de Fleiss entre R1/R2/R3, por regra e agregado, via `common/analises/concordancia_humana.py`.
 
-Os três scripts foram validados com testes unitários das fórmulas (Fleiss' Kappa, Cochran's Q e Holm-Bonferroni contra exemplos com resultado calculado à mão) e com um teste de ponta a ponta usando formulários sintéticos preenchidos (gerados programaticamente a partir do `Formulario_Revisao_FinOps.docx` real, cruzados com o `mapa_ids.csv` real do `test_set`), cobrindo casos de borda: célula vazia, texto não reconhecido, divergência total entre os 3 avaliadores (sem maioria) e ausência de variabilidade entre métodos (Cochran's Q não aplicável).
+Os três scripts que dependem da matriz de avaliação humana (Cochran's Q, McNemar 3 vias e concordância) foram validados, antes da chegada dos dados reais, com testes unitários das fórmulas (Fleiss' Kappa, Cochran's Q e Holm-Bonferroni contra exemplos com resultado calculado à mão) e com um teste de ponta a ponta usando formulários sintéticos preenchidos (gerados programaticamente a partir do `Formulario_Revisao_FinOps.docx` real, cruzados com o `mapa_ids.csv` real do `test_set`), cobrindo casos de borda: célula vazia, texto não reconhecido, divergência total entre os 3 avaliadores (sem maioria) e ausência de variabilidade entre métodos (Cochran's Q não aplicável). Com os dados reais, o padrão se confirmou: a maioria das regras não teve pares discordantes suficientes entre os métodos para aplicar os testes pareados (marcado como "Não aplicável" nas tabelas), com significância aparecendo apenas em `CKV_FINOPS_02`, onde LLM e avaliação humana divergiram do Checkov de forma equivalente entre si.
 
 ## 9. Manutenção deste README
 
